@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Edit the experience list here. Each line is one row.
+const experience = [
+  { company: 'Virgin Media O2', role: 'UX/UI Designer', dates: 'Feb 2023 - Present' },
+  { company: 'Mercer', role: 'Visual Designer', dates: 'Nov 2021 - Jan 2023' },
+  { company: 'ao.com', role: 'Creative Designer', dates: 'Sep 2019 - Oct 2021' },
+  { company: 'Practical Publishing', role: 'Senior Graphic Designer', dates: 'Nov 2016 - Sep 2019' },
+  { company: 'A-Magazine', role: 'Graphic Designer', dates: 'Oct 2014 - May 2017' },
+];
+
+// Snippet photos, shown in a 3-column grid. Add or remove lines freely.
+const snippets = [
+  { src: '/images/about/snippet-1.svg', alt: '' },
+  { src: '/images/about/snippet-2.svg', alt: '' },
+  { src: '/images/about/snippet-3.svg', alt: '' },
+  { src: '/images/about/snippet-4.svg', alt: '' },
+  { src: '/images/about/snippet-5.svg', alt: '' },
+  { src: '/images/about/snippet-6.svg', alt: '' },
+  { src: '/images/about/snippet-7.svg', alt: '' },
+  { src: '/images/about/snippet-8.svg', alt: '' },
+  { src: '/images/about/snippet-9.svg', alt: '' },
+];
+
+// The short line before each section heading.
+const dash = 'mr-2 inline-block w-12 border-b-4 border-ink align-baseline';
+---
+
+<BaseLayout title="About">
+  <div class="mx-auto max-w-[1088px] px-6 pt-10">
+    <h1 class="text-4xl font-bold tracking-tight md:text-5xl" data-reveal>About Sher</h1>
+
+    <!-- Background -->
+    <section class="mt-16 grid gap-12 md:grid-cols-[1fr_310px] md:gap-20" data-reveal>
+      <div>
+        <h2 class="mb-8 text-3xl font-bold tracking-tight md:text-4xl"><span class={dash}></span>Background</h2>
+        <div class="max-w-[640px] space-y-7 text-lg leading-relaxed">
+          <p>I’m Sher, a product designer at Virgin Media O2. I focus on simplifying complex digital systems and shaping experiences so they feel clear and intuitive.</p>
+          <p>Before moving into product, I worked across visual and creative roles at Mercer, ao.com and Practical Publishing. That background gave me a strong sense of structure, but over time I found myself more drawn to shaping the logic behind the interface.</p>
+          <p>I care about making complex products feel simple and working within system constraints to design experiences that actually make sense for the people that use them every day.</p>
+        </div>
+      </div>
+      <img src="/images/about/portrait.svg" alt="Sher" class="aspect-square w-full max-w-[310px] rounded-full object-cover" />
+    </section>
+
+    <!-- Experience -->
+    <section class="mt-32" data-reveal>
+      <h2 class="mb-6 text-3xl font-bold tracking-tight md:text-4xl"><span class={dash}></span>Experience</h2>
+      <ul>
+        {experience.map((job) => (
+          <li class="flex flex-col gap-1 border-b border-line py-6 md:flex-row md:items-center md:gap-10">
+            <span class="flex-1 text-3xl font-bold tracking-tight">{job.company}</span>
+            <span class="text-lg font-semibold">{job.role}</span>
+            <span class="text-lg whitespace-nowrap text-muted">{job.dates}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Snippets -->
+    <section class="mt-32 grid gap-12 md:grid-cols-[1fr_588px]" data-reveal>
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl"><span class={dash}></span>Snippets</h2>
+      <div class="grid grid-cols-3 gap-6">
+        {snippets.map((photo) => (
+          <img src={photo.src} alt={photo.alt} loading="lazy" class="aspect-square w-full rounded-xl object-cover" />
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

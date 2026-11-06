@@ -1,0 +1,25 @@
+---
+// One project card: cover image, title and tag. Used by ProjectGrid.
+interface Props {
+  href: string;
+  title: string;
+  tag: string;
+  cover: string;
+}
+const { href, title, tag, cover } = Astro.props;
+---
+
+<a href={href} class="group block" data-reveal>
+  <div class="aspect-[4/3] overflow-hidden rounded-xl">
+    <img
+      src={cover}
+      alt=""
+      loading="lazy"
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+    />
+  </div>
+  <div class="mt-8 flex items-baseline justify-between gap-4">
+    <h3 class="text-[22px] font-medium tracking-tight">{title}</h3>
+    <span class="shrink-0 text-lg">{tag}</span>
+  </div>
+</a>

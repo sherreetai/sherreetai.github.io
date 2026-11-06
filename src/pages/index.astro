@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import { EMAIL, LINKEDIN } from '../site';
+---
+
+<BaseLayout fullFooter>
+  <section class="mx-auto max-w-[1088px] px-6 pt-20 pb-28 md:pt-28">
+    <div class="md:pl-8" data-reveal>
+      <h1 class="max-w-[700px] text-4xl leading-[1.05] font-bold tracking-tight md:text-[52px]">
+        <span class="block text-accent">I’m Sher.</span>
+        <span class="block">A product designer focused on turning messy logic into seamless journeys.</span>
+      </h1>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href={EMAIL} class="rounded-lg border-2 border-ink bg-ink px-4 py-2.5 text-lg text-white hover:bg-white hover:text-ink">Email me →</a>
+        <a href={LINKEDIN} class="rounded-lg border-2 border-ink px-4 py-2.5 text-lg hover:bg-ink hover:text-white">Let’s connect on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-32">
+    <ProjectGrid />
+  </section>
+</BaseLayout>

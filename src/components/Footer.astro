@@ -1,0 +1,28 @@
+---
+import { EMAIL, LINKEDIN } from '../site';
+
+interface Props {
+  full?: boolean; // true = statement + "Reach out" links (Home & Work pages)
+}
+const { full = false } = Astro.props;
+---
+
+<footer>
+  {full && (
+    <div class="border-t border-line">
+      <div class="mx-auto grid max-w-[1088px] gap-12 px-6 pt-20 md:grid-cols-[1fr_380px]" data-reveal>
+        <p class="max-w-[580px] text-lg font-medium leading-snug">
+          I believe any experience can feel <span class="text-accent">thoughtful</span>. It's where <span class="text-accent">trust</span> is won or lost, which makes it one of the most <span class="text-accent">worthwhile problems</span> to get right.
+        </p>
+        <div>
+          <h2 class="mb-6 text-2xl font-medium">Reach out</h2>
+          <ul class="space-y-2 text-lg">
+            <li><a href={EMAIL} class="underline underline-offset-4 hover:text-accent">Email</a></li>
+            <li><a href={LINKEDIN} class="underline underline-offset-4 hover:text-accent">Linkedin</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  )}
+  <p class="px-6 pt-32 pb-8 text-right text-lg md:px-16">©2026 to ∞ Sher Ree Tai</p>
+</footer>

@@ -1,0 +1,23 @@
+---
+// Builds one page per case study file in src/content/work/.
+// The page address is the file name, e.g. mercer-us-health-blog.mdx → /work/mercer-us-health-blog/
+import { getCollection, render } from 'astro:content';
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import Media from '../../components/Media.astro';
+import PullQuote from '../../components/PullQuote.astro';
+
+export async function getStaticPaths() {
+  const projects = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return projects.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: projects[(i + 1) % projects.length] },
+  }));
+}
+
+const { entry, next } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<CaseStudyLayout entry={entry} next={next}>
+  <Content components={{ Media, PullQuote }} />
+</CaseStudyLayout>

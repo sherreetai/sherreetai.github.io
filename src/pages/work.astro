@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+---
+
+<BaseLayout title="Work" fullFooter>
+  <section class="mx-auto max-w-[1088px] px-6 pt-10 pb-16">
+    <h1 class="text-4xl font-bold tracking-tight md:text-5xl" data-reveal>Featured projects</h1>
+  </section>
+
+  <section class="pb-32">
+    <ProjectGrid />
+  </section>
+</BaseLayout>

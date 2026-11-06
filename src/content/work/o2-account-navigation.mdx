@@ -1,0 +1,60 @@
+---
+title: Account Navigation Redesign
+tag: App Design
+order: 1
+cover: /images/o2/cover.svg
+hero: /images/o2/hero.svg
+logo: /images/o2/logo.svg
+tint: "#E7ECFB"
+role:
+  - Product strategy
+  - User research
+  - UX/UI design
+project: My O2 App
+year: 2025 - Present
+intro: |
+  Customers managing multiple products often had to re-select their account or line repeatedly when completing everyday tasks like changing a tariff or adding a Bolt-On. The app's structure followed internal system logic rather than how customers actually think. Users focus on the individual products they manage day to day, but the app prioritised account hierarchy first. This created a mismatch with customer expectations and didn't align with the web experience, causing confusion around account switching and repeated re-selection steps.
+challenge: Deliver a navigation experience that matched how customers naturally move through their account, without changing the underlying billing structure or legacy system logic.
+---
+
+## Discovery
+
+No single source of truth existed for the app's information architecture or billing hierarchy. Design decisions were being made against incomplete system understanding.
+
+I brought together people from billing, backend engineering, frontline retail and web to map how the system actually behaved. This produced a consolidated IA and billing logic map that hadn't existed before, becoming a shared reference across the project team.
+
+**The diagram below captures the four key areas mapped during discovery:**
+
+**1 – Customer Account Structure:** How billing accounts are structured, what products sit within each, and how Apple Watches pair to their parent mobile phone number.
+
+**2 – Direct Debit Setup Logic:** How the system assigns a new product to an existing or new billing account based on bank account state and product compatibility.
+
+**3 – Apple Watch Bill Pairing Alignment Cases:** Two scenarios showing how billing account assignment changes depending on how many SIMs exist on the parent account.
+
+**4 – Key Notes:** Edge cases and system constraints that informed design decisions, including legacy billing logic and SIM Free Finance behaviour.
+
+<Media src="/images/o2/discovery-map.svg" alt="IA and billing logic map" />
+
+<PullQuote>No single source of truth existed for the app's information architecture or billing hierarchy.</PullQuote>
+
+## Design Decisions
+
+### Navigation and product card testing
+
+Redesigned to surface the most relevant product for day-to-day tasks while keeping billing visible at account level. A static panel replaced the carousel after meeting the 50% engagement threshold the carousel didn't reach, and a redundant heading was removed after testing showed it added noise without aiding navigation.
+
+<Media src="/images/o2/card-testing.svg" alt="Product card testing" layout="panel" />
+
+### Reducing Re-selection Friction
+
+Previously, tapping "Buy Bolt-On" would surface a drawer prompting users to re-select their product before the bolt-on page loaded. The redesigned journey surfaces a panel of quick links directly from the account view, so tapping "Buy Bolt-On" loads the bolt-on page immediately with no re-selection required.
+
+<Media src="/images/o2/reselection.svg" alt="Bolt-on journey before and after" layout="panel" />
+
+<Media src="/images/o2/final-app.svg" alt="Redesigned account screen" layout="band" />
+
+## Outcome
+
+Re-selection steps were reduced from 6 to 3 for customers managing multiple products on tariff change and Bolt-On journeys. Alignment with the web experience reduced inconsistency for customers moving between app and browser.
+
+The IA and billing logic map was adopted as a shared reference by the wider team, resolving ambiguity that had affected multiple work streams beyond this project.
