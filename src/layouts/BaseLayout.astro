@@ -7,14 +7,12 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
-  tint?: string; // background colour for the header (case studies use their tint)
-  fullFooter?: boolean; // show the statement + "Reach out" footer
+  fullFooter?: boolean; // show the logo beside the contact links
 }
 
 const {
   title,
   description = 'Sher Ree Tai, product designer.',
-  tint,
   fullFooter = false,
 } = Astro.props;
 const pageTitle = title ? `${title} | Sher Ree Tai` : 'Sher Ree Tai, Product Designer';
@@ -29,7 +27,7 @@ const pageTitle = title ? `${title} | Sher Ree Tai` : 'Sher Ree Tai, Product Des
     <meta name="description" content={description} />
     <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
-  <body class="font-sans" style={tint ? `--tint: ${tint}` : undefined}>
+  <body class="font-sans">
     <Header />
     <main>
       <slot />
@@ -44,8 +42,7 @@ const pageTitle = title ? `${title} | Sher Ree Tai` : 'Sher Ree Tai, Product Des
         // Anything marked data-reveal is one group (the whole block pops in at once).
         document.querySelectorAll('[data-reveal]').forEach(function (el) { groups.push([el]); });
 
-        // Case study body: a heading plus the text under it is one group;
-        // each image, video or quote is its own group.
+        // Case study sections and media blocks each appear as one group.
         document.querySelectorAll('.case-body').forEach(function (body) {
           var current = null;
           var prevWasHeading = false;

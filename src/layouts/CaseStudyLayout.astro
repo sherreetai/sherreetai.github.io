@@ -1,9 +1,8 @@
 ---
-// The shared case study page: tinted intro, hero banner, body, next project.
+// The shared case study page: challenge, scope and outcome, body, next project.
 // The content comes from the .mdx file in src/content/work/.
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
-import Media from '../components/Media.astro';
 import NextProject from '../components/NextProject.astro';
 
 interface Props {
@@ -11,39 +10,36 @@ interface Props {
   next: CollectionEntry<'work'>;
 }
 const { entry, next } = Astro.props;
-const { title, scope, role, outcome, challenge, hero, tint } = entry.data;
+const { title, scope, challengeHeading, challenge, outcome } = entry.data;
 ---
 
-<BaseLayout title={title} tint={tint}>
-  <section class="bg-(--tint)">
-    <div class="mx-auto max-w-[1088px] px-6 pt-10 pb-20" data-reveal>
-      <h1 class="mb-12 max-w-[850px] text-4xl leading-[1.05] font-bold tracking-tight md:text-[56px]">{title}</h1>
+<BaseLayout title={title}>
+  <section class="mx-auto max-w-[1088px] px-6 pt-10 pb-16 md:pt-14 md:pb-20" data-reveal>
+    <h1 class="mb-10 max-w-[900px] text-4xl leading-[1.05] font-bold tracking-tight md:text-[56px]">{title}</h1>
 
-      <dl class="mb-16 grid gap-8 border-y border-ink/15 py-8 md:grid-cols-3 md:gap-12">
-        <div>
-          <dt class="mb-3 text-xl font-medium">Scope</dt>
-          <dd class="text-base leading-relaxed">{scope}</dd>
-        </div>
-        <div>
-          <dt class="mb-3 text-xl font-medium">Role</dt>
-          {role.map((r) => <dd class="text-base leading-relaxed">{r}</dd>)}
-        </div>
-        <div>
-          <dt class="mb-3 text-xl font-medium">Outcome</dt>
-          <dd class="text-base leading-relaxed">{outcome}</dd>
-        </div>
-      </dl>
-
-      <div class="max-w-[760px]">
-        <h2 class="mb-4 text-2xl font-bold">The Challenge</h2>
-        <p class="mb-5 text-lg leading-relaxed">{challenge}</p>
-      </div>
+    <div class="max-w-[820px]">
+      <p class="mb-2 text-sm font-medium"><span class="mr-2 inline-block w-6 border-b border-ink align-baseline"></span>Challenge</p>
+      <h2 class="mb-4 text-xl leading-snug font-bold tracking-tight md:text-2xl">{challengeHeading}</h2>
+      <p class="text-base leading-relaxed">{challenge}</p>
     </div>
+
+    <dl class="mt-12 grid max-w-[820px] gap-8 md:grid-cols-[minmax(0,1fr)_220px] md:gap-10">
+      <div class="border-t border-line pt-5">
+        <dt class="mb-3 text-sm font-medium"><span class="mr-2 inline-block w-6 border-b border-ink align-baseline"></span>Outcome</dt>
+        <dd class="text-base leading-relaxed">{outcome}</dd>
+      </div>
+      <div class="border-t border-line pt-5">
+        <dt class="mb-3 text-sm font-medium"><span class="mr-2 inline-block w-6 border-b border-ink align-baseline"></span>Scope</dt>
+        <dd class="flex flex-wrap gap-2">
+          {scope.map((item) => <span class="rounded-full bg-chip px-3 py-1 text-xs">{item}</span>)}
+        </dd>
+      </div>
+    </dl>
   </section>
 
-  <Media src={hero} alt={title} layout="bleed" />
+  <div class="aspect-[2.4/1] max-h-[460px] w-full bg-placeholder" aria-hidden="true"></div>
 
-  <article class="case-body pb-24">
+  <article class="case-body pb-12 md:pb-20">
     <slot />
   </article>
 

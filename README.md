@@ -27,7 +27,7 @@ For an overview of how the folders fit together, see [docs/project-structure.md]
 | A case study's text, images or settings | `src/content/work/<name>.mdx` |
 | The home page intro | `src/pages/index.astro` |
 | The About page (text, experience list, snippet photos) | `src/pages/about.astro` |
-| The "Featured projects" heading on Work | `src/pages/work.astro` |
+| The Work section on the home page | `src/pages/index.astro` |
 | Email / LinkedIn links | `src/site.ts` |
 | Colours and font | the `@theme` block at the top of `src/styles/global.css` |
 | How case study text looks (sizes, spacing) | the "Case study body text" section of `src/styles/global.css` |
@@ -44,10 +44,10 @@ Images and videos go in `public/images/`. A file at `public/images/mercer/hero.j
    - `title`: big heading on the page. `cardTitle` (optional) is a shorter version for the card.
    - `tag`: the small label on the card.
    - `order`: where it sits in the grid. 1 comes first. It also decides which project the "Next project" link goes to.
-   - `cover`, `hero`, `logo`: image paths.
-   - `tint`: background colour for the intro, panels and quote bands.
-   - `role`, `project`, `year`, `intro`, `challenge`: the intro section. In `intro`, leave a blank line between paragraphs.
-3. Write the rest of the page underneath in Markdown.
+   - `logo`: image path used by the next-case-study link.
+   - `scope`: a list of the disciplines covered.
+   - `challengeHeading`, `challenge`, `outcome`: the case study introduction.
+3. Add the case study sections underneath with `<CaseSection eyebrow="..." title="...">`, then write their copy in Markdown.
 
 The card appears on Home and Work automatically.
 
@@ -55,7 +55,7 @@ The card appears on Home and Work automatically.
 
 Normal Markdown works: `## Big heading`, `### Small heading`, `**bold**`, blank lines between paragraphs.
 
-There are two building blocks for images and quotes:
+Use `<CaseSection>` for each labeled section. Images and quotes can be added inside a section with these components:
 
 ```mdx
 <Media src="/images/my-project/screens.png" alt="What it shows" />
@@ -63,17 +63,17 @@ There are two building blocks for images and quotes:
 <Media src="/images/my-project/phone.png" layout="band" />
 <Media src="/images/my-project/demo.mp4" layout="panel" />
 
-<PullQuote>A big centred quote in a tinted band.</PullQuote>
+<PullQuote>A big centred quote in a light-grey band.</PullQuote>
 ```
 
-- `layout="panel"`: sits on a rounded box in the tint colour.
-- `layout="band"`: a full-width strip in the tint colour, good for big device mockups.
+- `layout="panel"`: sits on a rounded light-grey box.
+- `layout="band"`: a full-width light-grey strip, good for big device mockups.
 - Leave `layout` off for a plain image.
 - **Videos:** use `.mp4` instead of GIFs where possible. They're much smaller and play automatically, muted and on a loop. GIFs work too: just use the `.gif` path.
 
 ## Placeholders
 
-Every image is currently a grey or brand-coloured placeholder `.svg`. To replace one, put the real file in the same folder and update its path (e.g. `cover.svg` → `cover.jpg`). The logo in the header is a placeholder too (see `Header.astro`).
+The project cards and case-study image areas are light-grey placeholders. To add a project image, place it in `public/images/` and use a `<Media>` component in the case-study content. The small logo in the header is a text placeholder too (see `Header.astro`).
 
 ## Publishing
 

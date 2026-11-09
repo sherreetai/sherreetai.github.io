@@ -9,16 +9,13 @@ const work = defineCollection({
   schema: z.object({
     title: z.string(), // big heading on the case study page
     cardTitle: z.string().optional(), // shorter title for the Home/Work card (falls back to title)
-    tag: z.string(), // small label on the card, e.g. "UI Design"
+    tag: z.string(), // small label on the card, e.g. "Product Design"
     order: z.number(), // position in the grid and the "Next project" sequence
-    cover: z.string(), // card image
-    hero: z.string(), // full-width banner under the intro (image or video)
     logo: z.string(), // small logo used in the "Next project" link
-    tint: z.string(), // background colour for the intro, panels and quotes
-    scope: z.string(),
-    role: z.array(z.string()),
-    outcome: z.string(),
+    scope: z.array(z.string()),
+    challengeHeading: z.string(),
     challenge: z.string(),
+    outcome: z.string(),
   }),
 });
 

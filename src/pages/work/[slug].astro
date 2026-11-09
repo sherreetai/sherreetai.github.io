@@ -5,8 +5,7 @@ import { getCollection, render } from 'astro:content';
 import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
 import Media from '../../components/Media.astro';
 import PullQuote from '../../components/PullQuote.astro';
-import DecisionGrid from '../../components/DecisionGrid.astro';
-import DecisionCard from '../../components/DecisionCard.astro';
+import CaseSection from '../../components/CaseSection.astro';
 
 export async function getStaticPaths() {
   const projects = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
@@ -21,5 +20,5 @@ const { Content } = await render(entry);
 ---
 
 <CaseStudyLayout entry={entry} next={next}>
-  <Content components={{ Media, PullQuote, DecisionGrid, DecisionCard }} />
+  <Content components={{ CaseSection, Media, PullQuote }} />
 </CaseStudyLayout>
