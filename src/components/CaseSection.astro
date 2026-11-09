@@ -3,12 +3,16 @@ interface Props {
   eyebrow: string;
   title: string;
   media?: boolean;
+  variant?: 'default' | 'card';
 }
 
-const { eyebrow, title, media = false } = Astro.props;
+const { eyebrow, title, media = false, variant = 'default' } = Astro.props;
+const sectionClass = variant === 'card'
+  ? 'h-full rounded-lg border border-line px-6 py-10 md:px-8 md:py-12'
+  : 'mx-auto max-w-[1088px] border-t border-line px-6 py-14 md:py-20';
 ---
 
-<section class="mx-auto max-w-[1088px] border-t border-line px-6 py-14 md:py-20">
+<section class={sectionClass}>
   <div class="mx-auto max-w-[640px]">
     <p class="mb-2 text-center text-xs font-medium uppercase tracking-wide">{eyebrow}</p>
     <h2 class="mb-6 text-center text-2xl leading-snug font-bold tracking-tight">{title}</h2>
