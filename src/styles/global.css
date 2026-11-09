@@ -7,7 +7,7 @@
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --color-ink: #2b2117;
-  --color-accent: #ff8a00;
+  --color-accent: #b45309;
   --color-muted: #6b6b6b;
   --color-line: #dedddc;
   --color-placeholder: #dedddc;
@@ -22,6 +22,11 @@ html {
 
 body {
   overflow-x: clip;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
 }
 
 /* ------------------------------------------------------------------
