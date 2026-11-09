@@ -11,40 +11,39 @@ interface Props {
   next: CollectionEntry<'work'>;
 }
 const { entry, next } = Astro.props;
-const { title, intro, challenge, role, project, year, hero, tint } = entry.data;
-const introParagraphs = intro.split(/\n\s*\n/);
+const { title, scope, role, outcome, challenge, hero, tint } = entry.data;
 ---
 
 <BaseLayout title={title} tint={tint}>
   <section class="bg-(--tint)">
-    <div class="mx-auto grid max-w-[1088px] gap-12 px-6 pt-10 pb-20 md:grid-cols-[1fr_240px] md:gap-24" data-reveal>
-      <div>
-        <h1 class="mb-10 text-4xl leading-[1.05] font-bold tracking-tight md:text-[56px]">{title}</h1>
-        {introParagraphs.map((p) => <p class="mb-5 text-lg leading-relaxed">{p}</p>)}
-        <h2 class="mt-10 mb-4 text-2xl font-bold">The Challenge</h2>
-        <p class="text-lg leading-relaxed">{challenge}</p>
-      </div>
+    <div class="mx-auto max-w-[1088px] px-6 pt-10 pb-20" data-reveal>
+      <h1 class="mb-12 max-w-[850px] text-4xl leading-[1.05] font-bold tracking-tight md:text-[56px]">{title}</h1>
 
-      <dl class="space-y-10 md:pt-6">
-        <div class="border-t border-ink/15 pt-6">
+      <dl class="mb-16 grid gap-8 border-y border-ink/15 py-8 md:grid-cols-3 md:gap-12">
+        <div>
+          <dt class="mb-3 text-xl font-medium">Scope</dt>
+          <dd class="text-base leading-relaxed">{scope}</dd>
+        </div>
+        <div>
           <dt class="mb-3 text-xl font-medium">Role</dt>
-          {role.map((r) => <dd class="text-base">{r}</dd>)}
+          {role.map((r) => <dd class="text-base leading-relaxed">{r}</dd>)}
         </div>
-        <div class="border-t border-ink/15 pt-6">
-          <dt class="mb-3 text-xl font-medium">Project</dt>
-          <dd class="text-base">{project}</dd>
-        </div>
-        <div class="border-t border-ink/15 pt-6">
-          <dt class="mb-3 text-xl font-medium">Year</dt>
-          <dd class="text-base">{year}</dd>
+        <div>
+          <dt class="mb-3 text-xl font-medium">Outcome</dt>
+          <dd class="text-base leading-relaxed">{outcome}</dd>
         </div>
       </dl>
+
+      <div class="max-w-[760px]">
+        <h2 class="mb-4 text-2xl font-bold">The Challenge</h2>
+        <p class="mb-5 text-lg leading-relaxed">{challenge}</p>
+      </div>
     </div>
   </section>
 
   <Media src={hero} alt={title} layout="bleed" />
 
-  <article class="case-body pt-8 pb-24">
+  <article class="case-body pb-24">
     <slot />
   </article>
 

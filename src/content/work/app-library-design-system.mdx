@@ -1,44 +1,38 @@
 ---
-title: App Library Design System
-tag: Design System
-order: 3
+title: VMO2 App Library Design System
+tag: Design systems
+order: 4
 cover: /images/app-library/cover.svg
 hero: /images/app-library/hero.svg
 logo: /images/app-library/logo.svg
 tint: "#FDEDED"
+scope: Virgin Media, O2 and Priority apps
 role:
-  - Design Systems
-  - Component Strategy
-  - UX Implementation
-project: Virgin Media, O2 and Priority for App
-year: 2025 - Present
-intro: |
-  As the app grew, UI patterns were becoming inconsistent across web and app within the shared design system. Teams recreated similar components in different ways, interpreting spacing, states and behaviours differently. Some features were designed in isolation because existing web components weren't suited to the app. This slowed delivery and created visual and interaction inconsistencies, showing the foundations weren't scaling with the product.
-challenge: Establish a scalable, consistent component library that could serve multiple brands and align design with development.
+  - Design systems
+  - Component strategy
+  - UX implementation
+outcome: Made theme application ~93% faster, reducing it from 54+ seconds to under 4 seconds and saving an estimated 5–6 hours per designer each year.
+challenge: Teams were recreating similar components across brands, creating inconsistent states and design-to-development drift. My role was to help shape a scalable cross-brand system, then put it into practice by creating the My O2 App master file and implementing the new variable structure.
 ---
 
-## Design Decisions
+<DecisionGrid>
+  <DecisionCard title="Audited the existing system">
+    <p>I helped audit repeated patterns and inconsistent component states across the apps, identifying where components could be consolidated into shared foundations.</p>
+  </DecisionCard>
 
-### UI Audit
+  <DecisionCard title="Rebuilt components with Figma Variables">
+    <p>I helped rebuild components from atomic foundations using Figma Variables, replacing the slower Tokens Studio workflow with native theming and reducing reliance on third-party tooling.</p>
+  </DecisionCard>
 
-Reviewed screens across brands to map repeated patterns, identifying duplicated components and inconsistent states. Worked closely with developers to ensure components were practical and matched development structure.
+  <DecisionCard title="Aligned design with development">
+    <p>I worked with engineering so component and variable logic reflected how the UI was built, helping reduce gaps between Figma and implementation.</p>
+  </DecisionCard>
 
-<Media src="/images/app-library/audit.svg" alt="Component behaviour and testing audit" layout="panel" />
-
-### Rebuilding Components
-
-Reconstructed patterns from atomic foundations using Figma Variables, reducing reliance on third-party plugins like Token Studio and preventing component bloat. Rolled out gradually to evolve the system alongside the product.
-
-<Media src="/images/app-library/rebuild.svg" alt="Rebuilt components" layout="panel" />
-
-### Usage Guidance
-
-Defined clearer rules for when and how patterns should be used, with a plan to expand documentation over time.
-
-<Media src="/images/app-library/guidance.svg" alt="Usage guidance documentation" layout="panel" />
-
-<Media src="/images/app-library/components.svg" alt="Component library overview" layout="band" />
+  <DecisionCard title="Implemented the system in My O2 App">
+    <p>I created the My O2 App master file and was the first to implement the new Figma Variables into a live app design file. This proved the variable structure could work in practice and created a foundation for migrating components away from Tokens Studio.</p>
+  </DecisionCard>
+</DecisionGrid>
 
 ## Outcome
 
-Migrating to Figma Variables saved approximately 5–6 hours per designer per year, based on 7,609 component inserts. The system now has stronger design-to-code alignment and reliable token syncing across Figma, Storybook and production. It also lays the groundwork for AI-assisted UI generation from real components and connected theming logic across platforms.
+Moving to Figma Variables reduced theme application from 54+ seconds to under 4 seconds, making it ~93% faster. Across 7,609 recorded component inserts, this was estimated to save 5–6 hours per designer each year, while creating a more scalable cross-brand foundation.

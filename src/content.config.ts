@@ -15,10 +15,9 @@ const work = defineCollection({
     hero: z.string(), // full-width banner under the intro (image or video)
     logo: z.string(), // small logo used in the "Next project" link
     tint: z.string(), // background colour for the intro, panels and quotes
+    scope: z.string(),
     role: z.array(z.string()),
-    project: z.string(),
-    year: z.string(),
-    intro: z.string(), // leave a blank line between paragraphs
+    outcome: z.string(),
     challenge: z.string(),
   }),
 });
