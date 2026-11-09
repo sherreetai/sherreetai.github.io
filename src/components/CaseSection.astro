@@ -3,22 +3,34 @@ interface Props {
   eyebrow: string;
   title: string;
   media?: boolean;
-  variant?: 'default' | 'card';
+  layout?: 'centered' | 'paired' | 'split';
+  divider?: 'right';
 }
 
-const { eyebrow, title, media = false, variant = 'default' } = Astro.props;
-const sectionClass = variant === 'card'
-  ? 'h-full rounded-lg border border-line px-6 py-10 md:px-8 md:py-12'
-  : 'mx-auto max-w-[1088px] border-t border-line px-6 py-14 md:py-20';
+const { eyebrow, title, media = false, layout, divider } = Astro.props;
+const isGridSection = layout !== undefined;
+const sectionClass = !isGridSection
+  ? 'mx-auto max-w-[1088px] border-t border-line px-6 py-14 md:py-20'
+  : layout === 'centered'
+    ? 'border-b border-line px-6 py-10 md:col-span-2 md:px-20 md:py-14'
+    : layout === 'split'
+      ? 'border-b border-line px-6 py-10 md:col-span-2 md:px-12 md:py-14'
+      : `border-b border-line px-6 py-10 md:px-8 md:py-12 ${divider === 'right' ? 'md:border-r md:border-line' : ''}`;
+const contentClass = layout === 'split'
+  ? 'mx-auto grid max-w-[880px] items-center gap-8 md:grid-cols-2'
+  : 'mx-auto max-w-[640px]';
 ---
 
 <section class={sectionClass}>
-  <div class="mx-auto max-w-[640px]">
-    <p class="mb-2 text-center text-xs font-medium uppercase tracking-wide">{eyebrow}</p>
-    <h2 class="mb-6 text-center text-2xl leading-snug font-bold tracking-tight">{title}</h2>
-    <div class="text-base leading-relaxed [&_p+p]:mt-4">
-      <slot />
+  <div class={contentClass}>
+    <div>
+      <p class="mb-2 text-center text-xs font-medium uppercase tracking-wide">{eyebrow}</p>
+      <h2 class="mb-6 text-center text-2xl leading-snug font-bold tracking-tight">{title}</h2>
+      <div class="text-base leading-relaxed [&_p+p]:mt-4">
+        <slot />
+      </div>
+      {media && layout !== 'split' && <div class="mt-8 aspect-[1.6/1] w-full rounded-lg bg-placeholder" aria-hidden="true"></div>}
     </div>
-    {media && <div class="mt-8 aspect-[1.6/1] w-full rounded-lg bg-placeholder" aria-hidden="true"></div>}
+    {media && layout === 'split' && <div class="aspect-[1.3/1] w-full rounded-lg bg-placeholder md:aspect-[4/3]" aria-hidden="true"></div>}
   </div>
 </section>
