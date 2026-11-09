@@ -15,16 +15,16 @@ const dash = 'mr-2 inline-block w-12 border-b-4 border-ink align-baseline';
 <BaseLayout title="About">
   <div class="mx-auto max-w-[1088px] px-6 pt-10">
     <!-- Background -->
-    <section class="mt-16 grid gap-12 md:grid-cols-[1fr_240px] md:gap-20" data-reveal>
-      <div>
-        <h2 class="mb-8 text-3xl font-bold tracking-tight md:text-4xl"><span class={dash}></span>Background</h2>
-        <div class="max-w-[640px] space-y-7 text-lg leading-relaxed">
+    <section class="mt-16 grid gap-8 md:grid-cols-[1fr_240px] md:grid-rows-[auto_1fr] md:gap-x-20" data-reveal>
+      <h2 class="text-3xl font-bold tracking-tight md:col-start-1 md:row-start-1 md:text-4xl"><span class={dash}></span>Background</h2>
+      <img src="/images/about/portrait.svg" alt="Sher" class="mx-auto aspect-square w-36 rounded-full object-cover md:col-start-2 md:row-span-2 md:row-start-1 md:w-[180px] md:justify-self-center" />
+      <div class="max-w-[640px] text-lg leading-relaxed md:col-start-1 md:row-start-2">
+        <div class="space-y-7">
           <p>I’m Sher, a product designer at Virgin Media O2. I focus on simplifying complex digital systems and shaping experiences so they feel clear and intuitive.</p>
           <p>Before moving into product, I worked across visual and creative roles at Mercer, ao.com and Practical Publishing. That background gave me a strong sense of structure, but over time I found myself more drawn to shaping the logic behind the interface.</p>
           <p>I care about making complex products feel simple and working within system constraints to design experiences that actually make sense for the people that use them every day.</p>
         </div>
       </div>
-      <img src="/images/about/portrait.svg" alt="Sher" class="aspect-square w-full max-w-[180px] rounded-full object-cover md:justify-self-center" />
     </section>
 
     <!-- Experience -->
