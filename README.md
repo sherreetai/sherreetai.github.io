@@ -73,7 +73,7 @@ Use `<CaseSection>` for each labeled section. Images and quotes can be added ins
 
 ## Placeholders
 
-The project cards and case-study image areas are light-grey placeholders. To add a project image, place it in `public/images/` and use a `<Media>` component in the case-study content. The small logo in the header is a text placeholder too (see `Header.astro`).
+The project cards and case-study image areas are light-grey placeholders. To add a project image, place it in `public/images/` and use a `<Media>` component in the case-study content. The header and footer logo is `public/images/about/SR-logo.svg`.
 
 ## Publishing
 

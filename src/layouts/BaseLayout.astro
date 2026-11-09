@@ -7,13 +7,11 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
-  fullFooter?: boolean; // show the logo beside the contact links
 }
 
 const {
   title,
   description = 'Sher Ree Tai, product designer.',
-  fullFooter = false,
 } = Astro.props;
 const pageTitle = title ? `${title} | Sher Ree Tai` : 'Sher Ree Tai, Product Designer';
 ---
@@ -32,7 +30,7 @@ const pageTitle = title ? `${title} | Sher Ree Tai` : 'Sher Ree Tai, Product Des
     <main>
       <slot />
     </main>
-    <Footer full={fullFooter} />
+    <Footer />
 
     <!-- Pop-in on scroll: each group of elements appears together when any part of it enters the screen. -->
     <script is:inline>
