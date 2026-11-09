@@ -8,6 +8,8 @@ const experience = [
   { company: 'ao.com', role: 'Creative Designer', dates: 'Sep 2019 - Oct 2021' },
 ];
 
+const snippets = Array.from({ length: 6 }, (_, index) => `/images/about/snippet-${index + 1}.jpg`);
+
 // The short line before each section heading.
 const dash = 'mr-2 inline-block w-12 border-b-4 border-ink align-baseline';
 ---
@@ -50,8 +52,8 @@ const dash = 'mr-2 inline-block w-12 border-b-4 border-ink align-baseline';
           <p>I’ll happily plan a trip around one restaurant because I can’t help noticing what makes a place feel well looked after.</p>
         </div>
       </div>
-      <div class="grid grid-cols-3 gap-4" aria-hidden="true">
-        {Array.from({ length: 6 }, () => <div class="aspect-square rounded-xl bg-placeholder"></div>)}
+      <div class="grid grid-cols-3 gap-4">
+        {snippets.map((src) => <img src={src} alt="" loading="lazy" class="aspect-square w-full rounded-xl object-cover" />)}
       </div>
     </section>
   </div>
