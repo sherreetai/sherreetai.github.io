@@ -10,7 +10,7 @@ interface Props {
   next: CollectionEntry<'work'>;
 }
 const { entry, next } = Astro.props;
-const { title, scope, challengeHeading, challenge, outcome } = entry.data;
+const { title, scope, challengeHeading, challenge, outcome, heroImage } = entry.data;
 ---
 
 <BaseLayout title={title}>
@@ -37,7 +37,7 @@ const { title, scope, challengeHeading, challenge, outcome } = entry.data;
     </div>
   </section>
 
-  <div class="aspect-[4/3] max-h-[460px] w-full bg-placeholder md:aspect-[2.4/1]" aria-hidden="true"></div>
+  <img src={heroImage} alt="" class="aspect-[4/3] max-h-[460px] w-full bg-placeholder object-cover md:aspect-[2.4/1]" />
 
   <article class="case-body pb-12 md:pb-20">
     <slot />

@@ -2,14 +2,14 @@
 interface Props {
   eyebrow: string;
   title: string;
-  media?: boolean;
+  mediaSrc?: string;
   layout?: 'centered' | 'paired' | 'split';
   divider?: 'right' | 'bottom' | 'right-bottom' | 'none';
   paddingTop?: 'default' | 'large';
   paddingBottom?: 'default' | 'none';
 }
 
-const { eyebrow, title, media = false, layout, divider, paddingTop = 'default', paddingBottom = 'default' } = Astro.props;
+const { eyebrow, title, mediaSrc, layout, divider, paddingTop = 'default', paddingBottom = 'default' } = Astro.props;
 const isGridSection = layout !== undefined;
 const topPadding = paddingTop === 'large'
   ? 'pt-20 md:pt-28'
@@ -48,8 +48,8 @@ const contentClass = layout === 'split'
       <div class="text-base leading-relaxed [&_p+p]:mt-4">
         <slot />
       </div>
-      {media && layout !== 'split' && <div class="mt-8 aspect-[1.6/1] w-full rounded-lg bg-placeholder" aria-hidden="true"></div>}
+      {mediaSrc && layout !== 'split' && <img src={mediaSrc} alt="" loading="lazy" class="mt-8 aspect-[1.6/1] w-full rounded-lg bg-placeholder object-cover" />}
     </div>
-    {media && layout === 'split' && <div class="aspect-[1.3/1] w-full rounded-lg bg-placeholder md:aspect-[4/3]" aria-hidden="true"></div>}
+    {mediaSrc && layout === 'split' && <img src={mediaSrc} alt="" loading="lazy" class="aspect-[1.3/1] w-full rounded-lg bg-placeholder object-cover md:aspect-[4/3]" />}
   </div>
 </section>
