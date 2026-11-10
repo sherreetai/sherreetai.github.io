@@ -44,7 +44,7 @@ Images and videos go in `public/images/`. A file at `public/images/mercer/hero.j
    - `title`: big heading on the page. `cardTitle` (optional) is a shorter version for the card.
    - `tag`: the small label on the card.
    - `order`: where it sits in the grid. 1 comes first. It also decides which project the "Next project" link goes to.
-   - `logo`: image path used by the next-case-study link.
+   - `logo`: optional image path used by the next-case-study link.
    - `scope`: a list of the disciplines covered.
    - `challengeHeading`, `challenge`, `outcome`: the case study introduction.
 3. Add the case study sections underneath with `<CaseSection eyebrow="..." title="...">`, then write their copy in Markdown.
