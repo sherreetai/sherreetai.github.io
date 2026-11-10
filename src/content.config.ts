@@ -9,6 +9,7 @@ const work = defineCollection({
   schema: z.object({
     title: z.string(), // big heading on the case study page
     cardTitle: z.string().optional(), // shorter title for the Home/Work card (falls back to title)
+    summary: z.string(), // short description shown beneath the Home/Work card title
     tag: z.string(), // small label on the card, e.g. "Product Design"
     order: z.number(), // position in the grid and the "Next project" sequence
     logo: z.string().optional(), // optional logo used in the "Next project" link

@@ -120,7 +120,7 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-.dark .site-logo {
+html.dark .site-logo {
   filter: brightness(0) invert(1);
 }
 

@@ -42,6 +42,7 @@ Images and videos go in `public/images/`. A file at `public/images/mercer/hero.j
 1. Copy one of the files in `src/content/work/` and rename it. The file name becomes the page address: `my-project.mdx` → `/work/my-project/`.
 2. Edit the settings between the `---` lines at the top:
    - `title`: big heading on the page. `cardTitle` (optional) is a shorter version for the card.
+   - `summary`: the short description shown beneath the card title on Home and Work.
    - `tag`: the small label on the card.
    - `order`: where it sits in the grid. 1 comes first. It also decides which project the "Next project" link goes to.
    - `logo`: optional image path used by the next-case-study link.

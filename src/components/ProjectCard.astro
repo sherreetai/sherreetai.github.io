@@ -4,10 +4,11 @@ interface Props {
   href: string;
   title: string;
   tag: string;
+  summary: string;
   coverImage: string;
   coverPosition?: string;
 }
-const { href, title, tag, coverImage, coverPosition = 'center' } = Astro.props;
+const { href, title, tag, summary, coverImage, coverPosition = 'center' } = Astro.props;
 const coverIsVideo = /\.(mp4|webm|mov)$/i.test(coverImage);
 ---
 
@@ -23,4 +24,5 @@ const coverIsVideo = /\.(mp4|webm|mov)$/i.test(coverImage);
     <h3 class="type-card-title">{title}</h3>
     <span class="shrink-0 text-sm">{tag}</span>
   </div>
+  <p class="mt-2 text-sm leading-relaxed text-muted">{summary}</p>
 </a>
