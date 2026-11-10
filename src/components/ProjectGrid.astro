@@ -14,6 +14,7 @@ const projects = (await getCollection('work')).sort((a, b) => a.data.order - b.d
       title={project.data.cardTitle ?? project.data.title}
       tag={project.data.tag}
       coverImage={project.data.coverImage}
+      coverPosition={project.data.coverPosition}
     />
   ))}
 </div>
