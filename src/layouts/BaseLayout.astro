@@ -23,6 +23,31 @@ const pageTitle = title ? `${title} | Sher Ree Tai` : 'Sher Ree Tai, Product Des
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <script is:inline>
+      var systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      var savedTheme = null;
+
+      try {
+        savedTheme = localStorage.getItem('site-theme');
+      } catch (error) {
+        console.error('Could not restore the color theme preference:', error);
+      }
+
+      var themePreference = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'system';
+      document.documentElement.dataset.themePreference = themePreference;
+
+      function applyTheme(isDark) {
+        document.documentElement.classList.toggle('dark', isDark);
+      }
+
+      applyTheme(themePreference === 'system' ? systemTheme.matches : themePreference === 'dark');
+      systemTheme.addEventListener('change', function (event) {
+        if (document.documentElement.dataset.themePreference === 'system') {
+          applyTheme(event.matches);
+          document.dispatchEvent(new Event('site-theme-change'));
+        }
+      });
+    </script>
     <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body class="font-sans">

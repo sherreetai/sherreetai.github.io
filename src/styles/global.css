@@ -12,12 +12,103 @@
   --color-line: #dedddc;
   --color-placeholder: #dedddc;
   --color-chip: #e8e7e5;
+  --color-background: #ffffff;
+}
+
+.type-display,
+.type-page-title,
+.type-section-title,
+.type-section-title-prominent,
+.type-card-title,
+.type-eyebrow,
+.type-body,
+.type-body-large {
+  font-family: var(--font-sans);
+}
+
+.type-display {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.type-page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.type-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.375;
+  letter-spacing: -0.025em;
+}
+
+.type-section-title-prominent {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.type-card-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+}
+
+.type-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.type-body {
+  font-size: 1rem;
+  line-height: 1.625;
+}
+
+.type-body-large {
+  font-size: 1.125rem;
+  line-height: 1.625;
+}
+
+@media (min-width: 48rem) {
+  .type-display {
+    font-size: 3.25rem;
+  }
+
+  .type-page-title {
+    font-size: 3.5rem;
+  }
+
+  .type-section-title-prominent {
+    font-size: 2.25rem;
+  }
 }
 
 html {
   color: var(--color-ink);
-  background: #ffffff;
+  background: var(--color-background);
+  color-scheme: light;
   -webkit-font-smoothing: antialiased;
+}
+
+html.dark {
+  --color-ink: #D8D6EA;
+  --color-accent: #B4B1FF;
+  --color-muted: #C4C3D0;
+  --color-line: #4B4A67;
+  --color-placeholder: #282741;
+  --color-chip: #282741;
+  --color-background: #0F0E27;
+  color-scheme: dark;
 }
 
 body {
@@ -27,6 +118,43 @@ body {
 a:focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 3px;
+}
+
+.dark .site-logo {
+  filter: brightness(0) invert(1);
+}
+
+.theme-icon-light {
+  display: none;
+}
+
+.dark .theme-icon-dark {
+  display: none;
+}
+
+.dark .theme-icon-light {
+  display: block;
+}
+
+.action-primary {
+  border-color: var(--color-ink);
+  background-color: var(--color-ink);
+  color: var(--color-background);
+}
+
+.action-primary:hover {
+  background-color: var(--color-background);
+  color: var(--color-ink);
+}
+
+.action-secondary {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.action-secondary:hover {
+  background-color: var(--color-ink);
+  color: var(--color-background);
 }
 
 /* ------------------------------------------------------------------

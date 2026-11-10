@@ -16,16 +16,16 @@ const { title, scope, challengeHeading, challenge, outcome, heroImage } = entry.
 <BaseLayout title={title}>
   <section class="mx-auto max-w-[1088px] px-6 pt-10 pb-16 md:pt-14 md:pb-20" data-reveal>
     <div>
-      <h1 class="mb-10 text-4xl leading-[1.05] font-bold tracking-tight md:text-[56px]">{title}</h1>
+      <h1 class="type-page-title mb-10">{title}</h1>
 
       <p class="mb-2 text-sm font-medium"><span class="mr-2 inline-block w-6 border-b border-ink align-baseline"></span>Challenge</p>
       <h2 class="mb-4 max-w-[900px] text-xl leading-snug font-bold tracking-tight md:text-2xl">{challengeHeading}</h2>
-      <p class="max-w-[900px] text-base leading-relaxed">{challenge}</p>
+      <p class="type-body max-w-[900px]">{challenge}</p>
 
       <dl class="mt-12 grid gap-8 md:grid-cols-[minmax(0,2fr)_minmax(220px,1fr)] md:gap-10">
         <div class="border-t border-line pt-5">
           <dt class="mb-3 text-sm font-medium"><span class="mr-2 inline-block w-6 border-b border-ink align-baseline"></span>Outcome</dt>
-          <dd class="text-base leading-relaxed">{outcome}</dd>
+          <dd class="type-body">{outcome}</dd>
         </div>
         <div class="border-t border-line pt-5">
           <dt class="mb-3 text-sm font-medium"><span class="mr-2 inline-block w-6 border-b border-ink align-baseline"></span>Scope</dt>

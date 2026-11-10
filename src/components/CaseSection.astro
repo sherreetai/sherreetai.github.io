@@ -43,9 +43,9 @@ const contentClass = layout === 'split'
   {!isGridSection && divider !== 'none' && <div class="absolute inset-x-6 top-0 border-t border-line" aria-hidden="true"></div>}
   <div class={contentClass}>
     <div>
-      <p class="mb-2 text-center text-xs font-medium uppercase tracking-wide">{eyebrow}</p>
-      <h2 class="mb-6 text-center text-2xl leading-snug font-bold tracking-tight">{title}</h2>
-      <div class="text-base leading-relaxed [&_p+p]:mt-4">
+      <p class="type-eyebrow mb-2 text-center">{eyebrow}</p>
+      <h2 class="type-section-title mb-6 text-center">{title}</h2>
+      <div class="type-body [&_p+p]:mt-4">
         <slot />
       </div>
       {mediaSrc && layout !== 'split' && <img src={mediaSrc} alt="" loading="lazy" class="mt-8 aspect-[1.6/1] w-full rounded-lg bg-placeholder object-cover" />}
