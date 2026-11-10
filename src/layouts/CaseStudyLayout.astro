@@ -39,7 +39,7 @@ const heroIsVideo = /\.(mp4|webm|mov)$/i.test(heroImage);
   </section>
 
   {heroIsVideo ? (
-    <video src={heroImage} autoplay muted loop playsinline aria-hidden="true" class="aspect-[4/3] max-h-[460px] w-full bg-placeholder object-contain md:aspect-[2.4/1]"></video>
+    <video src={heroImage} autoplay muted loop playsinline aria-hidden="true" class="aspect-[4/3] max-h-[460px] w-full bg-placeholder object-cover md:aspect-[2.4/1]"></video>
   ) : (
     <img src={heroImage} alt="" class="aspect-[4/3] max-h-[460px] w-full bg-placeholder object-cover md:aspect-[2.4/1]" />
   )}
