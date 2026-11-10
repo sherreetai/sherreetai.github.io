@@ -20,7 +20,7 @@ const pairedDivider = [
 const sectionClass = !isGridSection
   ? `relative mx-auto max-w-[1088px] px-6 ${sectionPadding} ${divider === 'none' ? '' : "before:absolute before:inset-x-6 before:top-0 before:border-t before:border-line before:content-['']"}`
   : layout === 'centered'
-    ? `px-6 ${divider === 'none' ? 'pt-14 pb-10 md:pt-20 md:pb-14' : 'py-10 md:py-14'} md:col-span-2 md:px-20 ${divider === 'none' ? '' : 'border-t border-line'}`
+    ? `px-6 ${divider === 'none' ? 'pt-20 pb-10 md:pt-28 md:pb-14' : 'py-10 md:py-14'} md:col-span-2 md:px-20 ${divider === 'none' ? '' : 'border-t border-line'}`
     : layout === 'split'
       ? `px-6 py-10 md:col-span-2 md:px-12 md:py-14 ${divider === 'none' ? '' : 'border-t border-line'}`
       : `px-6 py-10 md:px-8 md:py-12 ${pairedDivider}`;
