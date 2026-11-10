@@ -4,19 +4,26 @@ interface Props {
   title: string;
   media?: boolean;
   layout?: 'centered' | 'paired' | 'split';
-  divider?: 'right' | 'none';
+  divider?: 'right' | 'bottom' | 'right-bottom' | 'none';
 }
 
 const { eyebrow, title, media = false, layout, divider } = Astro.props;
 const isGridSection = layout !== undefined;
-const closingPadding = divider === 'none' ? 'pb-0 md:pb-0' : '';
+const sectionPadding = divider === 'none' && !isGridSection
+  ? 'pt-14 pb-0 md:pt-20 md:pb-0'
+  : 'py-14 md:py-20';
+const pairedDivider = [
+  divider === 'none' ? '' : 'border-t border-line',
+  divider === 'right' || divider === 'right-bottom' ? 'md:border-r md:border-line' : '',
+  divider === 'bottom' || divider === 'right-bottom' ? 'border-b border-line' : '',
+].filter(Boolean).join(' ');
 const sectionClass = !isGridSection
-  ? `relative mx-auto max-w-[1088px] px-6 py-14 md:py-20 ${closingPadding} ${divider === 'none' ? '' : "before:absolute before:inset-x-6 before:top-0 before:border-t before:border-line before:content-['']"}`
+  ? `relative mx-auto max-w-[1088px] px-6 ${sectionPadding} ${divider === 'none' ? '' : "before:absolute before:inset-x-6 before:top-0 before:border-t before:border-line before:content-['']"}`
   : layout === 'centered'
     ? `px-6 py-10 md:col-span-2 md:px-20 md:py-14 ${divider === 'none' ? '' : 'border-t border-line'}`
     : layout === 'split'
       ? `px-6 py-10 md:col-span-2 md:px-12 md:py-14 ${divider === 'none' ? '' : 'border-t border-line'}`
-      : `px-6 py-10 md:px-8 md:py-12 ${divider === 'none' ? '' : 'border-t border-line'} ${divider === 'right' ? 'md:border-r md:border-line' : ''}`;
+      : `px-6 py-10 md:px-8 md:py-12 ${pairedDivider}`;
 const contentClass = layout === 'split'
   ? 'mx-auto grid max-w-[880px] items-center gap-8 md:grid-cols-2'
   : 'mx-auto max-w-[640px]';
