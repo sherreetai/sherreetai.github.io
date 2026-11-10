@@ -28,7 +28,7 @@ const pairedDivider = [
   divider === 'bottom' || divider === 'right-bottom' ? 'border-b border-line' : '',
 ].filter(Boolean).join(' ');
 const sectionClass = !isGridSection
-  ? `relative mx-auto max-w-[1088px] px-6 ${sectionPadding} ${divider === 'none' ? '' : "before:absolute before:inset-x-6 before:top-0 before:border-t before:border-line before:content-['']"}`
+  ? `relative mx-auto max-w-[1088px] px-6 ${sectionPadding}`
   : layout === 'centered'
     ? `px-6 ${topPadding} ${bottomPadding} md:col-span-2 md:px-20 ${divider === 'none' ? '' : 'border-t border-line'}`
     : layout === 'split'
@@ -40,6 +40,7 @@ const contentClass = layout === 'split'
 ---
 
 <section class={sectionClass}>
+  {!isGridSection && divider !== 'none' && <div class="absolute inset-x-6 top-0 border-t border-line" aria-hidden="true"></div>}
   <div class={contentClass}>
     <div>
       <p class="mb-2 text-center text-xs font-medium uppercase tracking-wide">{eyebrow}</p>
