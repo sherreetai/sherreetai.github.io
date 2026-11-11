@@ -8,6 +8,7 @@ import CaseSection from '../../components/CaseSection.astro';
 import CaseItem from '../../components/CaseItem.astro';
 import CasePlaceholder from '../../components/CasePlaceholder.astro';
 import CaseQuote from '../../components/CaseQuote.astro';
+import BillingIADiagram from '../../components/BillingIADiagram.astro';
 
 export async function getStaticPaths() {
   const projects = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
@@ -22,5 +23,5 @@ const { Content } = await render(entry);
 ---
 
 <CaseStudyLayout entry={entry} next={next}>
-  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseQuote, Media }} />
+  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseQuote, Media, BillingIADiagram }} />
 </CaseStudyLayout>

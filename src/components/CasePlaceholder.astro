@@ -28,8 +28,47 @@ const isVideo = src ? /\.(mp4|webm|mov)$/i.test(src) : false;
   isVideo ? (
     <video src={src} controls playsinline class:list={[imageClass, card && 'object-cover', spacingClass, 'bg-placeholder']}></video>
   ) : (
-    <img src={src} alt="" loading="lazy" class:list={[imageClass, spacingClass]} />
+    <figure data-case-image class:list={[spacingClass, 'group relative m-0']}>
+      <img src={src} alt="" loading="lazy" class:list={[imageClass, 'cursor-zoom-in']} />
+      <button
+        type="button"
+        data-case-image-open
+        aria-haspopup="dialog"
+        aria-label="Expand image"
+        class="action-primary absolute top-3 right-3 rounded-full px-3 py-1.5 text-sm font-semibold opacity-100 shadow transition-opacity sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
+      >
+        Expand
+      </button>
+      <dialog data-case-image-dialog aria-label="Expanded case study image" class="m-auto w-[min(96vw,1400px)] max-w-none rounded-xl bg-transparent p-0 backdrop:bg-black/80">
+        <div class="rounded-xl bg-background p-3">
+          <div class="mb-3 flex justify-end">
+            <button type="button" data-case-image-close class="action-secondary rounded-full border px-4 py-1.5 text-sm">Close</button>
+          </div>
+          <div class="mx-auto max-h-[calc(95vh-5rem)] w-fit max-w-full overflow-hidden rounded-lg">
+            <img src={src} alt="" class="block max-h-[calc(95vh-5rem)] w-auto max-w-full object-contain" />
+          </div>
+        </div>
+      </dialog>
+    </figure>
   )
 ) : (
   <div class:list={[placeholderClass, spacingClass, 'bg-placeholder']} aria-hidden="true"></div>
 )}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-case-image]').forEach((image) => {
+    const openButton = image.querySelector<HTMLButtonElement>('[data-case-image-open]');
+    const closeButton = image.querySelector<HTMLButtonElement>('[data-case-image-close]');
+    const dialog = image.querySelector<HTMLDialogElement>('[data-case-image-dialog]');
+
+    if (!openButton || !closeButton || !dialog) {
+      throw new Error('Case-study image expand controls are missing.');
+    }
+
+    openButton.addEventListener('click', () => dialog.showModal());
+    closeButton.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>
