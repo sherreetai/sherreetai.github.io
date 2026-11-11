@@ -3,15 +3,15 @@
 interface Props {
   href: string;
   title: string;
-  logo?: string;
+  image: string;
 }
-const { href, title, logo } = Astro.props;
+const { href, title, image } = Astro.props;
 ---
 
 <section class="border-t border-line px-6 py-12">
   <a href={href} class="group mx-auto flex w-fit items-center gap-3" data-reveal>
-    <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-placeholder">
-      {logo && <img src={logo} alt="" class="h-9 w-9 object-contain" />}
+    <span class="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-placeholder">
+      <img src={image} alt="" loading="lazy" class="h-full w-full object-cover" />
     </span>
     <span>
       <span class="block text-sm font-bold group-hover:text-accent">Next case study →</span>

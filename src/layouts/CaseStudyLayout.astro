@@ -64,9 +64,9 @@ const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
 
   {heroImage ? (
     heroIsVideo ? (
-      <video src={heroImage} autoplay muted loop playsinline aria-hidden="true" class="aspect-[2/1] min-h-64 max-h-[680px] w-full bg-placeholder object-cover"></video>
+      <video src={heroImage} controls playsinline class="block h-auto w-full bg-placeholder"></video>
     ) : (
-      <img src={heroImage} alt="" class="aspect-[2/1] min-h-64 max-h-[680px] w-full bg-placeholder object-cover" />
+      <img src={heroImage} alt="" class="block h-auto w-full" />
     )
   ) : (
     <CasePlaceholder hero />
@@ -79,6 +79,6 @@ const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
   <NextProject
     href={`/work/${next.id}/`}
     title={next.data.cardTitle ?? next.data.title}
-    logo={next.data.logo}
+    image={next.data.nextImage}
   />
 </BaseLayout>

@@ -3,24 +3,33 @@ interface Props {
   hero?: boolean;
   wide?: boolean;
   spacing?: boolean;
+  card?: boolean;
   src?: string;
 }
 
-const { hero = false, wide = false, spacing = false, src } = Astro.props;
-const className = hero
+const { hero = false, wide = false, spacing = false, card = false, src } = Astro.props;
+const placeholderClass = hero
   ? 'aspect-[2/1] min-h-64 max-h-[680px] w-full'
   : wide
     ? 'aspect-[1.8/1] w-full rounded-lg md:col-span-full'
     : 'aspect-[1.4/1] w-full rounded-lg';
+const imageClass = hero
+  ? 'block h-auto w-full'
+  : card
+    ? 'block aspect-[3/2] w-full rounded-lg object-cover'
+  : wide
+    ? 'block h-auto w-full rounded-lg md:col-span-full'
+    : 'block h-auto w-full rounded-lg';
+const spacingClass = spacing ? 'mt-8' : '';
 const isVideo = src ? /\.(mp4|webm|mov)$/i.test(src) : false;
 ---
 
 {src ? (
   isVideo ? (
-    <video src={src} autoplay muted loop playsinline aria-hidden="true" class:list={[className, spacing && 'mt-8', 'bg-placeholder object-contain']}></video>
+    <video src={src} controls playsinline class:list={[imageClass, card && 'object-cover', spacingClass, 'bg-placeholder']}></video>
   ) : (
-    <img src={src} alt="" loading="lazy" class:list={[className, spacing && 'mt-8', 'bg-placeholder object-contain']} />
+    <img src={src} alt="" loading="lazy" class:list={[imageClass, spacingClass]} />
   )
 ) : (
-  <div class:list={[className, spacing && 'mt-8', 'bg-placeholder']} aria-hidden="true"></div>
+  <div class:list={[placeholderClass, spacingClass, 'bg-placeholder']} aria-hidden="true"></div>
 )}
