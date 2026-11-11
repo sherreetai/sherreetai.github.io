@@ -5,57 +5,61 @@ import { EMAIL, LINKEDIN } from '../site';
 ---
 
 <BaseLayout>
-  <section class="mx-auto max-w-[1088px] px-6 pt-20 pb-28 md:pt-28">
+  <section class="mx-auto max-w-[1088px] px-6 pt-12 pb-16 md:pt-14 md:pb-16">
     <div data-reveal>
-      <h1 class="type-display max-w-[700px]">
+      <h1 class="type-display max-w-[700px] text-[1.75rem] md:text-[2rem]">
         <span class="block text-accent">I’m Sher.</span>
-        <span class="block">A product designer focused on turning messy logic into seamless journeys.</span>
+        <span class="block">
+          A product designer focused<br class="hidden md:block" />
+          on turning messy logic into<br class="hidden md:block" />
+          seamless journeys.
+        </span>
       </h1>
-      <div class="mt-8 flex flex-wrap gap-4">
-        <a href={EMAIL} class="action-primary rounded-lg border-2 px-4 py-2.5 text-lg">Email me →</a>
-        <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" class="action-secondary rounded-lg border-2 px-4 py-2.5 text-lg">Let’s connect on LinkedIn</a>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href={EMAIL} class="action-primary rounded-lg border-2 px-3 py-2 text-sm">Email me →</a>
+        <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" class="action-secondary rounded-lg border-2 px-3 py-2 text-sm">Let’s connect on LinkedIn</a>
       </div>
 
-      <hr class="mt-10 border-0 border-t border-ink/20 md:mt-12" />
+      <hr class="mt-6 border-0 border-t border-ink/20 md:mt-7" />
 
-      <p class="mt-6 max-w-xl text-lg leading-relaxed opacity-70 md:text-xl">
+      <p class="type-body-large mt-5 font-semibold">
         I design app and web experiences at Virgin Media O2, from account navigation to purchase journeys.
       </p>
 
-      <ul class="mt-8 grid grid-cols-1 gap-4 md:mt-10 md:grid-cols-3 md:gap-6">
-        <li class="rounded-lg bg-ink/5 p-4 md:p-6">
-          <strong class="flex items-center gap-2 text-lg font-bold text-accent md:text-xl">
-            <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <ul class="mt-7 grid grid-cols-1 gap-y-6 md:grid-cols-3 md:gap-x-6 md:gap-y-0">
+        <li class="border-t border-accent pt-4">
+          <strong class="flex items-center gap-2 text-base font-bold text-accent uppercase">
+            <svg class="h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 19V5m0 14h17M8 15l4-4 3 2 5-6" />
               <path d="M16 7h4v4" />
             </svg>
             Evidence first
           </strong>
-          <span class="mt-4 block text-sm leading-relaxed md:text-lg">
+          <span class="type-body mt-2 block">
             I start with behavioural data and research so design decisions have a reason behind them.
           </span>
         </li>
-        <li class="rounded-lg bg-ink/5 p-4 md:p-6">
-          <strong class="flex items-center gap-2 text-lg font-bold text-accent md:text-xl">
-            <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <li class="border-t border-accent pt-4">
+          <strong class="flex items-center gap-2 text-base font-bold text-accent uppercase">
+            <svg class="h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M3 7h18M3 12h12M3 17h8" />
             </svg>
             Clarity over clutter
           </strong>
-          <span class="mt-4 block text-sm leading-relaxed md:text-lg">
+          <span class="type-body mt-2 block">
             I simplify complex products into journeys people can follow without thinking.
           </span>
         </li>
-        <li class="rounded-lg bg-ink/5 p-4 md:p-6">
-          <strong class="flex items-center gap-2 text-lg font-bold text-accent md:text-xl">
-            <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <li class="border-t border-accent pt-4">
+          <strong class="flex items-center gap-2 text-base font-bold text-accent uppercase">
+            <svg class="h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="3" y="3" width="8" height="8" rx="1" />
               <rect x="13" y="13" width="8" height="8" rx="1" />
               <path d="M13 7h4a2 2 0 0 1 2 2v4" />
             </svg>
             Built to scale
           </strong>
-          <span class="mt-4 block text-sm leading-relaxed md:text-lg">
+          <span class="type-body mt-2 block">
             I work in design systems and Figma Variables so solutions hold up across teams.
           </span>
         </li>

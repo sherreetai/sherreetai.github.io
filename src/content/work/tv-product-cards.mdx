@@ -5,36 +5,58 @@ order: 2
 cardTitle: Product Card Research
 summary: Research and testing behind a 21% uplift in XSUS orders.
 coverImage: /images/tv-product-cards/cover.svg
-heroImage: /images/tv-product-cards/hero.svg
-scope:
+role:
   - Product design
-  - User research
-  - Experimentation
-challengeHeading: Customers needed to compare TV products while navigating complex eligibility, holdings and product dependencies.
+  - User research and experimentation
+  - CRO test and acceptance criteria documentation
+team:
+  - CRO
+  - Engineering
+  - QA Analyst
+timeline: 4 months; CRO testing ongoing for non-TV product cards
+platform:
+  - Virgin Media existing customer store (Desktop and Mobile)
 challenge: TV add-on cards created heavy scrolling and made products difficult to compare. My role was to use research to create a clearer product-card experience and structure the CRO test so we could understand which changes improved performance.
-outcome: Redesigned TV product cards contributed to a reported 21% uplift in XSUS orders, with the winning variant reaching 95% statistical confidence.
 ---
 
-<CaseDecisionGrid compact>
-  <CaseSection eyebrow="Simplifying the choice" title="Simplified the product cards" mediaSrc="/images/tv-product-cards/simplified-cards.svg" layout="centered" divider="none" paddingTop="large">
-    <p>I simplified the information hierarchy to make the product, value and action easier to understand at a glance. Research showed customers preferred larger product cards and clearer CTAs, even when this meant slightly more scrolling.</p>
-  </CaseSection>
+<CaseSection number="02" title="Constraints">
+  <p>Eligibility, holdings and dependencies meant cards had to handle available, unavailable, selected and error states.</p>
+</CaseSection>
 
-  <CaseSection eyebrow="Designing from evidence" title="Used research to refine the design" mediaSrc="/images/tv-product-cards/research-testing.svg" layout="centered">
-    <p>I tested different approaches with 10 Virgin Media customers without TV. 7/10 preferred Variant Y, finding the CTA clearer and valuing the reassurance that products could easily be removed from their basket.</p>
-    <p>Wider research also showed customers wanted clearer product comparisons, including which channels were included rather than channel count alone.</p>
-  </CaseSection>
+<CaseSection number="03" title="Understanding existing behavioural data and user research" layout="two-column">
+  <CaseItem>
+    <p><strong>Almost 40% of customers weren’t opening the product accordions,</strong> meaning many never saw the available products.</p>
+    <p>Research showed customers thought about <strong>channels before packages,</strong> helping identify an opportunity to improve how TV options were structured and compared.</p>
+  </CaseItem>
+  <CaseItem>
+    <p><strong>Contentsquare data showed an average 20% exit rate over 90 days,</strong> while research highlighted heavy scrolling and difficulty comparing offers.</p>
+    <p>Existing selection controls also created interaction limitations, while the cards <strong>needed to accommodate eligibility states, bundles and regulatory messaging</strong> such as the 14-day cancellation copy.</p>
+  </CaseItem>
+  <CaseQuote>The challenge wasn’t simply redesigning the cards. It was helping customers discover, compare and select products more easily.</CaseQuote>
+</CaseSection>
 
-  <CaseSection eyebrow="Handling real-world complexity" title="Designed for real customer states" layout="centered">
-    <p>I co-designed the experience around different holding and eligibility states, including available, unavailable, selected and error scenarios.</p>
-    <p>I translated these into Gherkin acceptance criteria so design, engineering and QA shared the same expected behaviour.</p>
-  </CaseSection>
+<CaseSection number="04" title="Exploring and validating multiple interaction models">
+  <p>I explored carousel, card and CTA variations to reduce scrolling and make TV products easier to browse and compare. I tested multiple concepts with customers, using discoverability, comparison and CTA clarity to evaluate them.</p>
+  <p><strong>7 of 10 participants preferred Variant Y,</strong> helping narrow the direction before progressing to CRO experimentation. Customers preferred larger cards and clearer CTAs, even with slightly more scrolling, and wanted to see which channels were included rather than only a channel count.</p>
+  <CasePlaceholder spacing />
+</CaseSection>
 
-  <CaseSection eyebrow="Testing what worked" title="Isolated the winning design change" mediaSrc="/images/tv-product-cards/winning-design-change.svg" layout="centered">
-    <p>I worked with CRO to test redesigned cards alone (V1) against redesigned cards with filter chips (V2). I kept the explored carousel out of the experiment to avoid introducing another variable.</p>
-  </CaseSection>
-</CaseDecisionGrid>
+<CaseSection number="05" title="The design" layout="three-column">
+  <CaseItem title="Simpler hierarchy" placeholder>
+    <p>Made the product, value and action clear at a glance.</p>
+  </CaseItem>
+  <CaseItem title="Designed for real states" placeholder>
+    <p>Designed around holding, eligibility and error states, then translated them into Gherkin acceptance criteria shared across design, engineering and QA.</p>
+  </CaseItem>
+  <CaseItem title="Filter chips" placeholder>
+    <p>Added filters to help customers narrow and compare.</p>
+  </CaseItem>
+</CaseSection>
 
-<CaseSection eyebrow="A clearer choice that converted" title="21% uplift in XSUS orders" paddingTop="large" paddingBottom="none">
-  <p>The filter-chip variant reached 95% statistical confidence, compared with 90% for the card-only variant. This helped isolate the filters as the additional change behind the stronger result and gave the team a pattern to test on other product cards.</p>
+<CaseSection number="06" title="Outcome and next steps" layout="two-column">
+  <CaseItem>
+    <p>The filter-chip variant reached 95% statistical confidence, compared with 90% for the card-only variant, isolating filters as the additional change behind the stronger result.</p>
+    <p>Next, the pattern will be tested across non-TV product cards to see whether the same hierarchy, comparison and selection principles scale across the wider experience.</p>
+  </CaseItem>
+  <CasePlaceholder />
 </CaseSection>

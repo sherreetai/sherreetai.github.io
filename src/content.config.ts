@@ -15,11 +15,12 @@ const work = defineCollection({
     logo: z.string().optional(), // optional logo used in the "Next project" link
     coverImage: z.string(), // image shown on the Home/Work card
     coverPosition: z.string().optional(), // focal point used when the card cover is cropped
-    heroImage: z.string(), // lead image on the case study page
-    scope: z.array(z.string()),
-    challengeHeading: z.string(),
+    heroImage: z.string().optional(), // optional lead image; omitted for PDF placeholder panels
+    role: z.array(z.string()),
+    team: z.array(z.string()),
+    timeline: z.string(),
+    platform: z.array(z.string()),
     challenge: z.string(),
-    outcome: z.string(),
   }),
 });
 

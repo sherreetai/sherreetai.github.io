@@ -45,10 +45,11 @@ Images and videos go in `public/images/`. A file at `public/images/mercer/hero.j
    - `summary`: the short description shown beneath the card title on Home and Work.
    - `tag`: the small label on the card.
    - `order`: where it sits in the grid. 1 comes first. It also decides which project the "Next project" link goes to.
+   - `role`, `team`, `timeline`, `platform`: details shown in the case-study introduction.
+   - `challenge`: the numbered opening section on the case-study page.
+   - `coverImage`: image or video shown on the project card. `heroImage` is optional; omit it to show the gray placeholder shown in the reference layouts.
    - `logo`: optional image path used by the next-case-study link.
-   - `scope`: a list of the disciplines covered.
-   - `challengeHeading`, `challenge`, `outcome`: the case study introduction.
-3. Add the case study sections underneath with `<CaseSection eyebrow="..." title="...">`, then write their copy in Markdown.
+3. Add numbered `<CaseSection>` blocks underneath, then write their copy in Markdown.
 
 The card appears on Home and Work automatically.
 

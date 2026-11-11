@@ -1,0 +1,16 @@
+---
+interface Props {
+  hero?: boolean;
+  wide?: boolean;
+  spacing?: boolean;
+}
+
+const { hero = false, wide = false, spacing = false } = Astro.props;
+const className = hero
+  ? 'aspect-[2/1] min-h-64 max-h-[680px] w-full'
+  : wide
+    ? 'aspect-[1.8/1] w-full rounded-lg md:col-span-full'
+    : 'aspect-[1.4/1] w-full rounded-lg';
+---
+
+<div class:list={[className, spacing && 'mt-8', 'bg-placeholder']} aria-hidden="true"></div>

@@ -4,34 +4,60 @@ tag: Design Systems
 order: 4
 summary: A shared Figma Variables library that keeps 3 app teams consistent.
 coverImage: /images/app-library/hero.png
-heroImage: /images/app-library/hero.png
-scope:
+role:
   - Design systems
   - Component strategy
   - UX implementation
-challengeHeading: Similar components were being recreated across brands, creating inconsistencies between design and development.
+team:
+  - Design
+  - Engineering
+  - Design system lead
+timeline: 6 months. Transitioning onto wider Creative Design System
+platform:
+  - Figma
+  - My O2 App
+  - My VM App
+  - Priority App
 challenge: Teams were recreating similar components across brands, creating inconsistent states and design-to-development drift. My role was to help shape a scalable cross-brand system, then put it into practice by creating the My O2 App master file and implementing the new variable structure.
-outcome: Made theme application ~93% faster, reducing it from 54+ seconds to under 4 seconds and saving an estimated 5–6 hours per designer each year.
 ---
 
-<CaseDecisionGrid compact>
-  <CaseSection eyebrow="Finding the inconsistencies" title="Audited the existing system" mediaSrc="/images/app-library/audit.svg" layout="centered" divider="none" paddingTop="large">
-    <p>I helped audit repeated patterns and inconsistent component states across the apps, identifying where components could be consolidated into shared foundations.</p>
-  </CaseSection>
+<CaseSection number="02" title="Constraints">
+  <p>The system needed to support three brands, existing live journeys and inconsistent legacy components while moving designers from Tokens Studio to native Figma Variables.</p>
+  <p>I had to balance standardisation with enough flexibility for different product needs, while resolving variable, publishing and component conflicts as the system evolved.</p>
+</CaseSection>
 
-  <CaseSection eyebrow="Building scalable foundations" title="Rebuilt components with Figma Variables" mediaSrc="/images/app-library/rebuild.svg" layout="split">
-    <p>I helped rebuild components from atomic foundations using Figma Variables, replacing the slower Tokens Studio workflow with native theming and reducing reliance on third-party tooling.</p>
-  </CaseSection>
+<CaseSection number="03" title="Finding the friction" layout="two-column">
+  <CaseItem>
+    <CaseItem title="Data used">
+      <p>7,609 recorded component inserts, used to estimate time saved.</p>
+    </CaseItem>
+    <CaseItem title="Research">
+      <p>Audit of repeated patterns and inconsistent component states across the apps.</p>
+    </CaseItem>
+    <CaseItem title="Key insight">
+      <p>Many components could be consolidated into shared foundations rather than rebuilt per brand.</p>
+    </CaseItem>
+  </CaseItem>
+  <CasePlaceholder />
+</CaseSection>
 
-  <CaseSection eyebrow="Closing the design-to-code gap" title="Aligned design with development" layout="centered">
-    <p>I worked with engineering so component and variable logic reflected how the UI was built, helping reduce gaps between Figma and implementation.</p>
-  </CaseSection>
+<CaseSection number="04" title="Exploring options">
+  <p>Compared the existing Tokens Studio workflow with native Figma Variables. Variables enabled native theming and reduced reliance on third-party tooling.</p>
+</CaseSection>
 
-  <CaseSection eyebrow="Putting the system into practice" title="Implemented the system in My O2 App" mediaSrc="/images/app-library/components.svg" layout="centered">
-    <p>I created the My O2 App master file and was the first to implement the new Figma Variables into a live app design file. This proved the variable structure could work in practice and created a foundation for migrating components away from Tokens Studio.</p>
-  </CaseSection>
-</CaseDecisionGrid>
+<CaseSection number="05" title="The design" layout="three-column">
+  <CaseItem title="Atomic foundations" placeholder>
+    <p>Rebuilt components from atomic foundations using Figma Variables.</p>
+  </CaseItem>
+  <CaseItem title="Aligned with code" placeholder>
+    <p>Worked with engineering so component and variable logic reflected how the UI was built.</p>
+  </CaseItem>
+  <CaseItem title="Prove it in practice" placeholder>
+    <p>Created the My O2 App master file and was the first to implement the new variables in a live app design file.</p>
+  </CaseItem>
+</CaseSection>
 
-<CaseSection eyebrow="Faster by design" title="~93% faster theme application" paddingTop="large" paddingBottom="none">
-  <p>Moving to Figma Variables reduced theme application from 54+ seconds to under 4 seconds. Across 7,609 recorded component inserts, this was estimated to save 5–6 hours per designer each year while creating a more scalable cross-brand foundation.</p>
+<CaseSection number="06" title="Outcome and next steps">
+  <p>Across 7,609 recorded component inserts, the new approach was estimated to save 5–6 hours per designer each year while creating a more scalable cross-brand foundation.</p>
+  <p>Next, learnings from the App Library will feed into the wider CDS, shaping shared variable structures, component patterns and governance across Virgin Media and O2.</p>
 </CaseSection>
