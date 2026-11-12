@@ -128,6 +128,18 @@ html.dark .site-logo {
   display: none;
 }
 
+.theme-image-dark {
+  display: none;
+}
+
+.dark .theme-image-light {
+  display: none;
+}
+
+.dark .theme-image-dark {
+  display: block;
+}
+
 .dark .theme-icon-dark {
   display: none;
 }

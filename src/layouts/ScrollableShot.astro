@@ -51,7 +51,34 @@ const {
       Scroll for more ↓
     </div>
   </div>
-  <figcaption class="mt-3 text-sm text-muted">{caption}</figcaption>
+  <figcaption class="mt-3 flex items-center justify-between gap-4 text-sm">
+    <span class="text-muted">{caption}</span>
+    <button
+      type="button"
+      data-scroll-shot-open
+      aria-haspopup="dialog"
+      class="action-secondary shrink-0 rounded-full border px-4 py-1.5 text-sm"
+    >
+      Expand
+    </button>
+  </figcaption>
+
+  <dialog data-scroll-shot-dialog aria-label="Expanded design screenshot" class="m-auto w-[min(96vw,1400px)] max-w-none rounded-xl bg-transparent p-0 backdrop:bg-black/60">
+    <div class="rounded-xl bg-background p-4">
+      <div class="mb-3 flex justify-end">
+        <button type="button" data-scroll-shot-close class="action-secondary rounded-full border px-4 py-1.5 text-sm">Close</button>
+      </div>
+      <div
+        data-scroll-shot-dialog-frame
+        tabindex="0"
+        role="region"
+        aria-label={label}
+        class="scroll-shot mx-auto aspect-video max-h-[calc(95vh-5rem)] w-full overflow-y-auto rounded-lg border border-line bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        <img src={src} alt={alt} loading="lazy" class="block h-auto w-full" />
+      </div>
+    </div>
+  </dialog>
 </figure>
 
 <style>
@@ -70,10 +97,18 @@ const {
 
 <script>
   document.querySelectorAll<HTMLElement>('[data-scroll-shot]').forEach((root) => {
-    const frame = root.querySelector<HTMLElement>('[data-scroll-shot-frame]')!;
-    const fade = root.querySelector<HTMLElement>('[data-scroll-shot-fade]')!;
-    const hint = root.querySelector<HTMLElement>('[data-scroll-shot-hint]')!;
-    const img = frame.querySelector('img')!;
+    const frame = root.querySelector<HTMLElement>('[data-scroll-shot-frame]');
+    const fade = root.querySelector<HTMLElement>('[data-scroll-shot-fade]');
+    const hint = root.querySelector<HTMLElement>('[data-scroll-shot-hint]');
+    const img = frame?.querySelector('img');
+    const openButton = root.querySelector<HTMLButtonElement>('[data-scroll-shot-open]');
+    const closeButton = root.querySelector<HTMLButtonElement>('[data-scroll-shot-close]');
+    const dialog = root.querySelector<HTMLDialogElement>('[data-scroll-shot-dialog]');
+    const dialogFrame = root.querySelector<HTMLElement>('[data-scroll-shot-dialog-frame]');
+
+    if (!frame || !fade || !hint || !img || !openButton || !closeButton || !dialog || !dialogFrame) {
+      throw new Error('Scrollable screenshot controls are missing.');
+    }
 
     const update = () => {
       const scrollable = frame.scrollHeight > frame.clientHeight + 4;
@@ -85,6 +120,14 @@ const {
     frame.addEventListener('scroll', update, { passive: true });
     img.addEventListener('load', update);
     new ResizeObserver(update).observe(frame);
+    openButton.addEventListener('click', () => {
+      dialog.showModal();
+      dialogFrame.focus();
+    });
+    closeButton.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
     update();
   });
 </script>

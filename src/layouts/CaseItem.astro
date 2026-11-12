@@ -5,13 +5,14 @@ interface Props {
   title?: string;
   placeholder?: boolean;
   media?: string;
+  darkMedia?: string;
 }
 
-const { title, placeholder = false, media } = Astro.props;
+const { title, placeholder = false, media, darkMedia } = Astro.props;
 ---
 
 <div>
-  {placeholder && <div class="mb-4"><CasePlaceholder src={media} card /></div>}
+  {placeholder && <div class="mb-4"><CasePlaceholder src={media} darkSrc={darkMedia} card /></div>}
   {Astro.slots.has('media') && <div class="mb-4"><slot name="media" /></div>}
   {title && <h3 class="mb-1 text-base font-bold text-accent uppercase">{title}</h3>}
   <div class="space-y-3">

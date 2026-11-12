@@ -5,9 +5,10 @@ interface Props {
   spacing?: boolean;
   card?: boolean;
   src?: string;
+  darkSrc?: string;
 }
 
-const { hero = false, wide = false, spacing = false, card = false, src } = Astro.props;
+const { hero = false, wide = false, spacing = false, card = false, src, darkSrc } = Astro.props;
 const placeholderClass = hero
   ? 'aspect-[2/1] min-h-64 max-h-[680px] w-full'
   : wide
@@ -29,7 +30,8 @@ const isVideo = src ? /\.(mp4|webm|mov)$/i.test(src) : false;
     <video src={src} controls playsinline class:list={[imageClass, card && 'object-cover', spacingClass, 'bg-placeholder']}></video>
   ) : (
     <figure data-case-image class:list={[spacingClass, 'group relative m-0']}>
-      <img src={src} alt="" loading="lazy" class:list={[imageClass, 'cursor-zoom-in']} />
+      <img src={src} alt="" loading="lazy" class:list={[imageClass, 'cursor-zoom-in', darkSrc && 'theme-image-light']} />
+      {darkSrc && <img src={darkSrc} alt="" loading="lazy" class:list={[imageClass, 'cursor-zoom-in', 'theme-image-dark']} />}
       <button
         type="button"
         data-case-image-open
@@ -45,7 +47,8 @@ const isVideo = src ? /\.(mp4|webm|mov)$/i.test(src) : false;
             <button type="button" data-case-image-close class="action-secondary rounded-full border px-4 py-1.5 text-sm">Close</button>
           </div>
           <div class="mx-auto max-h-[calc(95vh-5rem)] w-fit max-w-full overflow-hidden rounded-lg">
-            <img src={src} alt="" class="block max-h-[calc(95vh-5rem)] w-auto max-w-full object-contain" />
+            <img src={src} alt="" class:list={['block max-h-[calc(95vh-5rem)] w-auto max-w-full object-contain', darkSrc && 'theme-image-light']} />
+            {darkSrc && <img src={darkSrc} alt="" class="theme-image-dark block max-h-[calc(95vh-5rem)] w-auto max-w-full object-contain" />}
           </div>
         </div>
       </dialog>

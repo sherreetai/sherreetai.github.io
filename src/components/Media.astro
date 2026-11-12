@@ -9,9 +9,10 @@
 interface Props {
   src: string;
   alt?: string;
-  layout?: 'plain' | 'panel' | 'band' | 'bleed';
+  layout?: 'plain' | 'panel' | 'band' | 'bleed' | 'card';
+  controls?: boolean;
 }
-const { src, alt = '', layout = 'plain' } = Astro.props;
+const { src, alt = '', layout = 'plain', controls = false } = Astro.props;
 const isVideo = /\.(mp4|webm|mov)$/i.test(src);
 
 const outer = {
@@ -19,6 +20,7 @@ const outer = {
   panel: 'mx-auto my-16 max-w-[928px] px-6',
   band: 'my-24 bg-placeholder px-6 py-16',
   bleed: '',
+  card: '',
 }[layout];
 
 const inner = {
@@ -26,15 +28,17 @@ const inner = {
   panel: 'rounded-2xl bg-placeholder p-6 md:p-12',
   band: 'mx-auto max-w-[1040px]',
   bleed: '',
+  card: 'aspect-video w-full overflow-hidden rounded-lg border border-line bg-background',
 }[layout];
+const mediaClass = layout === 'card' ? 'block h-full w-full object-cover' : 'block h-auto w-full';
 ---
 
 <figure class={outer}>
   <div class={inner}>
     {isVideo ? (
-      <video src={src} autoplay muted loop playsinline class="block h-auto w-full" aria-label={alt} />
+      <video src={src} autoplay muted loop playsinline controls={controls} class={mediaClass} aria-label={alt} />
     ) : (
-      <img src={src} alt={alt} loading={layout === 'bleed' ? 'eager' : 'lazy'} class="block h-auto w-full" />
+      <img src={src} alt={alt} loading={layout === 'bleed' ? 'eager' : 'lazy'} class={mediaClass} />
     )}
   </div>
 </figure>
