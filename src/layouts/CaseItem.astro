@@ -1,0 +1,21 @@
+---
+import CasePlaceholder from '../components/CasePlaceholder.astro';
+
+interface Props {
+  title?: string;
+  placeholder?: boolean;
+  media?: string;
+  mediaAspectRatio?: '3/2' | '16/9';
+}
+
+const { title, placeholder = false, media, mediaAspectRatio = '3/2' } = Astro.props;
+---
+
+<div>
+  {placeholder && <div class="mb-4"><CasePlaceholder src={media} card aspectRatio={mediaAspectRatio} /></div>}
+  {Astro.slots.has('media') && <div class="mb-4"><slot name="media" /></div>}
+  {title && <h3 class="mb-1 text-base font-bold text-accent uppercase">{title}</h3>}
+  <div class="space-y-3">
+    <slot />
+  </div>
+</div>

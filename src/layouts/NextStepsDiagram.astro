@@ -1,0 +1,103 @@
+---
+// One 3:2 layout (no slides): UX next steps in three columns, by horizon.
+// Inline SVG so it follows the site's colour tokens and dark mode.
+// Text is hand-wrapped into short lines so it stays inside each card. Edit the arrays below.
+
+type Card = { title: string[]; desc: string[] };
+const columns: { x: number; label: string; cards: Card[] }[] = [
+  {
+    x: 18,
+    label: '1 · Quick win',
+    cards: [
+      { title: ['Surface the £20 fee'], desc: ['Visible copy on homepage', 'and result page: total,', 'coverage, bill timing'] },
+      { title: ['Promote the top FAQ'], desc: ['Lift the answer into a', 'reassurance strip near', 'the postcode checker'] },
+      { title: ['Make the sign-in CTA', 'specific'], desc: ['e.g. “Sign in to pre-fill', 'your address, package', 'and contract details”'] },
+    ],
+  },
+  {
+    x: 222,
+    label: '2 · Medium-term',
+    cards: [
+      { title: ['Add a ‘what happens', 'next’ summary'], desc: ['Book → kit arrives → go', 'live, with realistic', 'timelines'] },
+      { title: ['Reduce homepage', 'scroll depth'], desc: ['Merge or drop the lower', 'section; move key', 'reassurances up top'] },
+      { title: ['Add time-of-day picker'], desc: ['Morning or afternoon slot', 'for disconnection and', 'activation dates'] },
+    ],
+  },
+  {
+    x: 426,
+    label: '3 · Strategic',
+    cards: [
+      { title: ['Show package and', 'contract after sign-in'], desc: ['Separate signed-in flow:', 'package, contract end', 'date, address pre-filled'] },
+      { title: ['Design the engineer or', 'self-install choice'], desc: ['No structured choice yet;', 'self-install is default,', 'engineers only mentioned'] },
+    ],
+  },
+];
+
+// Card height from its line counts, then stack with a 10-unit gap
+const laid = columns.map((col) => {
+  let y = 70;
+  const cards = col.cards.map((c) => {
+    const h = 25 + (c.title.length - 1) * 17 + 20 + (c.desc.length - 1) * 16 + 14;
+    const out = { ...c, y, h, descY: y + 25 + (c.title.length - 1) * 17 + 20 };
+    y += h + 10;
+    return out;
+  });
+  return { ...col, cards };
+});
+---
+
+<figure data-nsd class="group relative m-0">
+  <div class="aspect-[3/2] w-full overflow-hidden rounded-lg bg-chip">
+    <svg viewBox="0 0 640 427" role="group" aria-label="UX next steps in three horizons: quick wins, medium-term and strategic" class="block h-full w-full">
+      {laid.map((col) => (
+        <g>
+          <rect x={col.x} y="28" width="196" height="32" rx="8" class="fill-accent" />
+          <text x={col.x + 12} y="49" font-size="14" font-weight="700" class="fill-background">{col.label}</text>
+          {col.cards.map((c) => (
+            <g>
+              <rect x={col.x} y={c.y} width="196" height={c.h} rx="8" stroke-width="1.5" class="fill-background stroke-line" />
+              <text x={col.x + 10} y={c.y + 25} font-size="14" font-weight="700" class="fill-ink">
+                {c.title.map((t, i) => (<tspan x={col.x + 10} dy={i ? 17 : 0}>{t}</tspan>))}
+              </text>
+              <text x={col.x + 10} y={c.descY} font-size="13" class="fill-ink">
+                {c.desc.map((t, i) => (<tspan x={col.x + 10} dy={i ? 16 : 0}>{t}</tspan>))}
+              </text>
+            </g>
+          ))}
+        </g>
+      ))}
+    </svg>
+  </div>
+  <!-- Same Expand button as the case-study images: desktop only, appears on hover or keyboard focus -->
+  <button
+    type="button"
+    data-nsd-open
+    aria-haspopup="dialog"
+    aria-label="Expand diagram"
+    class="action-primary absolute top-3 right-3 hidden rounded-full px-3 py-1.5 text-sm font-semibold shadow transition-opacity sm:block sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
+  >
+    Expand
+  </button>
+  <dialog data-nsd-dialog aria-label="Expanded diagram" class="m-auto w-[min(96vw,1400px)] max-w-none rounded-xl bg-transparent p-0 backdrop:bg-black/80">
+    <div class="rounded-xl bg-background p-3">
+      <div class="mb-3 flex justify-end">
+        <button type="button" data-nsd-close class="action-secondary rounded-full border px-4 py-1.5 text-sm">Close</button>
+      </div>
+      <div data-nsd-dialog-body class="mx-auto aspect-[3/2] max-h-[calc(95vh-5rem)] w-full overflow-hidden rounded-lg bg-chip"></div>
+    </div>
+  </dialog>
+</figure>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-nsd]').forEach((root) => {
+    const svg = root.querySelector('svg')!;
+    const dialog = root.querySelector<HTMLDialogElement>('[data-nsd-dialog]')!;
+    const body = root.querySelector<HTMLElement>('[data-nsd-dialog-body]')!;
+    root.querySelector('[data-nsd-open]')!.addEventListener('click', () => {
+      body.replaceChildren(svg.cloneNode(true));
+      dialog.showModal();
+    });
+    root.querySelector('[data-nsd-close]')!.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+  });
+</script>

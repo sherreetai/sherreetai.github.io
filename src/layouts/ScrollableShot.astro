@@ -1,0 +1,90 @@
+---
+// A tall image (e.g. a full-page design) shown inside a 16:9 frame that scrolls.
+//
+// How it signals "scrollable" without relying on motion or colour alone:
+//   1. A scrollbar that stays visible (styled below, so macOS doesn't auto-hide it)
+//   2. A "Scroll for more" pill and a shadow at the bottom edge, which disappear once you've scrolled / reached the end
+//   3. A caption under the frame (the text in `caption`)
+//   4. The frame is a keyboard-focusable region: Tab to it, then use arrow keys, Space or Page Down
+// Scrolling is allowed to pass on to the page at the top and bottom, so touch users never get trapped in the frame.
+interface Props {
+  src: string;
+  alt?: string;
+  label?: string;
+  caption?: string;
+  wide?: boolean;
+  spacing?: boolean;
+}
+const {
+  src,
+  alt = '',
+  label = 'Scrollable design screenshot',
+  caption = 'Scroll inside the frame to see the full page.',
+  wide = false,
+  spacing = false,
+} = Astro.props;
+---
+
+<figure data-scroll-shot class:list={['m-0', wide && 'md:col-span-full', spacing && 'mt-8']}>
+  <div class="relative">
+    <div
+      data-scroll-shot-frame
+      tabindex="0"
+      role="region"
+      aria-label={label}
+      class="scroll-shot aspect-video w-full overflow-y-auto rounded-lg border border-line bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      <img src={src} alt={alt} loading="lazy" class="block h-auto w-full" />
+    </div>
+    <div
+      data-scroll-shot-fade
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-x-px bottom-px h-20 rounded-b-lg transition-opacity"
+      style="background: linear-gradient(to top, rgb(0 0 0 / 0.22), transparent);"
+    >
+    </div>
+    <div
+      data-scroll-shot-hint
+      aria-hidden="true"
+      class="action-primary pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full px-3 py-1.5 text-sm font-semibold shadow transition-opacity"
+    >
+      Scroll for more ↓
+    </div>
+  </div>
+  <figcaption class="mt-3 text-sm text-muted">{caption}</figcaption>
+</figure>
+
+<style>
+  /* Keep the scrollbar visible (WebKit/Blink), with Firefox falling back to the standard properties */
+  .scroll-shot::-webkit-scrollbar { width: 12px; }
+  .scroll-shot::-webkit-scrollbar-track { background: var(--color-chip); }
+  .scroll-shot::-webkit-scrollbar-thumb {
+    background: var(--color-muted);
+    border: 2px solid var(--color-chip);
+    border-radius: 6px;
+  }
+  @supports not selector(::-webkit-scrollbar) {
+    .scroll-shot { scrollbar-color: var(--color-muted) var(--color-chip); }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-scroll-shot]').forEach((root) => {
+    const frame = root.querySelector<HTMLElement>('[data-scroll-shot-frame]')!;
+    const fade = root.querySelector<HTMLElement>('[data-scroll-shot-fade]')!;
+    const hint = root.querySelector<HTMLElement>('[data-scroll-shot-hint]')!;
+    const img = frame.querySelector('img')!;
+
+    const update = () => {
+      const scrollable = frame.scrollHeight > frame.clientHeight + 4;
+      const atEnd = frame.scrollTop + frame.clientHeight >= frame.scrollHeight - 4;
+      fade.style.opacity = scrollable && !atEnd ? '1' : '0';
+      hint.style.opacity = scrollable && frame.scrollTop < 8 ? '1' : '0';
+    };
+
+    frame.addEventListener('scroll', update, { passive: true });
+    img.addEventListener('load', update);
+    new ResizeObserver(update).observe(frame);
+    update();
+  });
+</script>

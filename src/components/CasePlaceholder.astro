@@ -4,19 +4,23 @@ interface Props {
   wide?: boolean;
   spacing?: boolean;
   card?: boolean;
+  aspectRatio?: '3/2' | '16/9';
   src?: string;
 }
 
-const { hero = false, wide = false, spacing = false, card = false, src } = Astro.props;
+const { hero = false, wide = false, spacing = false, card = false, aspectRatio = '3/2', src } = Astro.props;
+const cardAspectClass = aspectRatio === '16/9' ? 'aspect-video' : 'aspect-[3/2]';
 const placeholderClass = hero
   ? 'aspect-[2/1] min-h-64 max-h-[680px] w-full'
   : wide
     ? 'aspect-[1.8/1] w-full rounded-lg md:col-span-full'
-    : 'aspect-[1.4/1] w-full rounded-lg';
+    : card
+      ? `${cardAspectClass} w-full rounded-lg`
+      : 'aspect-[1.4/1] w-full rounded-lg';
 const imageClass = hero
   ? 'block h-auto w-full'
   : card
-    ? 'block aspect-[3/2] w-full rounded-lg object-cover'
+    ? `block ${cardAspectClass} w-full rounded-lg object-cover`
   : wide
     ? 'block h-auto w-full rounded-lg md:col-span-full'
     : 'block h-auto w-full rounded-lg';
