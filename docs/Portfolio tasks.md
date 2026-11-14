@@ -29,8 +29,9 @@
 - Add a motion video of the research data.  
 - Make the research image mobile-accessible.  
 - Add the description of the “04 section” to the “05 section”.  
-- Change the image of the winning variant to full desktop page.  
-  
+- Change the image of the winning variant to full desktop page.
+- Apply same scrollable feature to key insights image with design-old.png
+
 ## VMO2 App Library Design System  
   
 - Add a switch version for VM > O2 switch mode.  
