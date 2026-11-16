@@ -13,14 +13,13 @@ interface Props {
   next: CollectionEntry<'work'>;
 }
 const { entry, next } = Astro.props;
-const { title, summary, role, team, timeline, timelineNote, platform, platformNote, challenge, heroImage } = entry.data;
+const { title, summary, outcome, role, team, timeline, timelineNote, platform, platformNote, challenge, heroImage } = entry.data;
 const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
 ---
 
 <BaseLayout title={title}>
   <section class="mx-auto max-w-[1088px] px-6 pt-14 pb-10 md:pt-16 md:pb-12" data-reveal>
     <h1 class="type-page-title max-w-[700px]">{title}</h1>
-    <p class="type-body-large mt-3 font-semibold">{summary}</p>
 
     <div class="mt-8 md:mt-10">
       <ProjectMeta
@@ -29,6 +28,7 @@ const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
           { label: 'Team', values: team, separator: ' · ' },
           { label: 'Timeline', values: [timeline], note: timelineNote },
           { label: 'Platform', values: platform, note: platformNote },
+          { label: 'Outcome', values: [outcome ?? summary] },
         ]}
       />
     </div>

@@ -23,6 +23,7 @@ const work = defineCollection({
     timelineNote: z.string().optional(), // muted detail after the timeline, e.g. "CRO testing ongoing"
     platform: z.array(z.string()),
     platformNote: z.string().optional(), // muted detail after the platform, e.g. "iOS and Android"
+    outcome: z.string().optional(), // the result, shown as "Outcome" under Platform on the case study page (falls back to summary)
     challenge: z.string(),
   }),
 });

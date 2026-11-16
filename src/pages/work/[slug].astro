@@ -14,7 +14,6 @@ import PhoneSlider from '../../components/PhoneSlider.astro';
 import Media from '../../components/Media.astro';
 import CaseSection from '../../components/CaseSection.astro';
 import CasePlaceholder from '../../components/CasePlaceholder.astro';
-import CaseQuote from '../../components/CaseQuote.astro';
 import CaseStat from '../../components/CaseStat.astro';
 import BillingIADiagram from '../../components/BillingIADiagram.astro';
 
@@ -31,5 +30,5 @@ const { Content } = await render(entry);
 ---
 
 <CaseStudyLayout entry={entry} next={next}>
-  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseQuote, CaseStat, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, PhoneSlider, UserTesting, CroTest, ThemeSwitcher, HomeComparison }} />
+  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseStat, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, PhoneSlider, UserTesting, CroTest, ThemeSwitcher, HomeComparison }} />
 </CaseStudyLayout>
