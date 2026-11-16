@@ -9,7 +9,7 @@ interface Props {
 
 const { number, title, layout = 'narrow', narrowTitle = false } = Astro.props;
 const contentClass = layout === 'three-column'
-  ? 'grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'
+  ? 'grid grid-cols-1 gap-8 md:grid-cols-3' // stacked on phones, three across from 768px (no 2+1 in-between step)
   : layout === 'two-column'
     ? 'grid grid-cols-1 gap-8 md:grid-cols-2'
     : '[&_p+p]:mt-4';

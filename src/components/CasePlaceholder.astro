@@ -1,4 +1,6 @@
 ---
+import VideoPlayer from './VideoPlayer.astro';
+
 interface Props {
   hero?: boolean;
   wide?: boolean;
@@ -28,7 +30,7 @@ const isVideo = src ? /\.(mp4|webm|mov)$/i.test(src) : false;
 
 {src ? (
   isVideo ? (
-    <video src={src} controls playsinline class:list={[imageClass, card && 'object-cover', spacingClass, 'bg-placeholder']}></video>
+    <VideoPlayer src={src} label={alt || undefined} class:list={[imageClass, card && 'object-cover', 'bg-placeholder']} wrapperClass={spacingClass} />
   ) : (
     <figure data-case-image class:list={[spacingClass, 'group relative m-0']}>
       <img src={src} alt={alt} loading="lazy" class:list={[imageClass, 'cursor-zoom-in', darkSrc && 'theme-image-light']} />

@@ -1,5 +1,6 @@
 ---
-// An image, GIF or video. Videos (.mp4 / .webm / .mov) autoplay, muted, on a loop.
+import VideoPlayer from './VideoPlayer.astro';
+// An image, GIF or video. Videos (.mp4 / .webm / .mov) play muted on a loop with a play/pause button (VideoPlayer.astro).
 //
 // layout:
 //   "plain" (default) – centred, content width
@@ -10,11 +11,10 @@ interface Props {
   src: string;
   alt?: string;
   layout?: 'plain' | 'panel' | 'band' | 'bleed' | 'card';
-  controls?: boolean;
   // card layout only: frame shape. '3/2' lines up with 3:2 images and diagrams in the same row
   ratio?: 'video' | '3/2';
 }
-const { src, alt = '', layout = 'plain', controls = false, ratio = 'video' } = Astro.props;
+const { src, alt = '', layout = 'plain', ratio = 'video' } = Astro.props;
 const isVideo = /\.(mp4|webm|mov)$/i.test(src);
 
 const outer = {
@@ -38,7 +38,7 @@ const mediaClass = layout === 'card' ? 'block h-full w-full object-cover' : 'blo
 <figure class={outer}>
   <div class={inner}>
     {isVideo ? (
-      <video src={src} autoplay muted loop playsinline controls={controls} class={mediaClass} aria-label={alt} />
+      <VideoPlayer src={src} label={alt} class={mediaClass} wrapperClass={layout === 'card' ? 'h-full w-full' : ''} />
     ) : (
       <img src={src} alt={alt} loading={layout === 'bleed' ? 'eager' : 'lazy'} class={mediaClass} />
     )}

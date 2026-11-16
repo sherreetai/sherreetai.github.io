@@ -1,0 +1,159 @@
+---
+// "Restructured homepage": the previous and redesigned Movers homepages side by side AT THE SAME SCALE,
+// so the difference in page length is visible at a glance. Numbered bands on each page point to
+// the changes listed beside them. Expand (desktop) opens both pages larger, scrolling together.
+//
+// Band positions are percentages of each page's height. If a design changes, re-measure them.
+// Images: /public/images/vm-home-movers/homepage-before.webp and homepage-after.webp
+// (900px-wide versions of design-old.png and design.png).
+
+type Band = { n: number; top: number; bottom: number };
+const pages: { label: string; note: string; src: string; width: number; height: number; alt: string; bands: Band[] }[] = [
+  {
+    label: 'Before',
+    note: 'Previous homepage',
+    src: '/images/vm-home-movers/homepage-before.webp',
+    width: 900,
+    height: 4218,
+    alt: 'Previous Movers homepage, full length: hero and postcode checker, three move steps, benefits, set-up guides, a Start your move banner, student options, Why move with Virgin Media, legal footnotes, FAQs and a feedback prompt.',
+    bands: [
+      { n: 3, top: 10.1, bottom: 12.7 },
+      { n: 4, top: 41.8, bottom: 46.5 },
+      { n: 4, top: 47.7, bottom: 70 },
+      { n: 2, top: 76.5, bottom: 89.2 },
+      { n: 4, top: 90.1, bottom: 92.8 },
+    ],
+  },
+  {
+    label: 'After',
+    note: '55% shorter',
+    src: '/images/vm-home-movers/homepage-after.webp',
+    width: 900,
+    height: 1880,
+    alt: 'Redesigned Movers homepage, full length: hero and postcode checker with the transfer fee shown directly beneath, move steps, benefits, set-up guides, FAQs, then legal information.',
+    bands: [
+      { n: 3, top: 16.2, bottom: 18.6 },
+      { n: 2, top: 59.2, bottom: 75.1 },
+    ],
+  },
+];
+
+const changes = [
+  { n: 1, title: 'Shorter page', text: 'The page is 55% shorter, so customers reach the postcode checker, move steps and answers with far less scrolling.' },
+  { n: 2, title: 'FAQs reordered by priority', text: 'A click test let customers pick the questions that mattered most to them, backed up by Contentsquare click data. The FAQs were reordered to match and moved up the page.' },
+  { n: 3, title: 'Legal pricing made noticeable', text: 'Pricing was already above the fold but sat in plain body copy. The transfer fee now sits in a highlighted box directly under the postcode checker so customers notice it.' },
+  { n: 4, title: 'Repetitive content removed', text: 'The repeated Start your move banner, student options, Why move with Virgin Media and the feedback prompt were removed.' },
+];
+
+const badge = 'inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-accent text-[11px] leading-none font-bold text-background';
+---
+
+<div data-mh class="grid grid-cols-1 items-start gap-8 md:col-span-full md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:gap-12">
+  <figure class="group relative m-0">
+    <div class="flex w-full items-start justify-center gap-5 rounded-lg bg-chip p-4 md:gap-8 md:p-8">
+      {pages.map((p) => (
+        <div class="flex w-[42%] max-w-[170px] flex-col gap-2 md:w-[170px]">
+          <!-- Label on one line, note on the next, so both pages start at the same height -->
+          <div class="flex flex-col text-sm">
+            <span class="font-bold text-ink">{p.label}</span>
+            <span class="text-xs whitespace-nowrap text-muted">{p.note}</span>
+          </div>
+          <div class="relative">
+            <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading="lazy" class="block h-auto w-full rounded-md bg-background shadow-sm" />
+            {p.bands.map((b) => (
+              <div aria-hidden="true" class="absolute inset-x-0 rounded-sm border-2 border-accent bg-accent/15" style={`top:${b.top}%;height:${b.bottom - b.top}%`}>
+                <span class={`${badge} absolute -top-2.5 -left-2.5`}>{b.n}</span>
+              </div>
+            ))}
+            {p.label === 'After' && (
+              <span aria-hidden="true" class={`${badge} absolute -right-2.5 -bottom-2.5`}>1</span>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+    <!-- Same Expand button as the case-study images: inside the frame, desktop only, appears on hover or keyboard focus -->
+    <button
+      type="button"
+      data-mh-open
+      aria-haspopup="dialog"
+      aria-label="Expand homepage comparison"
+      class="action-primary absolute top-3 right-3 hidden rounded-full px-3 py-1.5 text-sm font-semibold shadow transition-opacity sm:block sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
+    >
+      Expand
+    </button>
+    <dialog data-mh-dialog aria-label="Expanded homepage comparison" class="m-auto w-[min(96vw,1000px)] max-w-none rounded-xl bg-transparent p-0 backdrop:bg-black/80">
+      <div class="rounded-xl bg-background p-3">
+        <div class="mb-3 flex justify-end">
+          <button type="button" data-mh-close class="action-secondary rounded-full border px-4 py-1.5 text-sm">Close</button>
+        </div>
+        <!-- Both pages in one scrolling area, at the same scale, so they scroll together -->
+        <div tabindex="0" role="region" aria-label="Before and after homepages, scrollable" class="mh-scroll max-h-[calc(95vh-5rem)] overflow-y-auto rounded-lg bg-chip p-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          <div class="grid grid-cols-2 items-start gap-8">
+            {pages.map((p) => (
+              <div class="flex flex-col gap-2">
+                <span class="text-sm font-bold text-ink">{p.label} <span class="font-normal text-muted">· {p.note}</span></span>
+                <div class="relative">
+                  <img src={p.src} alt="" loading="lazy" class="block h-auto w-full rounded-md bg-background shadow-sm" />
+                  {p.bands.map((b) => (
+                    <div aria-hidden="true" class="absolute inset-x-0 rounded-sm border-2 border-accent bg-accent/15" style={`top:${b.top}%;height:${b.bottom - b.top}%`}>
+                      <span class={`${badge} absolute -top-2.5 -left-2.5 size-6 text-xs`}>{b.n}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </dialog>
+  </figure>
+
+  <!-- Copy starts level with the frame and stays in view while the taller frame scrolls past (desktop) -->
+  <div class="md:sticky md:top-28">
+    <h3 class="mb-1 text-base font-bold text-accent uppercase">Restructured homepage</h3>
+    <p>I reordered the information hierarchy so customers could find reassurance without losing anything they needed to feel confident progressing.</p>
+    <ol class="m-0 mt-6 list-none space-y-4 p-0">
+      {changes.map((c) => (
+        <li class="flex gap-3">
+          <span class={`${badge} mt-0.5 size-6 text-xs`} aria-hidden="true">{c.n}</span>
+          <div>
+            <p class="m-0 font-bold text-ink">{c.title}</p>
+            <p class="m-0 mt-0.5">{c.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</div>
+
+<style>
+  .mh-scroll::-webkit-scrollbar { width: 12px; }
+  .mh-scroll::-webkit-scrollbar-track { background: var(--color-chip); }
+  .mh-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-muted);
+    border: 2px solid var(--color-chip);
+    border-radius: 6px;
+  }
+  @supports not selector(::-webkit-scrollbar) {
+    .mh-scroll { scrollbar-color: var(--color-muted) var(--color-chip); }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-mh]').forEach((root) => {
+    const dialog = root.querySelector<HTMLDialogElement>('[data-mh-dialog]');
+    const openButton = root.querySelector<HTMLButtonElement>('[data-mh-open]');
+    const closeButton = root.querySelector<HTMLButtonElement>('[data-mh-close]');
+
+    if (!dialog || !openButton || !closeButton) {
+      throw new Error('Homepage comparison controls are missing.');
+    }
+
+    openButton.addEventListener('click', () => dialog.showModal());
+    closeButton.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>

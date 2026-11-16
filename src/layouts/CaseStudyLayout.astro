@@ -7,13 +7,14 @@ import BaseLayout from './BaseLayout.astro';
 import NextProject from '../components/NextProject.astro';
 import CasePlaceholder from '../components/CasePlaceholder.astro';
 import ProjectMeta from '../components/ProjectMeta.astro';
+import VideoPlayer from '../components/VideoPlayer.astro';
 
 interface Props {
   entry: CollectionEntry<'work'>;
   next: CollectionEntry<'work'>;
 }
 const { entry, next } = Astro.props;
-const { title, summary, outcome, role, team, timeline, timelineNote, platform, platformNote, challenge, heroImage } = entry.data;
+const { title, summary, outcome, role, timeline, timelineNote, platform, platformNote, brief, heroImage } = entry.data;
 const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
 ---
 
@@ -24,8 +25,7 @@ const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
     <div class="mt-8 md:mt-10">
       <ProjectMeta
         items={[
-          { label: 'Role', values: role },
-          { label: 'Team', values: team, separator: ' · ' },
+          { label: 'Role', values: [role] },
           { label: 'Timeline', values: [timeline], note: timelineNote },
           { label: 'Platform', values: platform, note: platformNote },
           { label: 'Outcome', values: [outcome ?? summary] },
@@ -37,15 +37,15 @@ const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
       <div class="absolute top-0 left-1/2 w-screen -translate-x-1/2 border-t border-line" aria-hidden="true"></div>
       <!-- Same centred 640px column as the single-column sections below -->
       <div class="mx-auto max-w-[640px]">
-        <h2 class="type-section-title mb-5 md:mb-6"><span class="mr-2 text-accent">01</span> Challenge</h2>
-        <p class="type-body">{challenge}</p>
+        <h2 class="type-section-title mb-5 md:mb-6"><span class="mr-2 text-accent">01</span> The brief</h2>
+        <p class="type-body">{brief}</p>
       </div>
     </div>
   </section>
 
   {heroImage ? (
     heroIsVideo ? (
-      <video src={heroImage} controls playsinline class="block h-auto w-full bg-placeholder"></video>
+      <VideoPlayer src={heroImage} class="block h-auto w-full bg-placeholder" />
     ) : (
       <img src={heroImage} alt="" class="block h-auto w-full" />
     )

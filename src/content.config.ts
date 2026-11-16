@@ -10,21 +10,19 @@ const work = defineCollection({
     title: z.string(), // big heading on the case study page
     cardTitle: z.string().optional(), // shorter title for the Home/Work card (falls back to title)
     summary: z.string(), // short description shown beneath the Home/Work card title
-    tag: z.string(), // small label on the card, e.g. "Product Design"
     order: z.number(), // position in the grid and the "Next project" sequence
     logo: z.string().optional(), // optional logo used in the "Next project" link
     coverImage: z.string(), // image shown on the Home/Work card
     nextImage: z.string(), // square image shown in the "Next project" link
     coverPosition: z.string().optional(), // focal point used when the card cover is cropped
     heroImage: z.string().optional(), // optional lead image; omitted for PDF placeholder panels
-    role: z.array(z.string()),
-    team: z.array(z.string()),
+    role: z.string(), // what I did and who I partnered with, e.g. "Product design, partnering with engineering and CRO"
     timeline: z.string(),
     timelineNote: z.string().optional(), // muted detail after the timeline, e.g. "CRO testing ongoing"
     platform: z.array(z.string()),
     platformNote: z.string().optional(), // muted detail after the platform, e.g. "iOS and Android"
     outcome: z.string().optional(), // the result, shown as "Outcome" under Platform on the case study page (falls back to summary)
-    challenge: z.string(),
+    brief: z.string(), // "The brief" at the top of the case study: the situation and my task, in one first-person paragraph
   }),
 });
 

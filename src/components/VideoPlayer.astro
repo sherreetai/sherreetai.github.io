@@ -1,0 +1,65 @@
+---
+// A video that plays muted on a loop, with no browser controls bar.
+// A round play/pause button sits in the top-right corner (always visible, so it works on touch screens too).
+// If the reader prefers reduced motion, the video starts paused and they can press play.
+// Used by Media.astro, CasePlaceholder.astro and the case study hero.
+interface Props {
+  src: string;
+  label?: string; // describes the video for screen readers
+  class?: string; // classes for the <video> itself (size, rounding, object-fit)
+  wrapperClass?: string; // classes for the wrapper (e.g. h-full w-full inside a fixed-ratio frame)
+}
+const { src, label, class: videoClass = 'block h-auto w-full', wrapperClass = '' } = Astro.props;
+---
+
+<div data-video class:list={['relative', wrapperClass]}>
+  <video src={src} autoplay muted loop playsinline aria-label={label} class={videoClass}></video>
+  <button
+    type="button"
+    data-video-toggle
+    aria-label="Pause video"
+    class="action-primary absolute top-3 right-3 inline-flex size-9 items-center justify-center rounded-full shadow"
+  >
+    <!-- Pause icon (shown while playing) -->
+    <svg data-video-icon="pause" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="2.5" y="1.5" width="3" height="11" rx="1"></rect><rect x="8.5" y="1.5" width="3" height="11" rx="1"></rect></svg>
+    <!-- Play icon (shown while paused) -->
+    <svg data-video-icon="play" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true" class="hidden"><path d="M4 1.8v10.4a.8.8 0 0 0 1.2.7l8-5.2a.8.8 0 0 0 0-1.4l-8-5.2A.8.8 0 0 0 4 1.8z"></path></svg>
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-video]').forEach((root) => {
+    const video = root.querySelector<HTMLVideoElement>('video');
+    const button = root.querySelector<HTMLButtonElement>('[data-video-toggle]');
+    const pauseIcon = root.querySelector<SVGElement>('[data-video-icon="pause"]');
+    const playIcon = root.querySelector<SVGElement>('[data-video-icon="play"]');
+
+    if (!video || !button || !pauseIcon || !playIcon) {
+      throw new Error('Video player controls are missing.');
+    }
+
+    // Keep the icon and label in step with the video, however it was started or stopped
+    const paint = () => {
+      const playing = !video.paused;
+      pauseIcon.classList.toggle('hidden', !playing);
+      playIcon.classList.toggle('hidden', playing);
+      button.setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
+    };
+    video.addEventListener('play', paint);
+    video.addEventListener('pause', paint);
+
+    button.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().catch((error) => console.error('Could not play video:', error));
+      } else {
+        video.pause();
+      }
+    });
+
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.removeAttribute('autoplay');
+      video.pause();
+    }
+    paint();
+  });
+</script>
