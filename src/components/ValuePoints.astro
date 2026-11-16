@@ -1,0 +1,126 @@
+---
+const points = [
+  {
+    title: 'Evidence first',
+    body: 'I start with behavioural data and research so design decisions have a reason behind them.',
+    icon: '<path d="M4 19V5m0 14h17M8 15l4-4 3 2 5-6" /><path d="M16 7h4v4" />',
+  },
+  {
+    title: 'Clarity over clutter',
+    body: 'I simplify complex products into journeys people can follow without thinking.',
+    icon: '<path d="M3 7h18M3 12h12M3 17h8" />',
+  },
+  {
+    title: 'Built to scale',
+    body: 'I work in design systems and Figma Variables so solutions hold up across teams.',
+    icon: '<rect x="3" y="3" width="8" height="8" rx="1" /><rect x="13" y="13" width="8" height="8" rx="1" /><path d="M13 7h4a2 2 0 0 1 2 2v4" />',
+  },
+];
+---
+
+<div data-vp role="region" aria-roledescription="carousel" aria-label="How I work" class="mt-7">
+  <ul
+    data-vp-track
+    class="vp-track flex snap-x snap-mandatory gap-6 overflow-x-auto pb-3 max-md:-mx-6 max-md:scroll-pl-6 max-md:px-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:grid md:grid-cols-3 md:gap-x-6 md:overflow-visible md:pb-0"
+  >
+    {points.map((point, index) => (
+      <li
+        data-vp-item
+        role="group"
+        aria-roledescription="slide"
+        aria-label={`${index + 1} of ${points.length}`}
+        class="w-full shrink-0 snap-start border-t border-accent pt-4 md:w-auto"
+      >
+        <strong class="flex items-center gap-2 text-base font-bold text-accent uppercase">
+          <svg class="h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={point.icon} />
+          {point.title}
+        </strong>
+        <span class="type-body mt-2 block">{point.body}</span>
+      </li>
+    ))}
+  </ul>
+
+  <div class="mt-3 flex items-center justify-between gap-4 text-sm md:hidden">
+    <span data-vp-count aria-live="polite" aria-atomic="true" class="text-muted">1 / {points.length} · {points[0].title}</span>
+    <div class="flex shrink-0 gap-2">
+      <button type="button" data-vp-prev aria-label="Previous point" aria-disabled="true" class="action-secondary inline-flex size-9 items-center justify-center rounded-full border aria-disabled:pointer-events-none aria-disabled:opacity-40">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3 5 8l5 5"></path></svg>
+      </button>
+      <button type="button" data-vp-next aria-label="Next point" aria-disabled="false" class="action-secondary inline-flex size-9 items-center justify-center rounded-full border aria-disabled:pointer-events-none aria-disabled:opacity-40">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 3 5 5-5 5"></path></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .vp-track { scrollbar-width: none; }
+  .vp-track::-webkit-scrollbar { display: none; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-vp]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-vp-track]');
+    const items = Array.from(root.querySelectorAll<HTMLElement>('[data-vp-item]'));
+    const count = root.querySelector<HTMLElement>('[data-vp-count]');
+    const prev = root.querySelector<HTMLButtonElement>('[data-vp-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-vp-next]');
+
+    if (!track || !count || !prev || !next || items.length === 0) {
+      throw new Error('Value points carousel controls are missing.');
+    }
+
+    const titles = items.map((item) => {
+      const title = item.querySelector('strong')?.textContent?.trim();
+      if (!title) throw new Error('A value point is missing its title.');
+      return title;
+    });
+    const behavior: ScrollBehavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    let current = 0;
+
+    const paint = () => {
+      count.textContent = `${current + 1} / ${items.length} · ${titles[current]}`;
+      prev.setAttribute('aria-disabled', String(track.scrollLeft <= 4));
+      next.setAttribute('aria-disabled', String(track.scrollLeft + track.clientWidth >= track.scrollWidth - 4));
+    };
+
+    const visible = new Set<number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = items.indexOf(entry.target as HTMLElement);
+          if (entry.isIntersecting) visible.add(index);
+          else visible.delete(index);
+        });
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+        if (atEnd) current = items.length - 1;
+        else if (visible.size > 0) current = Math.min(...visible);
+        paint();
+      },
+      { root: track, threshold: 0.6 },
+    );
+    items.forEach((item) => observer.observe(item));
+    track.addEventListener('scroll', paint, { passive: true });
+
+    new ResizeObserver(() => {
+      if (track.scrollWidth > track.clientWidth + 4) track.tabIndex = 0;
+      else track.removeAttribute('tabindex');
+      paint();
+    }).observe(track);
+
+    const step = () => (items[1] ? items[1].offsetLeft - items[0].offsetLeft : track.clientWidth);
+    track.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      track.scrollBy({ left: event.key === 'ArrowRight' ? step() : -step(), behavior });
+    });
+
+    prev.addEventListener('click', () => {
+      if (prev.getAttribute('aria-disabled') !== 'true') track.scrollBy({ left: -step(), behavior });
+    });
+    next.addEventListener('click', () => {
+      if (next.getAttribute('aria-disabled') !== 'true') track.scrollBy({ left: step(), behavior });
+    });
+    paint();
+  });
+</script>

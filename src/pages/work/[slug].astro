@@ -7,6 +7,7 @@ import CaseItem from '../../layouts/CaseItem.astro';
 import NextStepsDiagram from '../../layouts/NextStepsDiagram.astro';
 import ScrollableShot from '../../layouts/ScrollableShot.astro';
 import AcceptanceCriteria from '../../layouts/AcceptanceCriteria.astro';
+import PhoneSlider from '../../components/PhoneSlider.astro';
 import Media from '../../components/Media.astro';
 import CaseSection from '../../components/CaseSection.astro';
 import CasePlaceholder from '../../components/CasePlaceholder.astro';
@@ -26,5 +27,5 @@ const { Content } = await render(entry);
 ---
 
 <CaseStudyLayout entry={entry} next={next}>
-  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseQuote, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, AcceptanceCriteria }} />
+  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseQuote, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, AcceptanceCriteria, PhoneSlider }} />
 </CaseStudyLayout>
