@@ -14,8 +14,9 @@ const { href, title, image } = Astro.props;
       <img src={image} alt="" loading="lazy" class="h-full w-full object-cover" />
     </span>
     <span>
-      <span class="block text-base font-semibold text-ink transition-colors group-hover:text-accent">Next case study →</span>
-      <span class="type-card-title mt-1 block text-ink transition-colors group-hover:text-accent">{title}</span>
+      <span class="block text-base font-semibold text-ink">Next case study →</span>
+      <!-- Title underlines on hover/keyboard focus, like the header's About link -->
+      <span class="type-card-title mt-1 block text-ink underline-offset-4 group-hover:underline group-focus-visible:underline">{title}</span>
     </span>
   </a>
 </section>

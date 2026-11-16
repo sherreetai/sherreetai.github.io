@@ -16,7 +16,8 @@ team:
   - CRO
   - Developers
   - UX researchers
-timeline: Research done in July 2026. Design and CRO iteration ongoing
+timeline: Research in July 2026
+timelineNote: Design and CRO iteration ongoing
 platform:
   - Desktop and Mobile
 challenge: Only 45% of sessions progressed from the Movers homepage to postcode entry. Research also showed customers needed more reassurance around availability, connectivity and what would happen during their move. My role was to understand the friction and use those findings to redesign the homepage and wider journey.
@@ -28,43 +29,39 @@ challenge: Only 45% of sessions progressed from the Movers homepage to postcode 
 </CaseSection>
 
 <CaseSection number="03" title="Analysing where and why customers were dropping out" layout="three-column">
-  <CaseItem title="Data used" placeholder media="/images/vm-home-movers/data-used.png">
+  <CaseItem title="Data used">
+    <Media slot="media" src="/images/vm-home-movers/data-used.mp4" alt="Contentsquare and Tableau data used to analyse the Movers journey." layout="card" ratio="3/2" controls />
     <p>Contentsquare behavioural data and Tableau funnel data.</p>
   </CaseItem>
   <CaseItem title="Research">
     <NextStepsDiagram slot="media" />
     <p>July 2026 user research into what customers needed before starting a move.</p>
   </CaseItem>
-  <CaseItem title="Key insight" placeholder media="/images/vm-home-movers/key-insights.png">
-    <p>The homepage felt lengthy and static, while customers needed more reassurance before committing. Only 15% of serviceable sessions went on to start the web booking journey.</p>
+  <CaseItem title="Key insight">
+    <ScrollableShot slot="media" card src="/images/vm-home-movers/design-old.png" alt="Previous Virgin Media Movers homepage, shown as a full-page screenshot." />
+    <p>The old homepage felt lengthy and static. Only 15% of serviceable sessions went on to start the web booking journey.</p>
   </CaseItem>
 </CaseSection>
 
-<CaseSection number="04" title="Exploring beyond the existing journey">
-  <p>I explored different ways to simplify the Movers homepage without removing information customers needed to feel confident progressing. This included reordering the information hierarchy, introducing a carousel and simple motion, prioritising FAQs, and testing different ways to communicate faster broadband availability.</p>
-  <p>The options were shaped by the constraint that customers could explore upgrades but couldn’t complete one within the move journey, helping balance reassurance and commercial opportunity without adding another exit point.</p>
-  <CaseQuote>Moving home is already complex. The experience didn’t need to add to it.</CaseQuote>
-</CaseSection>
-
-<CaseSection number="05" title="The design" layout="two-column">
+<CaseSection number="04" title="The design" layout="two-column">
   <CaseItem title="Simpler hierarchy">
-    <ScrollableShot slot="media" src="/images/vm-home-movers/design.png" alt="Redesigned Virgin Media Movers homepage, full page: hero with postcode checker and transfer-fee notice, three-step carousel, benefits list, set-up cards, FAQs and legal footnotes." />
-    <p>Organised the homepage around customers’ key questions and actions.</p>
+    <ScrollableShot slot="media" src="/images/vm-home-movers/design.png" alt="Virgin Media Movers homepage showing the postcode checker, move steps, benefits, and FAQs." />
+    <p>I reordered the information hierarchy and prioritised the FAQs, so customers could find reassurance without losing anything they needed to feel confident progressing.</p>
   </CaseItem>
   <CaseItem title="Simple motion design">
-    <Media slot="media" src="/images/vm-home-movers/motion.mp4" alt="Motion design for the Virgin Media home-movers journey" layout="card" controls />
-    <p>Made key moments more engaging and broke up the page.</p>
+    <Media slot="media" src="/images/vm-home-movers/motion.mp4" alt="Carousel and motion design for the Virgin Media home-movers homepage." layout="card" controls />
+    <p>I introduced a carousel and simple motion to make key moments more engaging and break up a long, static page, while keeping the information customers needed within reach.</p>
   </CaseItem>
 </CaseSection>
 
-<CaseSection number="06" title="Validating the evidence" layout="two-column">
-  <CaseItem>
-    <p>I tested three notification treatments to understand how clearly customers noticed and understood the faster-speed opportunity.</p>
-    <p>94% preferred one of the two prominent treatments, helping refine the final direction around stronger visibility and clearer reassurance that upgrades happen after the move.</p>
-  </CaseItem>
-  <CasePlaceholder src="/images/vm-home-movers/validation.png" spacing />
+<CaseSection number="05" title="Validating the evidence" layout="two-column" narrowTitle>
+  <div class="mx-auto w-full max-w-[640px] md:col-span-full">
+    <p>I tested three notification treatments to understand how clearly customers noticed and understood the faster-speed opportunity, then refined and re-tested the strongest direction.</p>
+  </div>
+  <UserTesting />
 </CaseSection>
 
-<CaseSection number="07" title="What that evidence changed">
-  <p>The research established a clearer direction for communicating faster broadband without interrupting the core move journey. The refined experience is now ready for CRO testing, where messaging such as “faster speeds” vs “4x faster” can be measured against progression and drop-off rather than stated preference alone.</p>
+<CaseSection number="06" title="What that evidence changed">
+  <p>The research established a clearer direction for communicating faster broadband without interrupting the core move journey. The refined experience is now ready for CRO testing.</p>
+  <CroTest />
 </CaseSection>

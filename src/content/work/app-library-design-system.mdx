@@ -14,7 +14,8 @@ team:
   - Design
   - Engineering
   - Design system lead
-timeline: 6 months. Transitioning onto wider Creative Design System
+timeline: 6 months
+timelineNote: Transitioning onto wider Creative Design System
 platform:
   - Figma
   - My O2 App
@@ -29,6 +30,7 @@ challenge: Teams were recreating similar components across brands, creating inco
 </CaseSection>
 
 <CaseSection number="03" title="Finding the friction" layout="two-column">
+  <div class="md:self-center">
   <CaseItem>
     <CaseItem title="Data used">
       <p>7,609 recorded component inserts, used to estimate time saved.</p>
@@ -40,7 +42,10 @@ challenge: Teams were recreating similar components across brands, creating inco
       <p>Many components could be consolidated into shared foundations rather than rebuilt per brand.</p>
     </CaseItem>
   </CaseItem>
-  <CasePlaceholder src="/images/app-library/analysis.png" spacing />
+  </div>
+  <div class="md:self-center">
+    <CasePlaceholder src="/images/app-library/analysis.png" />
+  </div>
 </CaseSection>
 
 <CaseSection number="04" title="Exploring options">
@@ -54,7 +59,8 @@ challenge: Teams were recreating similar components across brands, creating inco
   <CaseItem title="Aligned with code" placeholder media="/images/app-library/code-light.png" darkMedia="/images/app-library/code-dark.png">
     <p>Worked with engineering so component and variable logic reflected how the UI was built.</p>
   </CaseItem>
-  <CaseItem title="Prove it in practice" placeholder media="/images/app-library/prove.mp4">
+  <CaseItem title="Prove it in practice">
+    <Media slot="media" src="/images/app-library/design03.mp4" alt="Designer working in the My O2 App master file using the new variables." layout="card" ratio="3/2" controls />
     <p>Created the My O2 App master file and was the first to implement the new variables in a live app design file.</p>
   </CaseItem>
 </CaseSection>
@@ -62,4 +68,8 @@ challenge: Teams were recreating similar components across brands, creating inco
 <CaseSection number="06" title="Outcome and next steps">
   <p>Across 7,609 recorded component inserts, the new approach was estimated to save 5–6 hours per designer each year while creating a more scalable cross-brand foundation.</p>
   <p>Next, learnings from the App Library will feed into the wider CDS, shaping shared variable structures, component patterns and governance across Virgin Media and O2.</p>
+  <div class="mt-8">
+    <h3 class="mb-4 text-base font-bold text-accent uppercase">Theme switch me!</h3>
+    <ThemeSwitcher />
+  </div>
 </CaseSection>

@@ -20,7 +20,9 @@ const work = defineCollection({
     role: z.array(z.string()),
     team: z.array(z.string()),
     timeline: z.string(),
+    timelineNote: z.string().optional(), // muted detail after the timeline, e.g. "CRO testing ongoing"
     platform: z.array(z.string()),
+    platformNote: z.string().optional(), // muted detail after the platform, e.g. "iOS and Android"
     challenge: z.string(),
   }),
 });

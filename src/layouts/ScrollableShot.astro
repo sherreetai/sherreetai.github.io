@@ -4,7 +4,7 @@
 // How it signals "scrollable" without relying on motion or colour alone:
 //   1. A scrollbar that stays visible (styled below, so macOS doesn't auto-hide it)
 //   2. A "Scroll for more" pill and a shadow at the bottom edge, which disappear once you've scrolled / reached the end
-//   3. A caption under the frame (the text in `caption`)
+//   3. An optional caption under the frame (pass `caption`; none by default)
 //   4. The frame is a keyboard-focusable region: Tab to it, then use arrow keys, Space or Page Down
 // Scrolling is allowed to pass on to the page at the top and bottom, so touch users never get trapped in the frame.
 interface Props {
@@ -14,25 +14,28 @@ interface Props {
   caption?: string;
   wide?: boolean;
   spacing?: boolean;
+  // card: 3:2 frame to line up with 3:2 images and diagrams in the same row (default is 16:9)
+  card?: boolean;
 }
 const {
   src,
   alt = '',
   label = 'Scrollable design screenshot',
-  caption = 'Scroll inside the frame to see the full page.',
+  caption = '',
   wide = false,
   spacing = false,
+  card = false,
 } = Astro.props;
 ---
 
-<figure data-scroll-shot class:list={['m-0', wide && 'md:col-span-full', spacing && 'mt-8']}>
+<figure data-scroll-shot class:list={['group m-0', wide && 'md:col-span-full', spacing && 'mt-8']}>
   <div class="relative">
     <div
       data-scroll-shot-frame
       tabindex="0"
       role="region"
       aria-label={label}
-      class="scroll-shot aspect-video w-full overflow-y-auto rounded-lg border border-line bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      class:list={['scroll-shot w-full overflow-y-auto', card ? 'aspect-[3/2]' : 'aspect-video', 'rounded-lg border border-line bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent']}
     >
       <img src={src} alt={alt} loading="lazy" class="block h-auto w-full" />
     </div>
@@ -50,18 +53,18 @@ const {
     >
       Scroll for more ↓
     </div>
-  </div>
-  <figcaption class="mt-3 flex items-center justify-between gap-4 text-sm">
-    <span class="text-muted">{caption}</span>
+    <!-- Same Expand button as the case-study images: inside the frame, desktop only, appears on hover or keyboard focus -->
     <button
       type="button"
       data-scroll-shot-open
       aria-haspopup="dialog"
-      class="action-secondary shrink-0 rounded-full border px-4 py-1.5 text-sm"
+      aria-label="Expand screenshot"
+      class="action-primary absolute top-3 right-5 hidden rounded-full px-3 py-1.5 text-sm font-semibold shadow transition-opacity sm:block sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
     >
       Expand
     </button>
-  </figcaption>
+  </div>
+  {caption && <figcaption class="mt-3 text-sm text-muted">{caption}</figcaption>}
 
   <dialog data-scroll-shot-dialog aria-label="Expanded design screenshot" class="m-auto w-[min(96vw,1400px)] max-w-none rounded-xl bg-transparent p-0 backdrop:bg-black/60">
     <div class="rounded-xl bg-background p-4">

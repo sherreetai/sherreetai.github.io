@@ -6,13 +6,14 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import NextProject from '../components/NextProject.astro';
 import CasePlaceholder from '../components/CasePlaceholder.astro';
+import ProjectMeta from '../components/ProjectMeta.astro';
 
 interface Props {
   entry: CollectionEntry<'work'>;
   next: CollectionEntry<'work'>;
 }
 const { entry, next } = Astro.props;
-const { title, summary, role, team, timeline, platform, challenge, heroImage } = entry.data;
+const { title, summary, role, team, timeline, timelineNote, platform, platformNote, challenge, heroImage } = entry.data;
 const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
 ---
 
@@ -21,45 +22,24 @@ const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
     <h1 class="type-page-title max-w-[700px]">{title}</h1>
     <p class="type-body-large mt-3 font-semibold">{summary}</p>
 
-    <dl class="mt-8 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 md:mt-10 md:grid-cols-4">
-      <div class="border-t border-accent pt-3">
-        <dt class="mb-2 text-base font-bold text-accent uppercase">Role</dt>
-        <dd>
-          <ul class="type-body list-disc space-y-0.5 pl-5">
-            {role.map((item) => <li>{item}</li>)}
-          </ul>
-        </dd>
-      </div>
-      <div class="border-t border-accent pt-3">
-        <dt class="mb-2 text-base font-bold text-accent uppercase">Team</dt>
-        <dd>
-          <ul class="type-body list-disc space-y-0.5 pl-5">
-            {team.map((item) => <li>{item}</li>)}
-          </ul>
-        </dd>
-      </div>
-      <div class="border-t border-accent pt-3">
-        <dt class="mb-2 text-base font-bold text-accent uppercase">Timeline</dt>
-        <dd class="type-body">{timeline}</dd>
-      </div>
-      <div class="border-t border-accent pt-3">
-        <dt class="mb-2 text-base font-bold text-accent uppercase">Platform</dt>
-        <dd>
-          {platform.length > 1 ? (
-            <ul class="type-body list-disc space-y-0.5 pl-5">
-              {platform.map((item) => <li>{item}</li>)}
-            </ul>
-          ) : (
-            <p class="type-body">{platform[0]}</p>
-          )}
-        </dd>
-      </div>
-    </dl>
+    <div class="mt-8 md:mt-10">
+      <ProjectMeta
+        items={[
+          { label: 'Role', values: role },
+          { label: 'Team', values: team, separator: ' · ' },
+          { label: 'Timeline', values: [timeline], note: timelineNote },
+          { label: 'Platform', values: platform, note: platformNote },
+        ]}
+      />
+    </div>
 
     <div class="relative mt-10 pt-6 md:mt-12">
       <div class="absolute top-0 left-1/2 w-screen -translate-x-1/2 border-t border-line" aria-hidden="true"></div>
-      <h2 class="type-section-title mb-3"><span class="mr-2 text-accent">01</span> Challenge</h2>
-      <p class="type-body">{challenge}</p>
+      <!-- Same centred 640px column as the single-column sections below -->
+      <div class="mx-auto max-w-[640px]">
+        <h2 class="type-section-title mb-5 md:mb-6"><span class="mr-2 text-accent">01</span> Challenge</h2>
+        <p class="type-body">{challenge}</p>
+      </div>
     </div>
   </section>
 

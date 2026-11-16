@@ -1,0 +1,68 @@
+---
+// Previous vs new app homepage, plus the O2 web view it now matches, side by side in one frame.
+// Desktop: 3:2 frame, so it lines up with the 3:2 image beside it. Mobile: a taller frame so the screens stay legible.
+// Expand (desktop) opens the three screens larger.
+// Real text labels (not baked into the images) so they follow the site's colours and dark mode.
+// Screens live in /public/images/o2/ (cropped to the top of each page at a section break).
+const screens = [
+  { label: 'Previous app', src: '/images/o2/O2-previous.png', width: 786, height: 2061, alt: 'Previous My O2 App homepage: a carousel of bill, device and SIM cards, usage for one line, an upgrade banner and offers.' },
+  { label: 'New app', src: '/images/o2/O2-new.png', width: 393, height: 1080, alt: 'Redesigned My O2 App homepage: a product selector at the top, then the bill, allowance and Buy Bolt Ons for that product, followed by quick links.' },
+  { label: 'O2 web', src: '/images/o2/O2-web.png', width: 786, height: 2087, alt: 'O2 web account page on mobile with the same product selector at the top, then latest bill, current bill and allowance.' },
+];
+---
+
+<figure data-hc class="group relative m-0">
+  <div class="grid aspect-[4/5] w-full grid-cols-3 gap-[4%] rounded-lg bg-chip px-[5%] pt-[5%] pb-[4%] md:aspect-[3/2]">
+    {screens.map((s) => (
+      <div class="flex min-h-0 min-w-0 flex-col gap-2">
+        <div class="relative min-h-0 flex-1">
+          <img src={s.src} alt={s.alt} width={s.width} height={s.height} loading="lazy" class="absolute inset-0 h-full w-full object-contain" />
+        </div>
+        <span class="text-center text-xs font-bold text-ink sm:text-sm">{s.label}</span>
+      </div>
+    ))}
+  </div>
+  <!-- Same Expand button as the case-study images: inside the frame, desktop only, appears on hover or keyboard focus -->
+  <button
+    type="button"
+    data-hc-open
+    aria-haspopup="dialog"
+    aria-label="Expand homepage comparison"
+    class="action-primary absolute top-3 right-3 hidden rounded-full px-3 py-1.5 text-sm font-semibold shadow transition-opacity sm:block sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
+  >
+    Expand
+  </button>
+  <dialog data-hc-dialog aria-label="Expanded homepage comparison" class="m-auto w-[min(96vw,1100px)] max-w-none rounded-xl bg-transparent p-0 backdrop:bg-black/80">
+    <div class="rounded-xl bg-background p-3">
+      <div class="mb-3 flex justify-end">
+        <button type="button" data-hc-close class="action-secondary rounded-full border px-4 py-1.5 text-sm">Close</button>
+      </div>
+      <div class="flex justify-center gap-6 rounded-lg bg-chip p-4">
+        {screens.map((s) => (
+          <div class="flex min-w-0 flex-col items-center gap-2">
+            <img src={s.src} alt="" loading="lazy" class="block h-auto max-h-[calc(95vh-9rem)] w-auto max-w-full" />
+            <span class="text-sm font-bold text-ink">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </dialog>
+</figure>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-hc]').forEach((root) => {
+    const dialog = root.querySelector<HTMLDialogElement>('[data-hc-dialog]');
+    const openButton = root.querySelector<HTMLButtonElement>('[data-hc-open]');
+    const closeButton = root.querySelector<HTMLButtonElement>('[data-hc-close]');
+
+    if (!dialog || !openButton || !closeButton) {
+      throw new Error('Homepage comparison controls are missing.');
+    }
+
+    openButton.addEventListener('click', () => dialog.showModal());
+    closeButton.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>

@@ -13,6 +13,10 @@
   --color-placeholder: #dedddc;
   --color-chip: #e8e7e5;
   --color-background: #ffffff;
+  /* Green used only for the recreated Virgin Media notification banners */
+  --color-positive: #00703C;
+  /* Dark panel behind dark-only images (e.g. Priority theme) so they stay legible in light mode */
+  --color-panel-dark: #0F0E27;
 }
 
 .type-display,
@@ -108,6 +112,8 @@ html.dark {
   --color-placeholder: #282741;
   --color-chip: #282741;
   --color-background: #0F0E27;
+  --color-positive: #5FD08F;
+  --color-panel-dark: #282741;
   color-scheme: dark;
 }
 

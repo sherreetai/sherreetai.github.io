@@ -6,12 +6,16 @@ import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
 import CaseItem from '../../layouts/CaseItem.astro';
 import NextStepsDiagram from '../../layouts/NextStepsDiagram.astro';
 import ScrollableShot from '../../layouts/ScrollableShot.astro';
-import AcceptanceCriteria from '../../layouts/AcceptanceCriteria.astro';
+import UserTesting from '../../layouts/UserTesting.astro';
+import CroTest from '../../layouts/CroTest.astro';
+import ThemeSwitcher from '../../layouts/ThemeSwitcher.astro';
+import HomeComparison from '../../layouts/HomeComparison.astro';
 import PhoneSlider from '../../components/PhoneSlider.astro';
 import Media from '../../components/Media.astro';
 import CaseSection from '../../components/CaseSection.astro';
 import CasePlaceholder from '../../components/CasePlaceholder.astro';
 import CaseQuote from '../../components/CaseQuote.astro';
+import CaseStat from '../../components/CaseStat.astro';
 import BillingIADiagram from '../../components/BillingIADiagram.astro';
 
 export async function getStaticPaths() {
@@ -27,5 +31,5 @@ const { Content } = await render(entry);
 ---
 
 <CaseStudyLayout entry={entry} next={next}>
-  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseQuote, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, AcceptanceCriteria, PhoneSlider }} />
+  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseQuote, CaseStat, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, PhoneSlider, UserTesting, CroTest, ThemeSwitcher, HomeComparison }} />
 </CaseStudyLayout>

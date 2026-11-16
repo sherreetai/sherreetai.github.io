@@ -6,9 +6,10 @@ interface Props {
   card?: boolean;
   src?: string;
   darkSrc?: string;
+  alt?: string; // describe the image when it carries information (leave out for decorative images)
 }
 
-const { hero = false, wide = false, spacing = false, card = false, src, darkSrc } = Astro.props;
+const { hero = false, wide = false, spacing = false, card = false, src, darkSrc, alt = '' } = Astro.props;
 const placeholderClass = hero
   ? 'aspect-[2/1] min-h-64 max-h-[680px] w-full'
   : wide
@@ -30,8 +31,8 @@ const isVideo = src ? /\.(mp4|webm|mov)$/i.test(src) : false;
     <video src={src} controls playsinline class:list={[imageClass, card && 'object-cover', spacingClass, 'bg-placeholder']}></video>
   ) : (
     <figure data-case-image class:list={[spacingClass, 'group relative m-0']}>
-      <img src={src} alt="" loading="lazy" class:list={[imageClass, 'cursor-zoom-in', darkSrc && 'theme-image-light']} />
-      {darkSrc && <img src={darkSrc} alt="" loading="lazy" class:list={[imageClass, 'cursor-zoom-in', 'theme-image-dark']} />}
+      <img src={src} alt={alt} loading="lazy" class:list={[imageClass, 'cursor-zoom-in', darkSrc && 'theme-image-light']} />
+      {darkSrc && <img src={darkSrc} alt={alt} loading="lazy" class:list={[imageClass, 'cursor-zoom-in', 'theme-image-dark']} />}
       <button
         type="button"
         data-case-image-open
