@@ -2,11 +2,12 @@
 // Previous vs new app homepage, plus the O2 web view it now matches, side by side in one frame.
 // Desktop: 3:2 frame, so it lines up with the 3:2 image beside it. Mobile: a taller frame so the screens stay legible.
 // Expand (desktop) opens the three screens larger.
+// Screens have rounded corners (rounded-lg in the frame, rounded-xl when expanded).
 // Real text labels (not baked into the images) so they follow the site's colours and dark mode.
 // Screens live in /public/images/o2/ (cropped to the top of each page at a section break).
 const screens = [
   { label: 'Previous app', src: '/images/o2/O2-previous.png', width: 786, height: 2061, alt: 'Previous My O2 App homepage: a carousel of bill, device and SIM cards, usage for one line, an upgrade banner and offers.' },
-  { label: 'New app', src: '/images/o2/O2-new.png', width: 393, height: 1080, alt: 'Redesigned My O2 App homepage: a product selector at the top, then the bill, allowance and Buy Bolt Ons for that product, followed by quick links.' },
+  { label: 'New app', src: '/images/o2/O2-new.png', width: 786, height: 2161, alt: 'Redesigned My O2 App homepage: a product selector at the top, then the bill, allowance and Buy Bolt Ons for that product, followed by quick links.' },
   { label: 'O2 web', src: '/images/o2/O2-web.png', width: 786, height: 2087, alt: 'O2 web account page on mobile with the same product selector at the top, then latest bill, current bill and allowance.' },
 ];
 ---
@@ -16,7 +17,7 @@ const screens = [
     {screens.map((s) => (
       <div class="flex min-h-0 min-w-0 flex-col gap-2">
         <div class="relative min-h-0 flex-1">
-          <img src={s.src} alt={s.alt} width={s.width} height={s.height} loading="lazy" class="absolute inset-0 h-full w-full object-contain" />
+          <img src={s.src} alt={s.alt} width={s.width} height={s.height} loading="lazy" class="absolute top-0 left-1/2 h-full w-auto max-w-full -translate-x-1/2 rounded-lg object-contain" />
         </div>
         <span class="text-center text-xs font-bold text-ink sm:text-sm">{s.label}</span>
       </div>
@@ -40,7 +41,7 @@ const screens = [
       <div class="flex justify-center gap-6 rounded-lg bg-chip p-4">
         {screens.map((s) => (
           <div class="flex min-w-0 flex-col items-center gap-2">
-            <img src={s.src} alt="" loading="lazy" class="block h-auto max-h-[calc(95vh-9rem)] w-auto max-w-full" />
+            <img src={s.src} alt="" loading="lazy" class="block h-auto max-h-[calc(95vh-9rem)] w-auto max-w-full rounded-xl" />
             <span class="text-sm font-bold text-ink">{s.label}</span>
           </div>
         ))}
