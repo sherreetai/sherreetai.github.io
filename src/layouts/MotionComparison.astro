@@ -1,6 +1,6 @@
 ---
 // "Simple motion design": the previous static move steps next to the new carousel with motion.
-// Same layout as MoversHierarchy ("Restructured homepage"): visuals 7/12, copy 5/12, copy top-aligned.
+// Same layout as every two-column case study section: copy on the left, visuals on the right, 50/50.
 // Before and After sit side by side in one grey frame at their natural shapes.
 // Before takes about a third of the width so the After video gets more room.
 import VideoPlayer from '../components/VideoPlayer.astro';
@@ -11,8 +11,8 @@ const screens = [
 ];
 ---
 
-<div class="grid grid-cols-1 items-start gap-8 md:col-span-full md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:gap-12">
-  <figure class="m-0">
+<div class="grid grid-cols-1 items-start gap-8 md:col-span-full md:grid-cols-2 md:gap-x-8">
+  <figure class="m-0 order-2">
     <!-- Before and After side by side; the frame fills its column, so it matches the Restructured homepage frame width -->
     <div class="flex w-full items-start justify-center gap-5 rounded-lg bg-chip p-4 md:gap-8 md:p-8">
       {screens.map((s) => (
@@ -23,17 +23,17 @@ const screens = [
             <span class="text-xs whitespace-nowrap text-muted">{s.note}</span>
           </div>
           {s.label === 'Before' ? (
-            <img src="/images/vm-home-movers/static-motion.png" alt="Previous move steps: three numbered steps stacked down the page as plain text." width="866" height="1059" loading="lazy" class="block h-auto w-full rounded-md bg-background shadow-sm" />
+            <img src="/images/vm-home-movers/static-motion.png" alt="Previous move steps: three numbered steps stacked down the page as plain text." width="866" height="1059" loading="lazy" class="block h-auto w-full rounded-lg bg-background shadow-sm" />
           ) : (
-            <VideoPlayer src="/images/vm-home-movers/motion.mp4" label="New move steps: a carousel card with an animated icon for each step." class="block h-auto w-full rounded-md bg-background shadow-sm" />
+            <VideoPlayer src="/images/vm-home-movers/motion.mp4" label="New move steps: a carousel card with an animated icon for each step." class="block h-auto w-full rounded-lg bg-background shadow-sm" />
           )}
         </div>
       ))}
     </div>
   </figure>
 
-  <div class="md:sticky md:top-28">
-    <h3 class="mb-1 text-base font-bold text-accent uppercase">Simple motion design</h3>
+  <div class="order-1 md:sticky md:top-28">
+    <h3 class="type-label mb-2 text-accent">Simple motion design</h3>
     <p>I introduced a carousel and simple motion to make key moments more engaging and break up a long, static page, while keeping the information customers needed within reach.</p>
   </div>
 </div>

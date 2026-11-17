@@ -2,7 +2,7 @@
 // Previous vs new app homepage, plus the O2 web view it now matches, side by side in one frame.
 // Desktop: 3:2 frame, so it lines up with the 3:2 image beside it. Mobile: a taller frame so the screens stay legible.
 // Expand (desktop) opens the three screens larger.
-// Screens have rounded corners (rounded-lg in the frame, rounded-xl when expanded).
+// Screens have rounded corners (rounded-lg, the same 8px used across the case studies).
 // Real text labels (not baked into the images) so they follow the site's colours and dark mode.
 // Screens live in /public/images/o2/ (cropped to the top of each page at a section break).
 const screens = [
@@ -33,15 +33,15 @@ const screens = [
   >
     Expand
   </button>
-  <dialog data-hc-dialog aria-label="Expanded homepage comparison" class="m-auto w-[min(96vw,1100px)] max-w-none rounded-xl bg-transparent p-0 backdrop:bg-black/80">
-    <div class="rounded-xl bg-background p-3">
+  <dialog data-hc-dialog aria-label="Expanded homepage comparison" class="m-auto w-[min(96vw,1100px)] max-w-none rounded-lg bg-transparent p-0 backdrop:bg-black/80">
+    <div class="rounded-lg bg-background p-3">
       <div class="mb-3 flex justify-end">
         <button type="button" data-hc-close class="action-secondary rounded-full border px-4 py-1.5 text-sm">Close</button>
       </div>
       <div class="flex justify-center gap-6 rounded-lg bg-chip p-4">
         {screens.map((s) => (
           <div class="flex min-w-0 flex-col items-center gap-2">
-            <img src={s.src} alt="" loading="lazy" class="block h-auto max-h-[calc(95vh-9rem)] w-auto max-w-full rounded-xl" />
+            <img src={s.src} alt="" loading="lazy" class="block h-auto max-h-[calc(95vh-9rem)] w-auto max-w-full rounded-lg" />
             <span class="text-sm font-bold text-ink">{s.label}</span>
           </div>
         ))}

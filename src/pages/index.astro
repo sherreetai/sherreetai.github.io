@@ -1,33 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
-import ValuePoints from '../components/ValuePoints.astro';
 import { EMAIL, LINKEDIN } from '../site';
 ---
 
 <BaseLayout>
-  <section class="mx-auto max-w-[1088px] px-6 pt-12 pb-16 md:pt-14 md:pb-16">
+  <!-- Hero: name, subheadline, description and the two buttons -->
+  <section class="mx-auto max-w-[1088px] px-6 pt-12 pb-16 md:pt-20 md:pb-24">
     <div data-reveal>
-      <h1 class="type-display max-w-[700px] max-md:text-[1.75rem]!">
-        <span class="block text-accent">I’m Sher Ree.</span>
-        <span class="block">
-          A product designer focused<br class="hidden md:block" />{' '}
-          on turning messy logic into<br class="hidden md:block" />{' '}
-          seamless journeys.
-        </span>
-      </h1>
-      <div class="mt-6 flex flex-wrap gap-3">
+      <h1 class="text-[44px] leading-[1] font-bold tracking-[-0.035em] text-accent md:text-[80px]">I’m Sher Ree.</h1>
+
+      <p class="mt-2 max-w-[22em] text-[24px] leading-snug font-bold tracking-tight text-ink md:mt-3 md:text-[32px]">
+        A product designer turning messy logic into seamless journeys.
+      </p>
+
+      <p class="mt-5 max-w-[34em] text-base leading-relaxed text-muted md:mt-6 md:text-lg">
+        I design the app and web experiences <b class="font-semibold text-ink">Virgin Media O2</b> customers use every day, from sorting out their account to picking a new plan. I start with what people really do, make complex things simple and build within our design systems so good work scales.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
         <a href={EMAIL} class="action-primary rounded-lg border-2 px-3 py-2 text-sm">Email me →</a>
         <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" class="action-secondary rounded-lg border-2 px-3 py-2 text-sm">Let’s connect on LinkedIn</a>
       </div>
-
-      <hr class="mt-6 border-0 border-t border-ink/20 md:mt-7" />
-
-      <p class="type-body-large mt-5 font-semibold">
-        I design app and web experiences at Virgin Media O2, from account navigation to purchase journeys.
-      </p>
-
-      <ValuePoints />
     </div>
   </section>
 

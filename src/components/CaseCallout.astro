@@ -1,0 +1,16 @@
+---
+// A rounded box for complementary content, e.g. an outcome or a key quote.
+// Small uppercase label in the accent colour, then the statement in the secondary font (Space Grotesk).
+//
+// Usage in MDX:
+//   <CaseCallout label="Outcome">The redesigned homepage is shorter and clearer.</CaseCallout>
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+
+<div class="rounded-lg border border-line bg-background p-6 md:p-10">
+  <span class="type-label mb-3.5 block text-accent">{label}</span>
+  <p class="m-0 font-accent text-[20px] leading-snug tracking-tight text-ink md:text-[24px]"><slot /></p>
+</div>

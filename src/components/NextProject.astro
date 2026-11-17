@@ -1,22 +1,24 @@
 ---
-// The "Next project →" link at the end of each case study.
+// The "Next case study" link at the end of each case study.
+// A full-width band: small label, then the next project's title set large with an arrow that slides
+// right on hover/keyboard focus. The arrow sits after the title on desktop and below it on mobile.
 interface Props {
   href: string;
   title: string;
-  image: string;
+  label?: string; // the small label above the title
 }
-const { href, title, image } = Astro.props;
+const { href, title, label = 'Next case study' } = Astro.props;
 ---
 
-<section class="border-t border-line px-6 py-12">
-  <a href={href} class="group mx-auto flex w-fit items-center gap-4" data-reveal>
-    <span class="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-placeholder">
-      <img src={image} alt="" loading="lazy" class="h-full w-full object-cover" />
-    </span>
-    <span>
-      <span class="block text-base font-semibold text-ink">Next case study →</span>
-      <!-- Title underlines on hover/keyboard focus, like the header's About link -->
-      <span class="type-card-title mt-1 block text-ink underline-offset-4 group-hover:underline group-focus-visible:underline">{title}</span>
+<section class="border-t border-line px-6">
+  <a href={href} class="group mx-auto block max-w-[1088px] py-16 md:py-24" data-reveal>
+    <span class="type-label block text-accent">{label}</span>
+    <!-- Mobile: arrow below the title. Desktop: arrow inline after the title (sized to the text) -->
+    <span class="mt-4 block text-[28px] leading-[1.1] font-bold tracking-tight text-ink md:flex md:flex-wrap md:items-center md:gap-x-5 md:gap-y-2 md:text-[48px]">
+      <span>{title}</span>
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" class="mt-6 block size-10 shrink-0 text-ink transition-transform duration-500 group-hover:translate-x-3 group-focus-visible:translate-x-3 motion-reduce:transition-none md:mt-0 md:size-[0.6em]">
+        <path d="M6 24h36M28 10l14 14-14 14" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
     </span>
   </a>
 </section>

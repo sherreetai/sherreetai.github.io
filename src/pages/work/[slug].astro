@@ -17,6 +17,7 @@ import Media from '../../components/Media.astro';
 import CaseSection from '../../components/CaseSection.astro';
 import CasePlaceholder from '../../components/CasePlaceholder.astro';
 import CaseStat from '../../components/CaseStat.astro';
+import CaseCallout from '../../components/CaseCallout.astro';
 import BillingIADiagram from '../../components/BillingIADiagram.astro';
 
 export async function getStaticPaths() {
@@ -32,5 +33,5 @@ const { Content } = await render(entry);
 ---
 
 <CaseStudyLayout entry={entry} next={next}>
-  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseStat, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, PhoneSlider, UserTesting, CroTest, ThemeSwitcher, HomeComparison, MoversHierarchy, MotionComparison }} />
+  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseStat, CaseCallout, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, PhoneSlider, UserTesting, CroTest, ThemeSwitcher, HomeComparison, MoversHierarchy, MotionComparison }} />
 </CaseStudyLayout>

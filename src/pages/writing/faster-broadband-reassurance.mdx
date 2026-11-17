@@ -1,0 +1,128 @@
+---
+layout: ../../layouts/PostLayout.astro
+title: Telling movers about faster broadband without getting in the way
+dek: Two rounds of user testing on how to tell customers moving home that faster broadband is available at their new address, without pulling them away from booking their move.
+readingTime: 6 min read
+caseStudy:
+  href: /work/vm-home-movers-journey/
+  title: Virgin Media Home Movers
+---
+
+import PostFigure from '../../components/PostFigure.astro';
+
+## The problem
+
+When Virgin Media customers move home, they start on the Movers journey. They enter their new postcode and, if Virgin Media is available there, land on a page confirming the good news and explaining how to book their move.
+
+At many new addresses, faster broadband is available than the package the customer has today. That's useful to know and it's an opportunity for the business. But there's a catch: customers can't change their package inside the Movers journey. Upgrades only happen once the move is complete.
+
+So the question was how to tell customers about faster broadband in a way that:
+
+- gets noticed,
+- is clear about what's on offer,
+- doesn't suggest they need to change anything to complete their move.
+
+## Round 1: three ways to say it
+
+I designed three treatments for the confirmation page. Each one sat in a different place in the page hierarchy and carried a different amount of detail.
+
+<PostFigure
+  src="/images/vm-home-movers/findings/round1-option-a.webp"
+  width={1400}
+  height={552}
+  alt="Option A: Great news – Virgin Media is available! A solid green banner across the top of the address card reads “Up to 4x faster broadband available”."
+  caption="Option A, green box: a solid green banner across the top of the address card with a short, quantified message."
+/>
+
+<PostFigure
+  src="/images/vm-home-movers/findings/round1-option-b.webp"
+  width={1400}
+  height={552}
+  alt="Option B: an outlined green box with a tick above the address card reads “Up to 4x faster broadband available”, followed by a line explaining the new address can support faster speeds and that customers can learn more once the move is complete."
+  caption="Option B, box with tick: an outlined box above the address card that adds a line of context about the new address and when to find out more."
+/>
+
+<PostFigure
+  src="/images/vm-home-movers/findings/round1-option-c.webp"
+  width={1400}
+  height={552}
+  alt="Option C: inside the address card, a line of green text with a lightning bolt reads “Faster broadband than your current package available at this address”."
+  caption="Option C, lightning bolt: a lighter treatment, with green text sitting in the list of move benefits."
+/>
+
+I tested them in an unmoderated questionnaire with 91 participants. Each person saw all three options and answered questions about what stood out, what the message meant, how useful it was and where they would click if they wanted faster speeds. They then picked the one they preferred.
+
+## What Round 1 told us
+
+| | A: Green box | B: Box + tick | C: Lightning bolt |
+|---|---|---|---|
+| Noticeability | **224** | 186 | 124 |
+| Clarity | 201 | **214** | 119 |
+| Usefulness | **205** | 199 | 130 |
+| Final choice | **47%** | **47%** | 5% |
+
+The scores combine every participant's rankings, so higher is better.
+
+The headline was clear: **86 of 91 participants (94%) chose a boxed green notification.** Between the two boxes there was a trade-off.
+
+- **A was the most noticeable.** The solid green block stood out and "up to 4x faster" was often recalled without prompting. A specific number gave people something concrete to hold on to.
+- **B was the clearest.** The extra line of context felt informative and reassuring, though some found it wordy for this stage of the move.
+- **C was easy to miss.** People understood faster broadband was available but not by how much. Several asked for a number.
+
+One finding worried me more than the scores. When asked how they would upgrade, people split between "Change package" and the main "Book move" button. The message was working, but it was also creating an expectation that they could, or should, act on it straight away.
+
+**The decision:** take A forward as the base, borrow B's context and say plainly that upgrades happen after the move.
+
+## Round 2: one refined banner
+
+The refined banner kept A's solid green style and the quantified benefit, then added the timing to the same line.
+
+<PostFigure
+  src="/images/vm-home-movers/findings/round2-refined.webp"
+  width={1400}
+  height={552}
+  alt="Refined banner across the top of the address card: “Up to 4x faster broadband at new address – you can upgrade once you’ve moved”."
+  caption="The refined banner: Option A's style with Option B's context, stating that upgrades happen once you've moved."
+/>
+
+I tested it with 82 participants, focusing on whether the page still did its main job and whether people knew what to do next.
+
+- **The main message held.** Most people read the page as "Virgin Media is available at my new address". The speed message hadn't taken over.
+- **Upgrading read as optional.** Many said no package change was needed to complete the move.
+- **Next steps were clear.** Next-step clarity averaged **5.27 out of 7**, with **79%** rating it 5 to 7.
+
+One gap remained: **timing**. Alongside correct "after the move" answers, people said the upgrade would happen "now", "immediately", "when you book it" or "in 3 days". The nearby "Change package" link and a separate activation message were likely blurring moving, installation and upgrading together.
+
+When asked what they'd do if faster speeds sounded interesting, answers scattered: change package, ask in chat, check prices, contact Virgin Media, carry on or wait.
+
+## What went into CRO testing
+
+The last changes targeted that timing gap directly.
+
+- The banner now says **"explore upgrade options after your move"**, so the timing is part of the message itself.
+- The link under the address changed from "Change package" to **"Change address"**, removing the most common wrong turn from Round 1.
+- Customers who can't get 4x faster speeds see a version without the number, so the claim is always true for them.
+
+<PostFigure
+  src="/images/vm-home-movers/findings/cro-4x.webp"
+  width={1400}
+  height={714}
+  alt="CRO version for customers who can get 4x faster speeds: banner reads “Up to 4x faster broadband at new address – explore upgrade options after your move”, with a Change address link."
+  caption="CRO version for customers who can get up to 4x faster speeds."
+/>
+
+<PostFigure
+  src="/images/vm-home-movers/findings/cro-not-4x.webp"
+  width={1400}
+  height={714}
+  alt="CRO version for customers who can't get 4x faster speeds: banner reads “Faster broadband speeds at new address – explore upgrade options after your move”."
+  caption="CRO version for customers who can get faster speeds, but not 4x."
+/>
+
+The A/B test measures Movers completion and drop-off: what customers actually do, rather than what they say they prefer.
+
+## What I'd take away
+
+- **Preference isn't behaviour.** Both rounds were questionnaires. They showed which design people understood and liked, not whether it changes completion or upgrades. That's why the final step is a live test.
+- **Specific beats vague.** "Up to 4x faster" was remembered, while "faster broadband" wasn't. A concrete benefit did more work than a bigger visual.
+- **Timing words matter as much as the offer.** The hardest problem wasn't getting noticed. It was making sure noticing didn't send people the wrong way. The fix was mostly copy plus one link label.

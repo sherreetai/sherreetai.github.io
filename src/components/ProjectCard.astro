@@ -1,5 +1,5 @@
 ---
-// One project card: cover image, title and summary. Used by ProjectGrid.
+// One project card: cover image, title, summary and a "View case study" link. Used by ProjectGrid.
 interface Props {
   href: string;
   title: string;
@@ -20,5 +20,13 @@ const coverIsVideo = /\.(mp4|webm|mov)$/i.test(coverImage);
     )}
   </div>
   <h3 class="type-card-title mt-4">{title}</h3>
-  <p class="type-body mt-2 text-ink">{summary}</p>
+  <!-- Same style as the home page description -->
+  <p class="mt-2 text-base leading-relaxed text-muted md:text-lg">{summary}</p>
+  <!-- "View case study": the whole card is the link, so this is styled text (underline draws in and the arrow slides on hover) -->
+  <span class="mt-5 inline-flex items-center gap-2 text-[15px] font-medium text-ink">
+    <span class="link-underline">View case study</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </span>
 </a>

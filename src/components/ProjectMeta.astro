@@ -20,11 +20,11 @@ interface Props {
 const { items, ariaLabel = 'Project details' } = Astro.props;
 ---
 
-<dl aria-label={ariaLabel} class="m-0 border-t-2 border-accent">
+<dl aria-label={ariaLabel} class="m-0">
   {items.map(({ label, values, note, separator = ', ' }) => (
     <div class="grid gap-1 border-b border-line py-3 last:border-b-0 md:grid-cols-[9rem_minmax(0,1fr)] md:items-baseline md:gap-6 md:py-4">
-      <dt class="m-0 text-base font-bold text-accent uppercase">{label}</dt>
-      <dd class="type-body m-0">
+      <dt class="type-label m-0 text-accent">{label}</dt>
+      <dd class="m-0 text-sm leading-relaxed">
         {values.join(separator)}
         {note && (
           <>

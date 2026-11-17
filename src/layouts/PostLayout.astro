@@ -1,0 +1,32 @@
+---
+// Blog post page. Used as the layout for .mdx files in src/pages/writing/.
+// The post's settings (title, dek, readingTime, caseStudy) come from the top of the .mdx file.
+// The body is plain Markdown; its look comes from .post-body in global.css.
+import BaseLayout from './BaseLayout.astro';
+import NextProject from '../components/NextProject.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    dek: string;
+    readingTime: string;
+    caseStudy?: { href: string; title: string };
+  };
+}
+const { title, dek, readingTime, caseStudy } = Astro.props.frontmatter;
+---
+
+<BaseLayout title={title} description={dek}>
+  <section class="mx-auto max-w-[640px] px-6 pt-14 pb-4 md:pt-16" data-reveal>
+    <p class="type-label m-0 text-accent">Findings</p>
+    <h1 class="type-page-title mt-3">{title}</h1>
+    <p class="mt-5 text-lg leading-relaxed text-muted">{dek}</p>
+    <p class="mt-6 text-sm text-muted">{readingTime}</p>
+  </section>
+
+  <article class="case-body post-body mx-auto max-w-[640px] px-6 pb-16 md:pb-20">
+    <slot />
+  </article>
+
+  {caseStudy && <NextProject href={caseStudy.href} title={caseStudy.title} label="Read the case study" />}
+</BaseLayout>

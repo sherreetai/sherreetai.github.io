@@ -6,7 +6,7 @@ A static portfolio site: Astro 7 + Tailwind CSS v4 + MDX, deployed to GitHub Pag
 - `src/content/work/*.mdx`: one file per case study. Frontmatter is validated by `src/content.config.ts`. These files are the single source of truth for both the project cards and the case study pages.
 - `src/components/ProjectGrid.astro` + `ProjectCard.astro`: the card grid used on both Home (`src/pages/index.astro`) and Work (`src/pages/work.astro`). Never duplicate card markup in a page; change the component.
 - `src/pages/work/[slug].astro` → `src/layouts/CaseStudyLayout.astro`: the case study template. "Next project" follows `order` and wraps around.
-- `src/layouts/BaseLayout.astro`: `<head>`, header, footer (`fullFooter` prop), and the scroll pop-in script.
+- `src/layouts/BaseLayout.astro`: `<head>`, header (`Header.astro`, sticky bar: logo, About, Work, light/dark toggle), footer (`Footer.astro`, dark contact band) and the scroll pop-in script.
 - `src/site.ts`: email and LinkedIn URLs.
 - `src/styles/global.css`: Tailwind import, `@theme` design tokens (`ink`, `accent`, `muted`, `line`, Inter), case study body styles (`.case-body`), and the pop-in CSS.
 

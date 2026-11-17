@@ -1,0 +1,17 @@
+---
+// An image with a caption, for blog posts. Rounded 8px frame with a thin border, caption underneath in grey.
+// Usage in a post: <PostFigure src="/images/..." alt="What the image shows" caption="What to notice." />
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  width?: number;
+  height?: number;
+}
+const { src, alt, caption, width, height } = Astro.props;
+---
+
+<figure class="my-8 m-0">
+  <img src={src} alt={alt} width={width} height={height} loading="lazy" class="block h-auto w-full rounded-lg border border-line bg-background" />
+  {caption && <figcaption class="mt-3 text-sm leading-relaxed text-muted">{caption}</figcaption>}
+</figure>

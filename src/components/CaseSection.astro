@@ -9,17 +9,17 @@ interface Props {
 
 const { number, title, layout = 'narrow', narrowTitle = false } = Astro.props;
 const contentClass = layout === 'three-column'
-  ? 'grid grid-cols-1 gap-8 md:grid-cols-3' // stacked on phones, three across from 768px (no 2+1 in-between step)
+  ? 'grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-3 md:gap-y-12' // stacked on phones, three across from 768px (no 2+1 in-between step)
   : layout === 'two-column'
-    ? 'grid grid-cols-1 gap-8 md:grid-cols-2'
+    ? 'grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 md:gap-y-12'
     : '[&_p+p]:mt-4';
 const sectionWidth = layout === 'narrow' ? 'mx-auto max-w-[640px]' : 'mx-auto max-w-[1088px]';
 ---
 
 <section class="border-t border-line px-6 py-10 md:py-14">
   <div class={sectionWidth}>
-    <h2 class:list={['type-section-title mb-5 md:mb-6', narrowTitle && 'mx-auto max-w-[640px]']}><span class="mr-2 text-accent">{number}</span> {title}</h2>
-    <div class={`type-body ${contentClass}`}>
+    <h2 class:list={['type-section-title case-section-title mb-5 md:mb-6', narrowTitle && 'mx-auto max-w-[640px]']}><span class="mr-2 text-accent">{number}</span> {title}</h2>
+    <div class={`type-case-body ${contentClass}`}>
       <slot />
     </div>
   </div>
