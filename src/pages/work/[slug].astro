@@ -11,6 +11,7 @@ import CroTest from '../../layouts/CroTest.astro';
 import ThemeSwitcher from '../../layouts/ThemeSwitcher.astro';
 import HomeComparison from '../../layouts/HomeComparison.astro';
 import MoversHierarchy from '../../layouts/MoversHierarchy.astro';
+import MoversResearch from '../../layouts/MoversResearch.astro';
 import MotionComparison from '../../layouts/MotionComparison.astro';
 import PhoneSlider from '../../components/PhoneSlider.astro';
 import ProductCardRange from '../../components/ProductCardRange.astro';
@@ -34,5 +35,5 @@ const { Content } = await render(entry);
 ---
 
 <CaseStudyLayout entry={entry} next={next}>
-  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseStat, CaseCallout, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, PhoneSlider, ProductCardRange, UserTesting, CroTest, ThemeSwitcher, HomeComparison, MoversHierarchy, MotionComparison }} />
+  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseStat, CaseCallout, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, PhoneSlider, ProductCardRange, UserTesting, CroTest, ThemeSwitcher, HomeComparison, MoversHierarchy, MoversResearch, MotionComparison }} />
 </CaseStudyLayout>

@@ -12,22 +12,24 @@ platform:
   - My O2 App
 platformNote: iOS and Android
 outcome: Product re-selection cut from 6 steps to 3 across the redesigned tariff-change and Bolt-On journeys, with a product-led homepage that matches O2 web.
-brief: "Customers faced unnecessary friction when switching between products and accounts, and different rules for finance agreements, companion devices and SIM Free Finance meant there wasn’t a single product hierarchy. I needed to design a more intuitive, product-led navigation experience that still worked within the existing account and billing structure."
+brief: "Customers faced unnecessary friction when switching between products and accounts. Different rules for finance agreements, companion devices and phone-only finance meant there wasn’t a single product hierarchy. I needed to design a more intuitive, product-led navigation experience that still worked within the existing account and billing structure."
 ---
 
 <CaseSection number="02" title="Finding the friction" layout="two-column">
-  <CaseItem title="Four inputs → one IA">
-    <p><strong>Existing app and customer behaviour:</strong> Multiple accounts, multi-line switching, confusing account / product relationships. Customer testing also showed people going directly to Account looking for detailed usage, while extras were described as confusing.</p>
-    <p><strong>Web and existing design patterns:</strong> Current O2 web billing, itemised billing and existing multi-MSISDN patterns.</p>
-    <p><strong>Backend and billing rules:</strong> Billing-account level data, Netcracker rules, CCA / finance agreements, SIM only / standard plans and companion-device relationships.</p>
-    <p><strong>API edge cases:</strong> Unavailable account names, closed accounts, incomplete adjustment-charge taxonomy and data-return limitations.</p>
+  <CaseItem title="Four inputs → one structure">
+    <p><strong>App behaviour:</strong> Customers juggled multiple accounts and lines. In testing they went to Account looking for usage.</p>
+    <p><strong>Web patterns:</strong> O2 web billing, itemised bills and multi-line patterns.</p>
+    <p><strong>Billing rules:</strong> Account-level data, finance agreements and companion devices.</p>
+    <p><strong>API edge cases:</strong> Closed accounts, missing account names and incomplete charge data.</p>
   </CaseItem>
-  <CaseItem title="Research">
-    <p>Discovery sessions with billing, backend engineering, frontline retail and product owners to understand how accounts, products and billing fit together.</p>
-    <CaseItem title="Key insight">
-      <p>The app had no shared map of its own logic so customers were being asked to navigate rules nobody had written down.</p>
+  <div class="space-y-8">
+    <CaseItem title="Research">
+      <p>Discovery sessions with billing, engineering, retail and product owners mapped how accounts, products and billing fit together.</p>
     </CaseItem>
-  </CaseItem>
+    <CaseItem title="Key insight">
+      <p>The app had no shared map of its own logic, so customers were navigating rules nobody had written down.</p>
+    </CaseItem>
+  </div>
 </CaseSection>
 
 <CaseSection number="03" title="Exploring options">

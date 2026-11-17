@@ -1,0 +1,87 @@
+---
+// "Analysing where and why customers were dropping out": a simple summary of the research, instead of the
+// six original research boards. Reads top to bottom: the four sources, the three findings they agreed on
+// (each tagged with the sources behind it), then what the findings led to.
+// The original boards are kept in screenshots/home-movers-research/ (not published).
+
+const sources = [
+  { name: 'Contentsquare', note: 'Behaviour' },
+  { name: 'Tableau', note: 'Funnel' },
+  { name: 'Google Analytics', note: 'Journey' },
+  { name: 'User feedback', note: 'Interviews' },
+];
+
+const findings = [
+  {
+    stat: '45%',
+    title: 'Most visitors never get past the top of the page',
+    text: 'Only 45% of sessions entered a postcode. On mobile, people stayed 47 seconds and scrolled 46% of the page.',
+    from: ['Contentsquare', 'Tableau', 'Google Analytics'],
+  },
+  {
+    stat: '3.4%',
+    title: 'Most visitors are still deciding, not booking',
+    text: 'Only 3.4% of logged-in visitors had a confirmed move. The top FAQ was “Can I cancel if I move house?”.',
+    from: ['Tableau', 'Contentsquare'],
+  },
+  {
+    stat: '“Lengthy”',
+    title: 'The page felt long and static',
+    text: 'Customers said they wanted reassurance and clear next steps sooner, without reading the whole page.',
+    from: ['User feedback'],
+  },
+];
+
+const ledTo = ['Shorter mobile layout', 'Clearer serviceability results', 'Logged-in personalisation'];
+
+const heading = 'm-0 text-[13px] leading-snug font-semibold tracking-[0.08em] text-muted uppercase';
+const tag = 'inline-flex items-center rounded-full border border-line bg-background px-2 py-0.5 text-xs leading-tight text-muted';
+const arrow = 'mx-auto my-3 block text-muted';
+---
+
+<!-- Phones: tighter padding and slightly smaller numbers; everything wraps rather than squeezing -->
+<figure class="m-0 rounded-lg bg-chip p-4 sm:p-6" aria-label="Research summary: four sources, three shared findings and what they led to">
+  <!-- 1. Sources -->
+  <p class={heading}>4 sources</p>
+  <!-- Phones: tiles size to their name and wrap onto new lines. From 640px up: two even columns -->
+  <ul class="m-0 mt-3 flex list-none flex-wrap gap-2 p-0 sm:grid sm:grid-cols-2">
+    {sources.map((s) => (
+      <li class="m-0 rounded-lg bg-background px-3 py-2">
+        <span class="block text-sm leading-snug font-semibold text-ink">{s.name}</span>
+        <span class="block text-xs leading-snug text-muted">{s.note}</span>
+      </li>
+    ))}
+  </ul>
+
+  <svg class={arrow} width="16" height="20" viewBox="0 0 16 20" fill="none" aria-hidden="true">
+    <path d="M8 2v15M3 12l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+
+  <!-- 2. Findings -->
+  <p class={heading}>What they agreed on</p>
+  <ol class="m-0 mt-3 list-none space-y-2 p-0">
+    {findings.map((f) => (
+      <li class="m-0 rounded-lg bg-background p-3 sm:p-4">
+        <p class="m-0 font-accent text-[20px] leading-none font-bold tracking-tight text-accent sm:text-[24px]">{f.stat}</p>
+        <p class="m-0 mt-2 text-sm leading-snug font-semibold text-ink">{f.title}</p>
+        <p class="m-0 mt-1 text-sm leading-relaxed text-muted">{f.text}</p>
+        <p class="m-0 mt-3 flex flex-wrap gap-1.5">
+          <span class="sr-only">Sources:</span>
+          {f.from.map((name) => <span class={tag}>{name}</span>)}
+        </p>
+      </li>
+    ))}
+  </ol>
+
+  <svg class={arrow} width="16" height="20" viewBox="0 0 16 20" fill="none" aria-hidden="true">
+    <path d="M8 2v15M3 12l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+
+  <!-- 3. What it led to -->
+  <p class={heading}>Led to</p>
+  <ul class="m-0 mt-3 flex list-none flex-wrap gap-2 p-0">
+    {ledTo.map((item) => (
+      <li class="m-0 rounded-lg bg-accent px-3 py-1.5 text-sm leading-tight font-semibold text-background">{item}</li>
+    ))}
+  </ul>
+</figure>
