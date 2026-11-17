@@ -9,6 +9,7 @@ import ThemeSwitcher from '../../layouts/ThemeSwitcher.astro';
 import HomeComparison from '../../layouts/HomeComparison.astro';
 import MoversHierarchy from '../../layouts/MoversHierarchy.astro';
 import MoversResearch from '../../layouts/MoversResearch.astro';
+import BoltOnSteps from '../../layouts/BoltOnSteps.astro';
 import MotionComparison from '../../layouts/MotionComparison.astro';
 import ProductCardRange from '../../components/ProductCardRange.astro';
 import Media from '../../components/Media.astro';
@@ -30,5 +31,5 @@ const { Content } = await render(entry);
 ---
 
 <CaseStudyLayout entry={entry} next={next}>
-  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseCallout, Media, BillingIADiagram, ScrollableShot, ProductCardRange, ThemeSwitcher, HomeComparison, MoversHierarchy, MoversResearch, MotionComparison }} />
+  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseCallout, Media, BillingIADiagram, ScrollableShot, ProductCardRange, ThemeSwitcher, HomeComparison, MoversHierarchy, MoversResearch, MotionComparison, BoltOnSteps }} />
 </CaseStudyLayout>

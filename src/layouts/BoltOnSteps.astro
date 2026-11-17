@@ -1,0 +1,112 @@
+---
+// "No re-selection": the Buy Bolt-Ons journey before (5 steps) and after (2 steps).
+// Both rows use the SAME screen size and the After row is centred under a down arrow,
+// so the shorter journey is visible at a glance.
+// Annotations carry no copy: each step is a numbered marker where it happens (a ring around what's
+// tapped, or an arrow for a scroll or swipe). The end screen gets a tick. A small legend and a
+// screen-reader description sit outside the images.
+//
+// Marker positions are percentages of each screen (409 × 841). If a screen changes, re-measure them.
+// Images: /public/images/o2/steps/ (screenshots 1–6 and V1–V3, cropped to the screen edge).
+
+type Step = { n: number; kind: 'tap' | 'scroll' | 'swipe'; x: number; y: number; w?: number; h?: number };
+type Screen = { src: string; step?: Step; end?: boolean };
+
+const before: Screen[] = [
+  { src: 'before-1', step: { n: 1, kind: 'scroll', x: 50, y: 73 } },
+  { src: 'before-2', step: { n: 2, kind: 'swipe', x: 79.5, y: 31 } },
+  { src: 'before-3', step: { n: 3, kind: 'tap', x: 54.3, y: 20.3, w: 44, h: 21 } },
+  { src: 'before-4', step: { n: 4, kind: 'tap', x: 2.3, y: 38.7, w: 95.4, h: 14.4 } },
+  { src: 'before-5', step: { n: 5, kind: 'tap', x: 2.8, y: 83.3, w: 94.4, h: 8.6 } },
+  { src: 'before-6', end: true },
+];
+const after: Screen[] = [
+  { src: 'after-1', step: { n: 1, kind: 'scroll', x: 50, y: 73 } },
+  { src: 'after-2', step: { n: 2, kind: 'tap', x: 2.8, y: 86.6, w: 94.4, h: 7.6 } },
+  { src: 'after-3', end: true },
+];
+const rows = [
+  {
+    label: 'Before',
+    note: '5 steps',
+    screens: before,
+    description: 'Before, 5 steps: 1, scroll the homepage. 2, swipe the quick actions. 3, tap Buy Bolt-Ons. 4, choose the product again. 5, tap Add Bolt-On. Then the Bolt-Ons page opens.',
+  },
+  {
+    label: 'After',
+    note: '2 steps',
+    screens: after,
+    description: 'After, 2 steps: 1, scroll the homepage to Quick links. 2, tap Buy Bolt-Ons. Then the Bolt-Ons page opens, already set to the selected product.',
+  },
+];
+
+// A down arrow sits between the rows (all screen sizes).
+// Every screen is one third of the row (minus gaps), in both rows, so they stay the same size.
+// It sits in the single centred column, so Before wraps onto two rows of 3 and After is one row of 3.
+const screenWidth = 'w-[calc((100%-2*0.75rem)/3)] md:w-[calc((100%-2*1rem)/3)]';
+const badge = 'inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-accent text-xs leading-none font-bold text-background shadow';
+const arrowDown = 'M7 2v10M4 9l3 3 3-3';
+const arrowLeft = 'M12 7H2M5 4 2 7l3 3';
+---
+
+<figure class="media-panel m-0 rounded-lg p-4 md:p-8">
+  {rows.map((row, r) => (
+    <div>
+      <p class="sr-only">{row.description}</p>
+
+      {r === 1 && (
+        <div aria-hidden="true">
+          <svg class="mx-auto my-3 block text-accent md:my-4" width="16" height="20" viewBox="0 0 16 20" fill="none">
+            <path d="M8 2v15M3 12l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      )}
+
+      <!-- Label on one line, note on the next (same as the Home Movers before/after) -->
+      <div class:list={['mb-3 flex flex-col text-sm', r === 1 && 'items-center text-center', ]} aria-hidden="true">
+        <span class="font-bold text-ink">{row.label}</span>
+        <span class="text-xs text-muted">{row.note}</span>
+      </div>
+
+      <ol class:list={['m-0 flex list-none flex-wrap gap-3 p-0 md:gap-4', r === 1 && 'justify-center']} aria-hidden="true">
+        {row.screens.map((s) => (
+          <li class={`relative m-0 shrink-0 p-0 ${screenWidth}`}>
+            <img src={`/images/o2/steps/${s.src}.webp`} alt="" width="409" height="841" loading="lazy" class="block h-auto w-full rounded-lg border border-line bg-background" />
+            {s.step && s.step.kind === 'tap' && (
+              <div class="absolute rounded-md border-2 border-accent bg-accent/15" style={`left:${s.step.x}%;top:${s.step.y}%;width:${s.step.w}%;height:${s.step.h}%`}>
+                <span class={`${badge} absolute -top-3 -left-3`}>{s.step.n}</span>
+              </div>
+            )}
+            {s.step && s.step.kind !== 'tap' && (
+              <div class="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1" style={`left:${s.step.x}%;top:${s.step.y}%`}>
+                <span class={badge}>{s.step.n}</span>
+                <span class="inline-flex size-6 items-center justify-center rounded-full bg-background text-accent shadow">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d={s.step.kind === 'scroll' ? arrowDown : arrowLeft} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </span>
+              </div>
+            )}
+            {s.end && (
+              <span class="absolute -top-2 -right-2 inline-flex size-6 items-center justify-center rounded-full bg-ink text-background shadow">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="m2.5 6.5 2.5 2.5 4.5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  ))}
+
+  <!-- Legend: what the markers mean -->
+  <ul class="m-0 mt-6 flex list-none flex-wrap gap-x-5 gap-y-2 border-t border-line p-0 pt-4 text-xs text-muted md:mt-8" aria-hidden="true">
+    <li class="m-0 flex items-center gap-2"><span class="inline-block size-4 rounded-sm border-2 border-accent bg-accent/15"></span>Tap</li>
+    <li class="m-0 flex items-center gap-2">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="text-accent"><path d={arrowDown} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>Scroll
+    </li>
+    <li class="m-0 flex items-center gap-2">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="text-accent"><path d={arrowLeft} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>Swipe
+    </li>
+    <li class="m-0 flex items-center gap-2">
+      <span class="inline-flex size-4 items-center justify-center rounded-full bg-ink text-background"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="m2.5 6.5 2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg></span>Bolt-Ons page reached
+    </li>
+  </ul>
+</figure>

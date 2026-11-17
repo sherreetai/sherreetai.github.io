@@ -13,7 +13,7 @@ const screens = [
 ---
 
 <figure data-hc class="group relative m-0">
-  <div class="grid aspect-[4/5] w-full grid-cols-3 gap-[4%] rounded-lg bg-chip px-[5%] pt-[5%] pb-[4%] md:aspect-[3/2]">
+  <div class="grid aspect-[4/5] w-full grid-cols-3 gap-[4%] rounded-lg media-panel px-[5%] pt-[5%] pb-[4%] md:aspect-[3/2]">
     {screens.map((s) => (
       <div class="flex min-h-0 min-w-0 flex-col gap-2">
         <div class="relative min-h-0 flex-1">
@@ -38,7 +38,7 @@ const screens = [
       <div class="mb-3 flex justify-end">
         <button type="button" data-hc-close class="action-secondary rounded-full border px-4 py-1.5 text-sm">Close</button>
       </div>
-      <div class="flex justify-center gap-6 rounded-lg bg-chip p-4">
+      <div class="flex justify-center gap-6 rounded-lg media-panel p-4">
         {screens.map((s) => (
           <div class="flex min-w-0 flex-col items-center gap-2">
             <img src={s.src} alt="" loading="lazy" class="block h-auto max-h-[calc(95vh-9rem)] w-auto max-w-full rounded-lg" />

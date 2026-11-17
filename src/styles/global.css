@@ -231,7 +231,6 @@ html.dark {
   --color-line: #4B4A67;
   --color-placeholder: #282741;
   --color-chip: #282741;
-  --color-media: #282741;
   --color-background: #0F0E27;
   --color-panel-dark: #282741;
   color-scheme: dark;
@@ -256,6 +255,20 @@ a:focus-visible {
 
 .dark .theme-image-dark {
   display: block;
+}
+
+/* Image panels (the grey boxes behind case study visuals): always light grey with light-mode colours inside,
+   even in dark mode, so every visual matches the grey baked into the case study images.
+   Put media-panel on the panel instead of a bg- class; everything inside uses the light theme. */
+.media-panel {
+  --color-ink: #1F1D36;
+  --color-accent: #4542D1;
+  --color-muted: #6b6b6b;
+  --color-line: #dedddc;
+  --color-chip: #e8e7e5;
+  --color-background: #ffffff;
+  background-color: var(--color-media);
+  color: var(--color-ink);
 }
 
 .action-primary {
