@@ -32,8 +32,6 @@ const findings = [
   },
 ];
 
-const ledTo = ['Shorter mobile layout', 'Clearer serviceability results', 'Logged-in personalisation'];
-
 const heading = 'm-0 text-[13px] leading-snug font-semibold tracking-[0.08em] text-muted uppercase';
 const tag = 'inline-flex items-center rounded-full border border-line bg-background px-2 py-0.5 text-xs leading-tight text-muted';
 const arrow = 'mx-auto my-3 block text-muted';
@@ -43,8 +41,8 @@ const arrow = 'mx-auto my-3 block text-muted';
 <figure class="m-0 rounded-lg bg-chip p-4 sm:p-6" aria-label="Research summary: four sources, three shared findings and what they led to">
   <!-- 1. Sources -->
   <p class={heading}>4 sources</p>
-  <!-- Phones: tiles size to their name and wrap onto new lines. From 640px up: two even columns -->
-  <ul class="m-0 mt-3 flex list-none flex-wrap gap-2 p-0 sm:grid sm:grid-cols-2">
+  <!-- Phones: one tile per row, stacked. From 640px up: two even columns -->
+  <ul class="m-0 mt-3 grid list-none grid-cols-1 gap-2 p-0 sm:grid-cols-2">
     {sources.map((s) => (
       <li class="m-0 rounded-lg bg-background px-3 py-2">
         <span class="block text-sm leading-snug font-semibold text-ink">{s.name}</span>
@@ -79,9 +77,5 @@ const arrow = 'mx-auto my-3 block text-muted';
 
   <!-- 3. What it led to -->
   <p class={heading}>Led to</p>
-  <ul class="m-0 mt-3 flex list-none flex-wrap gap-2 p-0">
-    {ledTo.map((item) => (
-      <li class="m-0 rounded-lg bg-accent px-3 py-1.5 text-sm leading-tight font-semibold text-background">{item}</li>
-    ))}
-  </ul>
+  <p class="m-0 mt-3 rounded-lg bg-background p-3 text-sm leading-relaxed text-ink sm:p-4">Three priorities for the redesign: a shorter mobile layout, clearer serviceability results and logged-in personalisation.</p>
 </figure>

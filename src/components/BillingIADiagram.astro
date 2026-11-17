@@ -1,6 +1,4 @@
 ---
-const titles = ['Structure', 'Exceptions', 'Assignment', 'Apple Watch'];
-
 const down = (x: number, y1: number, y2: number) => `M${x} ${y1}V${y2}M${x - 4} ${y2 - 6}L${x} ${y2}L${x + 4} ${y2 - 6}`;
 const right = (y: number, x1: number, x2: number) => `M${x1} ${y}H${x2}M${x2 - 6} ${y - 4}L${x2} ${y}L${x2 - 6} ${y + 4}`;
 
@@ -152,7 +150,7 @@ const steps123 = ['Customer buys Apple Watches', 'Same bank account as parent', 
   </div>
 
   <div class="mt-3 flex items-center justify-between gap-4 text-sm">
-    <span data-bia-count aria-live="polite" aria-atomic="true" class="text-muted">1 / 4 · {titles[0]}</span>
+    <span data-bia-count aria-live="polite" aria-atomic="true" class="text-muted">1 of 4</span>
     <div class="flex shrink-0 gap-2">
       <button
         type="button"
@@ -201,15 +199,13 @@ const steps123 = ['Customer buys Apple Watches', 'Same bank account as parent', 
       throw new Error('Billing diagram controls are missing.');
     }
 
-    // Slide names come from each slide's label, e.g. "Slide 1 of 4: Structure" → "Structure"
-    const titles = panels.map((panel) => panel.querySelector('svg')?.getAttribute('aria-label')?.split(': ')[1] ?? '');
     let current = 0;
 
     const select = (index: number) => {
       if (index < 0 || index >= panels.length) return;
       current = index;
       panels.forEach((panel, i) => { panel.hidden = i !== index; });
-      count.textContent = `${index + 1} / ${panels.length} · ${titles[index]}`;
+      count.textContent = `${index + 1} of ${panels.length}`;
       prev.setAttribute('aria-disabled', String(index === 0));
       next.setAttribute('aria-disabled', String(index === panels.length - 1));
     };

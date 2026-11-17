@@ -25,21 +25,23 @@ const { cards, caption } = Astro.props;
     <ul class="pcr-list m-0 grid list-none items-start p-0 sm:gap-[4%]" style={`--cards: ${cards.length};`}>
       {cards.map((card, i) => (
         <li class="pcr-card m-0 p-0" data-active={i === 0 ? 'true' : 'false'} aria-label={`${i + 1} of ${cards.length}: ${card.label}`}>
-          <p class="m-0 mb-2 text-[13px] leading-snug font-semibold tracking-[0.08em] text-muted uppercase">{card.label}</p>
+          <p class="m-0 mb-2 text-sm font-bold text-ink">{card.label}</p>
           <img src={card.src} alt={card.alt} loading="lazy" class="block h-auto w-full drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)]" />
         </li>
       ))}
     </ul>
 
-    <!-- Arrows (phones only) -->
-    <div class="mt-5 flex items-center justify-center gap-4 sm:hidden">
-      <button type="button" data-pcr-prev aria-label="Previous card" class="pcr-arrow inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-background text-ink">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-      </button>
-      <p class="m-0 min-w-12 text-center text-sm text-muted" aria-live="polite"><span data-pcr-count>1</span> of {cards.length}</p>
-      <button type="button" data-pcr-next aria-label="Next card" class="pcr-arrow inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-background text-ink">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-      </button>
+    <!-- Arrows (phones only): same counter and chevron buttons as the O2 billing diagram -->
+    <div class="mt-5 flex items-center justify-between gap-4 text-sm sm:hidden">
+      <span data-pcr-count aria-live="polite" aria-atomic="true" class="text-muted">1 of {cards.length}</span>
+      <div class="flex shrink-0 gap-2">
+        <button type="button" data-pcr-prev aria-label="Previous card" aria-disabled="true" class="action-secondary inline-flex size-9 items-center justify-center rounded-full border aria-disabled:pointer-events-none aria-disabled:opacity-40">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3 5 8l5 5"></path></svg>
+        </button>
+        <button type="button" data-pcr-next aria-label="Next card" aria-disabled="false" class="action-secondary inline-flex size-9 items-center justify-center rounded-full border aria-disabled:pointer-events-none aria-disabled:opacity-40">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 3 5 5-5 5"></path></svg>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -61,7 +63,7 @@ const { cards, caption } = Astro.props;
       <div class="flex max-h-[calc(95vh-5rem)] items-start justify-center gap-6 overflow-auto rounded-lg bg-media p-6">
         {cards.map((card) => (
           <div class="shrink-0">
-            <p class="m-0 mb-2 text-[13px] leading-snug font-semibold tracking-[0.08em] text-muted uppercase">{card.label}</p>
+            <p class="m-0 mb-2 text-sm font-bold text-ink">{card.label}</p>
             <img src={card.src} alt="" class="block h-auto max-h-[calc(95vh-10rem)] w-auto max-w-[30vw] drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)]" />
           </div>
         ))}
@@ -78,9 +80,6 @@ const { cards, caption } = Astro.props;
   }
   .pcr-card[data-active='false'] {
     visibility: hidden;
-  }
-  .pcr-arrow:disabled {
-    opacity: 0.35;
   }
 
   /* From 640px up: one equal column per card, all visible */
@@ -109,9 +108,9 @@ const { cards, caption } = Astro.props;
     function show(index: number) {
       current = index;
       cards.forEach((card, i) => (card.dataset.active = String(i === current)));
-      count!.textContent = String(current + 1);
-      prev!.disabled = current === 0;
-      next!.disabled = current === cards.length - 1;
+      count!.textContent = `${current + 1} of ${cards.length}`;
+      prev!.setAttribute('aria-disabled', String(current === 0));
+      next!.setAttribute('aria-disabled', String(current === cards.length - 1));
     }
 
     const open = panel.querySelector<HTMLButtonElement>('[data-pcr-open]');

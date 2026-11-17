@@ -13,7 +13,6 @@ const work = defineCollection({
     order: z.number(), // position in the grid and the "Next project" sequence
     logo: z.string().optional(), // optional logo used in the "Next project" link
     coverImage: z.string(), // image shown on the Home/Work card
-    nextImage: z.string(), // square image shown in the "Next project" link
     coverPosition: z.string().optional(), // focal point used when the card cover is cropped
     heroImage: z.string().optional(), // optional lead image; omitted for PDF placeholder panels
     role: z.string(), // what I did and who I partnered with, e.g. "Product design, partnering with engineering and CRO"

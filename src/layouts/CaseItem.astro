@@ -14,7 +14,7 @@ const { title, placeholder = false, media, darkMedia } = Astro.props;
 <div>
   {placeholder && <div class="mb-4"><CasePlaceholder src={media} darkSrc={darkMedia} card /></div>}
   {Astro.slots.has('media') && <div class="mb-4"><slot name="media" /></div>}
-  {title && <h3 class="type-label mb-2 text-accent">{title}</h3>}
+  {title && <h3 class="type-label case-item-title mb-2 text-accent">{title}</h3>}
   <div class="space-y-3">
     <slot />
   </div>

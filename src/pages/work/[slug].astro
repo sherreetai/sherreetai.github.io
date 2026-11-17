@@ -4,21 +4,16 @@
 import { getCollection, render } from 'astro:content';
 import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
 import CaseItem from '../../layouts/CaseItem.astro';
-import NextStepsDiagram from '../../layouts/NextStepsDiagram.astro';
 import ScrollableShot from '../../layouts/ScrollableShot.astro';
-import UserTesting from '../../layouts/UserTesting.astro';
-import CroTest from '../../layouts/CroTest.astro';
 import ThemeSwitcher from '../../layouts/ThemeSwitcher.astro';
 import HomeComparison from '../../layouts/HomeComparison.astro';
 import MoversHierarchy from '../../layouts/MoversHierarchy.astro';
 import MoversResearch from '../../layouts/MoversResearch.astro';
 import MotionComparison from '../../layouts/MotionComparison.astro';
-import PhoneSlider from '../../components/PhoneSlider.astro';
 import ProductCardRange from '../../components/ProductCardRange.astro';
 import Media from '../../components/Media.astro';
 import CaseSection from '../../components/CaseSection.astro';
 import CasePlaceholder from '../../components/CasePlaceholder.astro';
-import CaseStat from '../../components/CaseStat.astro';
 import CaseCallout from '../../components/CaseCallout.astro';
 import BillingIADiagram from '../../components/BillingIADiagram.astro';
 
@@ -35,5 +30,5 @@ const { Content } = await render(entry);
 ---
 
 <CaseStudyLayout entry={entry} next={next}>
-  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseStat, CaseCallout, Media, BillingIADiagram, NextStepsDiagram, ScrollableShot, PhoneSlider, ProductCardRange, UserTesting, CroTest, ThemeSwitcher, HomeComparison, MoversHierarchy, MoversResearch, MotionComparison }} />
+  <Content components={{ CaseSection, CaseItem, CasePlaceholder, CaseCallout, Media, BillingIADiagram, ScrollableShot, ProductCardRange, ThemeSwitcher, HomeComparison, MoversHierarchy, MoversResearch, MotionComparison }} />
 </CaseStudyLayout>

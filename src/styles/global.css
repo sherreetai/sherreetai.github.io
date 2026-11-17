@@ -16,8 +16,6 @@
   /* Light grey behind design images (matches the grey baked into the case study images) */
   --color-media: #f7f7f7;
   --color-background: #ffffff;
-  /* Green used only for the recreated Virgin Media notification banners */
-  --color-positive: #00703C;
   /* Dark panel behind dark-only images (e.g. Priority theme) so they stay legible in light mode */
   --color-panel-dark: #0F0E27;
   /* Footer band: the light mode ink, kept dark in both light and dark mode */
@@ -235,7 +233,6 @@ html.dark {
   --color-chip: #282741;
   --color-media: #282741;
   --color-background: #0F0E27;
-  --color-positive: #5FD08F;
   --color-panel-dark: #282741;
   color-scheme: dark;
 }
