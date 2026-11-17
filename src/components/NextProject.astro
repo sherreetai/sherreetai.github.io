@@ -1,7 +1,7 @@
 ---
 // The "Next case study" link at the end of each case study.
 // A full-width band: small label, then the next project's title set large with an arrow that slides
-// right on hover/keyboard focus. The arrow sits after the title on desktop and below it on mobile.
+// right on hover/keyboard focus while an underline draws in under the title (same as "View case study" on the cards). The arrow sits after the title on desktop and below it on mobile.
 interface Props {
   href: string;
   title: string;
@@ -15,7 +15,7 @@ const { href, title, label = 'Next case study' } = Astro.props;
     <span class="type-label block text-accent">{label}</span>
     <!-- Mobile: arrow below the title. Desktop: arrow inline after the title (sized to the text) -->
     <span class="mt-4 block text-[28px] leading-[1.1] font-bold tracking-tight text-ink md:flex md:flex-wrap md:items-center md:gap-x-5 md:gap-y-2 md:text-[48px]">
-      <span>{title}</span>
+      <span><span class="link-underline link-underline-thick">{title}</span></span>
       <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" class="mt-6 block size-10 shrink-0 text-ink transition-transform duration-500 group-hover:translate-x-3 group-focus-visible:translate-x-3 motion-reduce:transition-none md:mt-0 md:size-[0.6em]">
         <path d="M6 24h36M28 10l14 14-14 14" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>

@@ -1,5 +1,5 @@
 ---
-// Site header: logo on the left, navigation and appearance control on the right.
+// Site header: logo on the left, navigation and the light/dark eclipse switch on the right.
 // Phones (below 640px): the links move into a full-screen menu opened by the menu (hamburger) button.
 // From 640px up: the regular links.
 import Logo from './Logo.astro';
@@ -25,13 +25,14 @@ const textLink = 'link-underline rounded-sm';
         <a href="/about/" class={textLink}>About</a>
         <a href="/#work" class={textLink}>Work</a>
       </nav>
-      <button id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" class="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink hover:bg-chip focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
-        <svg class="theme-icon-dark h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8 8.5 8.5 0 1 0 20.2 15.4Z" />
-        </svg>
-        <svg class="theme-icon-light h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+      <!-- Light/dark switch: an eclipse. Light mode shows a full circle (the sun); in dark mode a shadow slides across it, leaving a crescent -->
+      <button id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" class="eclipse inline-flex h-9 w-9 items-center justify-center rounded-full text-ink hover:bg-chip focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+          <mask id="eclipse-mask">
+            <rect width="24" height="24" fill="white" />
+            <circle class="eclipse-shadow" cx="16.5" cy="8" r="6.5" fill="black" />
+          </mask>
+          <circle class="eclipse-body" cx="12" cy="12" r="7" fill="currentColor" mask="url(#eclipse-mask)" />
         </svg>
       </button>
       <!-- Menu button (phones, below 640px): three lines that turn into an X when open -->
@@ -103,8 +104,30 @@ const textLink = 'link-underline rounded-sm';
     transition: opacity 0.25s ease, visibility 0s;
   }
 
+  /* Eclipse: the shadow circle waits off to the top right, then slides across the sun in dark mode.
+     Hovering nudges it in slightly, as a hint of what a click will do */
+  .eclipse-shadow {
+    transform: translate(9px, -9px);
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .eclipse:hover .eclipse-shadow {
+    transform: translate(4.5px, -4.5px);
+  }
+  :global(.dark) .eclipse-shadow,
+  :global(.dark) .eclipse:hover .eclipse-shadow {
+    transform: translate(0, 0);
+  }
+  .eclipse-body {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  :global(.dark) .eclipse-body {
+    transform: rotate(-20deg);
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .menu-bar, .mobile-menu { transition: none; }
+    .menu-bar, .mobile-menu, .eclipse-shadow, .eclipse-body { transition: none; }
   }
 </style>
 

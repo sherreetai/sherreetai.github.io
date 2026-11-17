@@ -13,14 +13,31 @@ const contentClass = layout === 'three-column'
   : layout === 'two-column'
     ? 'grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 md:gap-y-12'
     : '[&_p+p]:mt-4';
+// aside: content passed with slot="aside" goes in the right column, level with the title (title and copy on the left)
+const hasAside = Astro.slots.has('aside');
+// On two-column sections the title stays within the left column, so it lines up with the copy below it
 const sectionWidth = layout === 'narrow' ? 'mx-auto max-w-[640px]' : 'mx-auto max-w-[1088px]';
 ---
 
 <section class="border-t border-line px-6 py-10 md:py-14">
-  <div class={sectionWidth}>
-    <h2 class:list={['type-section-title case-section-title mb-5 md:mb-6', narrowTitle && 'mx-auto max-w-[640px]']}><span class="mr-2 text-accent">{number}</span> {title}</h2>
-    <div class={`type-case-body ${contentClass}`}>
-      <slot />
+  {hasAside ? (
+    <div class={`${sectionWidth} grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2`}>
+      <div>
+        <h2 class="type-section-title case-section-title mb-5 md:mb-6"><span class="mr-2 text-accent">{number}</span> {title}</h2>
+        <div class="type-case-body">
+          <slot />
+        </div>
+      </div>
+      <div class="type-case-body">
+        <slot name="aside" />
+      </div>
     </div>
-  </div>
+  ) : (
+    <div class={sectionWidth}>
+      <h2 class:list={['type-section-title case-section-title mb-5 md:mb-6', narrowTitle && 'mx-auto max-w-[640px]', layout === 'two-column' && 'md:max-w-[calc(50%-1rem)]']}><span class="mr-2 text-accent">{number}</span> {title}</h2>
+      <div class={`type-case-body ${contentClass}`}>
+        <slot />
+      </div>
+    </div>
+  )}
 </section>

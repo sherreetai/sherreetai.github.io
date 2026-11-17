@@ -17,7 +17,7 @@ brief: "TV add-on cards created heavy scrolling and made products difficult to c
 ---
 
 <CaseSection number="02" title="Understanding existing behavioural data and user research" layout="two-column">
-  <div class="space-y-8 md:self-center">
+  <div class="space-y-8">
     <CaseItem title="Data used">
       <p>Contentsquare data showed an average 20% exit rate over 90 days on the TV journey, with heavy scrolling and difficulty comparing offers.</p>
     </CaseItem>
@@ -25,7 +25,7 @@ brief: "TV add-on cards created heavy scrolling and made products difficult to c
       <p>User research showed customers think about channels before packages, so the cards needed to make channels easier to find and compare.</p>
     </CaseItem>
   </div>
-  <div class="md:self-center">
+  <div slot="aside">
     <CasePlaceholder src="/images/tv-product-cards/tv-journey-strip.webp" alt="The existing mobile Change my package page, split into four columns to show its full length. It runs from broadband, SIM and WiFi accordions into the TV section, then base packages, Sky channel packs, family, sports and international packs, before the Continue button." />
     <p class="mt-3 text-sm text-muted">The existing mobile TV journey, shown in four columns.</p>
   </div>
@@ -49,24 +49,16 @@ brief: "TV add-on cards created heavy scrolling and made products difficult to c
       <p>Added filters to help customers narrow and compare.</p>
     </CaseItem>
   </div>
-  <CasePlaceholder src="/images/tv-product-cards/filter-chips.png" card />
+  <div class="md:self-center">
+    <CasePlaceholder src="/images/tv-product-cards/findings/filter-chips.webp" alt="A Filter by row with five chips: Show all (selected), Sports, Movies, Kids and International." />
+  </div>
 </CaseSection>
 
 <CaseSection number="05" title="Outcome and next steps" layout="two-column">
-  <div class="space-y-8 md:self-center">
-    <div>
-      <div class="grid grid-cols-2 gap-3">
-        <CaseStat layout="block" value="95%" label="Filter chips + cards" />
-        <CaseStat layout="block" tone="muted" value="90%" label="Cards only" />
-      </div>
-      <p class="mt-3 text-sm text-muted" aria-hidden="true">Statistical confidence</p>
-    </div>
-    <CaseItem title="Result">
-      <p>The filter-chip variant reached 95% statistical confidence, compared with 90% for the card-only variant, isolating filters as the additional change behind the stronger result.</p>
-    </CaseItem>
-    <CaseItem title="Next">
-      <p>Next, the pattern will be tested across non-TV product cards to see whether the same hierarchy, comparison and selection principles scale across the wider experience.</p>
-    </CaseItem>
+  <div class="space-y-4 md:self-center">
+    <p>Cards with filter chips lifted orders by 21% at 95% confidence, beating cards alone. This version is now being rolled out. Next I'm testing the same card pattern on broadband, bundles, SIM and WiFi Pods.</p>
+    {/* Links to the findings post: src/pages/writing/tv-product-cards-test.mdx */}
+    <p><a href="/writing/tv-product-cards-test/" class="group inline-flex items-center gap-2 font-medium text-ink"><span class="link-underline">Read the findings</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a></p>
   </div>
   <PhoneSlider
     slides={[

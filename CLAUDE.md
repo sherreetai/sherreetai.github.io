@@ -14,6 +14,7 @@ A static portfolio site: Astro 7 + Tailwind CSS v4 + MDX, deployed to GitHub Pag
 - Style with Tailwind classes in markup. Use the theme tokens (`text-accent`, `border-line`, `text-muted`) rather than hard-coded hex values. The case study tint is the CSS variable `--tint`, so use `bg-(--tint)`.
 - Case study Markdown stays class-free. Its look comes from `.case-body` in `global.css`.
 - In MDX, `<Media>`, `<CaseSection>`, `<CaseItem>` and the other case-study components are available without imports (they're passed in via `components` in `[slug].astro`). If you add a new MDX component, register it there too.
+- In a two-column `CaseSection` with copy on the left and one image on the right, wrap the image in `<div slot="aside">` so it sits level with the title and the copy starts right under the title.
 - `Media` picks `<video autoplay muted loop playsinline>` for `.mp4/.webm/.mov`, otherwise `<img>`. Layouts: `plain` (default), `panel`, `band`, `bleed`.
 - Pop-in: put `data-reveal` on the *wrapper* of a block (a section, a card, an intro) so the whole block rises in as one group. Don't put it on individual paragraphs. In `.case-body`, grouping is automatic (script in `BaseLayout.astro`): a heading plus the text under it is one group, and each image, video or quote is its own group. It's turned off under `prefers-reduced-motion`. Don't add animation libraries for this.
 - Assets live in `public/images/<project>/` and are referenced as `/images/...`.

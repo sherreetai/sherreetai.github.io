@@ -12,7 +12,7 @@ const { title, placeholder = false, media } = Astro.props;
 
 <div>
   {placeholder && <div class="mb-4"><CasePlaceholder src={media} card /></div>}
-  {title && <h3 class="type-label mb-2 text-accent">{title}</h3>}
+  {title && <h3 class="type-label case-item-title mb-2 text-accent">{title}</h3>}
   <div class="space-y-3">
     <slot />
   </div>
