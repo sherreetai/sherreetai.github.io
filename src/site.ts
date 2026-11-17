@@ -2,5 +2,5 @@
 // Change them here and they update everywhere.
 export const EMAIL = 'mailto:sherreetai@gmail.com';
 export const LINKEDIN = 'https://www.linkedin.com/in/sherreetai/';
-// Your CV PDF. Replace public/cv.pdf with your own file (keep the name) and the CV links will download it.
-export const CV = '/cv.pdf';
+// Your CV PDF (public/sherreetai-cv.pdf). To update it, replace that file and keep the name.
+export const CV = '/sherreetai-cv.pdf';

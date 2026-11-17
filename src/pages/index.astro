@@ -2,23 +2,30 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
 import { EMAIL, LINKEDIN } from '../site';
+
+// The name in the hero types itself out one letter at a time (see the script at the bottom)
+const name = 'I’m Sher Ree.';
 ---
 
 <BaseLayout>
-  <!-- Hero: name, subheadline, description and the two buttons -->
+  <!-- Hero: the name types itself out, then the subheadline, description and buttons each drop softly into place -->
   <section class="mx-auto max-w-[1088px] px-6 pt-12 pb-16 md:pt-20 md:pb-24">
-    <div data-reveal>
-      <h1 class="text-[44px] leading-[1] font-bold tracking-[-0.035em] text-accent md:text-[80px]">I’m Sher Ree.</h1>
+    <div data-hero>
+      <!-- Screen readers get the whole name at once; the letters are only for the typing effect -->
+      <h1 class="text-[44px] leading-[1] font-bold tracking-[-0.035em] text-accent md:text-[80px]">
+        <span class="sr-only">{name}</span>
+        <span aria-hidden="true">{[...name].map((char) => <span class="type-char">{char}</span>)}</span>
+      </h1>
 
-      <p class="mt-2 max-w-[22em] text-[24px] leading-snug font-bold tracking-tight text-ink md:mt-3 md:text-[32px]">
+      <p data-drop class="mt-2 max-w-[22em] text-[24px] leading-snug font-bold tracking-tight text-ink md:mt-3 md:text-[32px]">
         A product designer turning messy logic into seamless journeys.
       </p>
 
-      <p class="mt-5 max-w-[34em] text-base leading-relaxed text-muted md:mt-6 md:text-lg">
+      <p data-drop class="mt-5 max-w-[34em] text-base leading-relaxed text-muted md:mt-6 md:text-lg">
         I design the app and web experiences <b class="font-semibold text-ink">Virgin Media O2</b> customers use every day, from sorting out their account to picking a new plan. I start with what people really do, make complex things simple and build within our design systems so good work scales.
       </p>
 
-      <div class="mt-8 flex flex-wrap gap-3">
+      <div data-drop class="mt-8 flex flex-wrap gap-3">
         <a href={EMAIL} class="action-primary rounded-lg border-2 px-3 py-2 text-sm">Email me →</a>
         <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" class="action-secondary rounded-lg border-2 px-3 py-2 text-sm">Let’s connect on LinkedIn</a>
       </div>
@@ -32,3 +39,88 @@ import { EMAIL, LINKEDIN } from '../site';
     <ProjectGrid />
   </section>
 </BaseLayout>
+
+<style>
+  /* Typing: each letter starts hidden and appears in turn. The newest letter carries a blinking cursor. */
+  :global(.js) .type-char {
+    opacity: 0;
+  }
+  :global(.js) .type-char.is-typed {
+    opacity: 1;
+  }
+  .type-char {
+    position: relative;
+  }
+  .type-char.has-caret::after {
+    content: '';
+    position: absolute;
+    top: 0.08em;
+    bottom: 0.02em;
+    right: -0.1em;
+    width: 0.06em;
+    background: currentColor;
+    animation: caret-blink 0.9s steps(1) infinite;
+  }
+  .type-char.has-caret.caret-out::after {
+    animation: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  @keyframes caret-blink {
+    50% { opacity: 0; }
+  }
+
+  /* Soft drop: fades in while settling down from slightly above */
+  :global(.js) [data-drop] {
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  :global(.js) [data-drop].is-dropped {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.js) .type-char,
+    :global(.js) [data-drop] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .type-char.has-caret::after {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Hero intro: type the name, then drop in the rest one by one
+  const hero = document.querySelector<HTMLElement>('[data-hero]');
+  if (hero) {
+    const chars = Array.from(hero.querySelectorAll<HTMLElement>('.type-char'));
+    const drops = Array.from(hero.querySelectorAll<HTMLElement>('[data-drop]'));
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const dropIn = () => {
+      drops.forEach((el, i) => setTimeout(() => el.classList.add('is-dropped'), i * 180));
+    };
+
+    if (reduced) {
+      chars.forEach((c) => c.classList.add('is-typed'));
+      drops.forEach((el) => el.classList.add('is-dropped'));
+    } else {
+      const speed = 75; // ms per letter
+      chars.forEach((c, i) => {
+        setTimeout(() => {
+          if (i > 0) chars[i - 1].classList.remove('has-caret');
+          c.classList.add('is-typed', 'has-caret');
+        }, 250 + i * speed);
+      });
+      const typedAt = 250 + chars.length * speed;
+      setTimeout(dropIn, typedAt + 150);
+      // Let the cursor blink a little longer, then fade it away
+      setTimeout(() => chars[chars.length - 1]?.classList.add('caret-out'), typedAt + 1400);
+    }
+  }
+</script>

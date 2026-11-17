@@ -1,0 +1,94 @@
+---
+// A grey panel showing the product card pattern across different products, side by side.
+// Each card has a small label above it. The panel wraps tightly around the cards (no fixed shape), so the cards stay as large as possible.
+// On phones one card shows at a time, with arrow buttons to step through them. From 640px up all cards show side by side.
+// Usage in MDX: <ProductCardRange cards={[{ label: 'Broadband', src: '/images/...', alt: '...' }, ...]} caption="..." />
+interface Card {
+  label: string;
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  cards: Card[];
+  caption?: string;
+}
+
+const { cards, caption } = Astro.props;
+---
+
+<!-- Phones: one card at a time with previous/next arrows. All cards share one grid cell, so the panel keeps the
+     height of the tallest card and doesn't jump. From 640px up: all cards side by side, arrows hidden. -->
+<figure class="m-0" data-pcr>
+  <div class="overflow-hidden rounded-lg bg-media px-[14%] py-6 sm:px-[6%] sm:py-[6%]">
+    <ul class="pcr-list m-0 grid list-none items-start p-0 sm:gap-[4%]" style={`--cards: ${cards.length};`}>
+      {cards.map((card, i) => (
+        <li class="pcr-card m-0 p-0" data-active={i === 0 ? 'true' : 'false'} aria-label={`${i + 1} of ${cards.length}: ${card.label}`}>
+          <p class="m-0 mb-2 text-[13px] leading-snug font-semibold tracking-[0.08em] text-muted uppercase">{card.label}</p>
+          <img src={card.src} alt={card.alt} loading="lazy" class="block h-auto w-full drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)]" />
+        </li>
+      ))}
+    </ul>
+
+    <!-- Arrows (phones only) -->
+    <div class="mt-5 flex items-center justify-center gap-4 sm:hidden">
+      <button type="button" data-pcr-prev aria-label="Previous card" class="pcr-arrow inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-background text-ink">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </button>
+      <p class="m-0 min-w-12 text-center text-sm text-muted" aria-live="polite"><span data-pcr-count>1</span> of {cards.length}</p>
+      <button type="button" data-pcr-next aria-label="Next card" class="pcr-arrow inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-background text-ink">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </button>
+    </div>
+  </div>
+  {caption && <figcaption class="mt-3 text-sm text-muted">{caption}</figcaption>}
+</figure>
+
+<style>
+  /* Phones: stack every card in the same spot and show only the active one */
+  .pcr-card {
+    grid-area: 1 / 1;
+  }
+  .pcr-card[data-active='false'] {
+    visibility: hidden;
+  }
+  .pcr-arrow:disabled {
+    opacity: 0.35;
+  }
+
+  /* From 640px up: one equal column per card, all visible */
+  @media (min-width: 40rem) {
+    .pcr-list {
+      grid-template-columns: repeat(var(--cards), minmax(0, 1fr));
+    }
+    .pcr-card {
+      grid-area: auto;
+    }
+    .pcr-card[data-active='false'] {
+      visibility: visible;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-pcr]').forEach((panel) => {
+    const cards = Array.from(panel.querySelectorAll<HTMLElement>('.pcr-card'));
+    const prev = panel.querySelector<HTMLButtonElement>('[data-pcr-prev]');
+    const next = panel.querySelector<HTMLButtonElement>('[data-pcr-next]');
+    const count = panel.querySelector<HTMLElement>('[data-pcr-count]');
+    if (!prev || !next || !count) return;
+    let current = 0;
+
+    function show(index: number) {
+      current = index;
+      cards.forEach((card, i) => (card.dataset.active = String(i === current)));
+      count!.textContent = String(current + 1);
+      prev!.disabled = current === 0;
+      next!.disabled = current === cards.length - 1;
+    }
+
+    prev.addEventListener('click', () => show(Math.max(0, current - 1)));
+    next.addEventListener('click', () => show(Math.min(cards.length - 1, current + 1)));
+    show(0);
+  });
+</script>

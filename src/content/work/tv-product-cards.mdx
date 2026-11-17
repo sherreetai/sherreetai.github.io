@@ -54,19 +54,17 @@ brief: "TV add-on cards created heavy scrolling and made products difficult to c
   </div>
 </CaseSection>
 
-<CaseSection number="05" title="Outcome and next steps" layout="two-column">
-  <div class="space-y-4 md:self-center">
-    <p>Cards with filter chips lifted orders by 21% at 95% confidence, beating cards alone. This version is now being rolled out. Next I'm testing the same card pattern on broadband, bundles, SIM and WiFi Pods.</p>
-    {/* Links to the findings post: src/pages/writing/tv-product-cards-test.mdx */}
-    <p><a href="/writing/tv-product-cards-test/" class="group inline-flex items-center gap-2 font-medium text-ink"><span class="link-underline">Read the findings</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a></p>
+<CaseSection number="05" title="Outcome and next steps">
+  <p>Cards with filter chips lifted orders by 21% at 95% confidence, beating cards alone. This version is now being rolled out. Next I'm testing the same card pattern on broadband, bundles, SIM and WiFi Pods.</p>
+  {/* Links to the findings post: src/pages/writing/tv-product-cards-test.mdx */}
+  <p><a href="/writing/tv-product-cards-test/" class="group inline-flex items-center gap-2 font-medium text-ink"><span class="link-underline">Read the findings</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a></p>
+  <div class="mt-8">
+    <ProductCardRange
+      cards={[
+        { label: 'Broadband', src: '/images/tv-product-cards/non-tv/broadband.webp', alt: 'M250 Fibre Broadband card: an M250 speed graphic, Upgrade with existing contract badge, +£6 a month, a short description and an Add to basket button.' },
+        { label: 'O2 SIM', src: '/images/tv-product-cards/non-tv/sim.webp', alt: '30GB Data SIM card: an O2 SIM image, New 24-month contract badge, +£8 a month, three benefits, future price increases and an Add to basket button.' },
+        { label: 'WiFi Max', src: '/images/tv-product-cards/non-tv/wifi.webp', alt: 'WiFi Max card: a WiFi Pod image, Recommended badge, +£0 a month, a short description and an Add to basket button.' },
+      ]}
+    />
   </div>
-  <PhoneSlider
-    slides={[
-      { label: 'Broadband', src: '/images/tv-product-cards/Broadband.png', alt: 'Broadband product card design' },
-      { label: 'TV', src: '/images/tv-product-cards/TV.png', alt: 'TV product card design' },
-      { label: 'Bundles', src: '/images/tv-product-cards/Bundles.png', alt: 'Bundles product card design' },
-      { label: 'O2 SIM', src: '/images/tv-product-cards/SIM.png', alt: 'O2 SIM product card design' },
-      { label: 'WiFi Pods', src: '/images/tv-product-cards/Wifipods.png', alt: 'WiFi Pods product card design' },
-    ]}
-  />
 </CaseSection>

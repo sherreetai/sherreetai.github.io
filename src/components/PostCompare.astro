@@ -1,0 +1,33 @@
+---
+// Side-by-side images for blog posts, each with a small label above it (e.g. Control / Variation 1 / Variation 2).
+// Images line up along the top. Tapping an image opens it full size in a new tab, so detail stays readable on phones.
+// Usage in a post: <PostCompare items={[{ label: 'Control', src: '/images/...', alt: '...', width: 1000, height: 1948 }, ...]} caption="..." />
+interface Item {
+  label: string;
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+interface Props {
+  items: Item[];
+  caption?: string;
+}
+
+const { items, caption } = Astro.props;
+---
+
+<figure class="my-8 m-0">
+  <div class="grid items-start gap-3 sm:gap-4" style={`grid-template-columns: repeat(${items.length}, minmax(0, 1fr));`}>
+    {items.map((item) => (
+      <div>
+        <p class="m-0 mb-2 text-[11px] leading-snug font-semibold tracking-[0.08em] text-muted uppercase sm:text-[13px]">{item.label}</p>
+        <a href={item.src} target="_blank" rel="noopener" aria-label={`Open ${item.label} full size`} class="block cursor-zoom-in">
+          <img src={item.src} alt={item.alt} width={item.width} height={item.height} loading="lazy" class="block h-auto w-full rounded-lg border border-line bg-background" />
+        </a>
+      </div>
+    ))}
+  </div>
+  {caption && <figcaption class="mt-3 text-sm leading-relaxed text-muted">{caption}</figcaption>}
+</figure>

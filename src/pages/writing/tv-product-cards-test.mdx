@@ -9,6 +9,7 @@ caseStudy:
 ---
 
 import PostFigure from '../../components/PostFigure.astro';
+import PostCompare from '../../components/PostCompare.astro';
 
 ## The problem
 
@@ -26,6 +27,14 @@ The test ran from 9 to 23 September 2026 with in-contract customers who had TV c
 - **Variation 1:** the new product cards.
 - **Variation 2:** the new product cards plus genre filter chips.
 
+<PostCompare
+  items={[
+    { label: 'Control', src: '/images/tv-product-cards/findings/control.webp', width: 1000, height: 1948, alt: 'Control: the existing TV section. Mixit TV and Mega TV appear as small channel-logo tiles with a price and a radio button, followed by Sky channel packs as image tiles with tick boxes.' },
+    { label: 'Variation 1', src: '/images/tv-product-cards/findings/variant-1.webp', width: 1000, height: 2057, alt: 'Variation 1: the same TV section with the new product cards. Mixit TV and Mega TV have large images, prices, contract badges, channel highlights and red Add to basket buttons, followed by a Sports group of cards.' },
+    { label: 'Variation 2', src: '/images/tv-product-cards/findings/variant-2.webp', width: 1000, height: 2163, alt: 'Variation 2: the new product cards with a Filter by row of chips (Show all, Sports, Movies, Kids, International) above the Sports group.' },
+  ]}
+/>
+
 The new card made the product, price and action clear at a glance, with a link to the included channels.
 
 <PostFigure
@@ -33,7 +42,6 @@ The new card made the product, price and action clear at a glance, with a link t
   width={1400}
   height={933}
   alt="The redesigned Sky Sports HD card, annotated: a promotional banner, image, product headline, contract badge, pricing, an Included TV channels link, a short description, an Add to basket button and terms."
-  caption="The new product card used in both variations."
 />
 
 Variation 2 added a row of chips above the cards so people could narrow the list by genre.
@@ -43,7 +51,6 @@ Variation 2 added a row of chips above the cards so people could narrow the list
   width={1400}
   height={238}
   alt="A Filter by row with five chips: Show all (selected), Sports, Movies, Kids and International."
-  caption="The genre filter chips, only in Variation 2."
 />
 
 The primary metric was XSUS orders, the share of visitors who placed a cross-sell or upsell order.
