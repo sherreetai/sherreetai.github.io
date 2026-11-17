@@ -22,23 +22,14 @@
   --color-footer: #1F1D36;
 }
 
-.type-display,
 .type-page-title,
 .type-section-title,
 .type-section-title-prominent,
 .type-card-title,
-.type-eyebrow,
 .type-body,
 .type-case-body,
 .type-body-large {
   font-family: var(--font-sans);
-}
-
-.type-display {
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
 }
 
 .type-page-title {
@@ -77,14 +68,6 @@
   font-weight: 700;
   line-height: 1.5;
   letter-spacing: -0.025em;
-}
-
-.type-eyebrow {
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0.025em;
-  text-transform: uppercase;
 }
 
 /* Body text inside case studies (18px) */
@@ -204,10 +187,6 @@
 }
 
 @media (min-width: 48rem) {
-  .type-display {
-    font-size: 3.25rem;
-  }
-
   .type-page-title {
     font-size: 4rem;
   }

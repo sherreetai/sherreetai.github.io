@@ -5,7 +5,7 @@
 //
 // Band positions are percentages of each page's height. If a design changes, re-measure them.
 // Images: /public/images/vm-home-movers/homepage-before.webp and homepage-after.webp
-// (900px-wide versions of the previous homepage and design.png).
+// (900px-wide versions of the previous homepage and design.webp).
 
 type Band = { n: number; top: number; bottom: number };
 const pages: { label: string; note: string; src: string; width: number; height: number; alt: string; bands: Band[] }[] = [
@@ -50,7 +50,7 @@ const badge = 'inline-flex size-5 shrink-0 items-center justify-center rounded-f
 
 <div data-mh class="grid grid-cols-1 items-start gap-8 md:col-span-full md:grid-cols-2 md:gap-x-8">
   <figure class="group relative m-0 order-2">
-    <div class="flex w-full items-start justify-center gap-5 rounded-lg media-panel p-4 md:gap-8 md:p-8">
+    <div class="flex w-full items-start justify-center gap-5 rounded-lg border border-line media-panel p-4 md:gap-8 md:p-8">
       {pages.map((p) => (
         <div class="flex w-[42%] max-w-[170px] flex-col gap-2 md:w-[170px]">
           <!-- Label on one line, note on the next, so both pages start at the same height -->

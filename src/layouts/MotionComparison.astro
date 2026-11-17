@@ -14,7 +14,7 @@ const screens = [
 <div class="grid grid-cols-1 items-start gap-8 md:col-span-full md:grid-cols-2 md:gap-x-8">
   <figure class="m-0 order-2">
     <!-- Before and After side by side; the frame fills its column, so it matches the Restructured homepage frame width -->
-    <div class="flex w-full items-start justify-center gap-5 rounded-lg media-panel p-4 md:gap-8 md:p-8">
+    <div class="flex w-full items-start justify-center gap-5 rounded-lg border border-line media-panel p-4 md:gap-8 md:p-8">
       {screens.map((s) => (
         <div class:list={['flex min-w-0 flex-col gap-2', s.label === 'Before' ? 'w-[34%] shrink-0' : 'flex-1']}>
           <!-- Label on one line, note on the next, so both visuals start at the same height -->
@@ -25,7 +25,7 @@ const screens = [
           {s.label === 'Before' ? (
             <img src="/images/vm-home-movers/static-motion.png" alt="Previous move steps: three numbered steps stacked down the page as plain text." width="866" height="1059" loading="lazy" class="block h-auto w-full rounded-lg bg-background shadow-sm" />
           ) : (
-            <VideoPlayer src="/images/vm-home-movers/motion.mp4" label="New move steps: a carousel card with an animated icon for each step." class="block h-auto w-full rounded-lg bg-background shadow-sm" />
+            <VideoPlayer src="/images/vm-home-movers/motion.mp4" label="New move steps: a carousel card with an animated icon for each step." controls={false} class="block h-auto w-full rounded-lg bg-background shadow-sm" />
           )}
         </div>
       ))}

@@ -21,7 +21,7 @@ const { cards, caption } = Astro.props;
 <!-- Phones: one card at a time with previous/next arrows. All cards share one grid cell, so the panel keeps the
      height of the tallest card and doesn't jump. From 640px up: all cards side by side, arrows hidden. -->
 <figure class="group relative m-0" data-pcr>
-  <div class="media-panel overflow-hidden rounded-lg px-[14%] py-6 sm:px-[6%] sm:py-[6%]">
+  <div class="media-panel overflow-hidden rounded-lg border border-line px-[14%] py-6 sm:px-[6%] sm:py-[6%]">
     <ul class="pcr-list m-0 grid list-none items-start p-0 sm:gap-[4%]" style={`--cards: ${cards.length};`}>
       {cards.map((card, i) => (
         <li class="pcr-card m-0 p-0" data-active={i === 0 ? 'true' : 'false'} aria-label={`${i + 1} of ${cards.length}: ${card.label}`}>

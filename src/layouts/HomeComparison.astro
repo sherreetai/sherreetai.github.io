@@ -1,6 +1,6 @@
 ---
 // Previous vs new app homepage, plus the O2 web view it now matches, side by side in one frame.
-// Desktop: 3:2 frame, so it lines up with the 3:2 image beside it. Mobile: a taller frame so the screens stay legible.
+// The panel sizes to the screens (no fixed frame), so it stays tight on phones and desktop.
 // Expand (desktop) opens the three screens larger.
 // Screens have rounded corners (rounded-lg, the same 8px used across the case studies).
 // Real text labels (not baked into the images) so they follow the site's colours and dark mode.
@@ -13,11 +13,13 @@ const screens = [
 ---
 
 <figure data-hc class="group relative m-0">
-  <div class="grid aspect-[4/5] w-full grid-cols-3 gap-[4%] rounded-lg media-panel px-[5%] pt-[5%] pb-[4%] md:aspect-[3/2]">
+  <!-- No fixed frame shape: each screen fills its column and the panel wraps around them, so there is no empty
+       space above or below on any screen size. Screens share one shape (cropped from the top) so the labels line up. -->
+  <div class="grid w-full grid-cols-3 gap-[4%] rounded-lg border border-line media-panel p-[5%]">
     {screens.map((s) => (
-      <div class="flex min-h-0 min-w-0 flex-col gap-2">
-        <div class="relative min-h-0 flex-1">
-          <img src={s.src} alt={s.alt} width={s.width} height={s.height} loading="lazy" class="absolute top-0 left-1/2 h-full w-auto max-w-full -translate-x-1/2 rounded-lg object-contain" />
+      <div class="flex min-w-0 flex-col gap-2">
+        <div class="aspect-[786/2061] overflow-hidden rounded-lg">
+          <img src={s.src} alt={s.alt} width={s.width} height={s.height} loading="lazy" class="block h-full w-full object-cover object-top" />
         </div>
         <span class="text-center text-xs font-bold text-ink sm:text-sm">{s.label}</span>
       </div>
