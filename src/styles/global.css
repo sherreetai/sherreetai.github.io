@@ -70,6 +70,13 @@
   letter-spacing: -0.025em;
 }
 
+/* Nicer line breaks: headings get evenly balanced lines, body copy avoids a lone word on the last line.
+   In the base layer so a class like text-wrap or text-nowrap on an element can still override it. */
+@layer base {
+  h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
+  .case-body p, .case-body li { text-wrap: pretty; }
+}
+
 /* Body text inside case studies (18px) */
 .type-case-body {
   font-size: 1.125rem;
