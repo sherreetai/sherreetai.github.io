@@ -7,3 +7,6 @@ dist/
 *.docx
 *STAR*
 *Interview Guide*
+# Source screenshots and archived files live outside this repo (Desktop/Work/Portfolio archive)
+/screenshots/
+/sherreetai-cv.pdf
