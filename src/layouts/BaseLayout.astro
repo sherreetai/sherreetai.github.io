@@ -27,6 +27,9 @@ const pageTitle = title ? `${title} | Sher Ree Tai` : 'Sher Ree Tai, Product Des
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <!-- Favicon: the SR logo (public/favicon.svg switches to the lighter purple in dark mode). The PNG is for iPhone home screens. -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script is:inline>
       var systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
       var savedTheme = null;
