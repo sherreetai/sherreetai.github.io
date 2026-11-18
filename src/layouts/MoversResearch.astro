@@ -51,13 +51,13 @@ const arrow = 'mx-auto my-3 block text-muted';
     ))}
   </ul>
 
-  <svg class={arrow} width="16" height="20" viewBox="0 0 16 20" fill="none" aria-hidden="true">
-    <path d="M8 2v15M3 12l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  <svg class={arrow} width="24" height="32" viewBox="0 0 24 32" fill="none" aria-hidden="true">
+    <path d="M12 3v25M5 21l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 
   <!-- 2. Findings -->
   <p class={heading}>What they agreed on</p>
-  <ol class="m-0 mt-3 list-none space-y-2 p-0">
+  <ol class="m-0 mt-3 flex list-none flex-col gap-3 p-0">
     {findings.map((f) => (
       <li class="m-0 rounded-lg bg-background p-3 sm:p-4">
         <p class="m-0 font-accent text-[20px] leading-none font-bold tracking-tight text-accent sm:text-[24px]">{f.stat}</p>
@@ -71,8 +71,8 @@ const arrow = 'mx-auto my-3 block text-muted';
     ))}
   </ol>
 
-  <svg class={arrow} width="16" height="20" viewBox="0 0 16 20" fill="none" aria-hidden="true">
-    <path d="M8 2v15M3 12l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  <svg class={arrow} width="24" height="32" viewBox="0 0 24 32" fill="none" aria-hidden="true">
+    <path d="M12 3v25M5 21l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 
   <!-- 3. What it led to -->

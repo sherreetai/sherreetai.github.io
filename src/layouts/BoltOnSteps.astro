@@ -56,14 +56,14 @@ const arrowLeft = 'M12 7H2M5 4 2 7l3 3';
 
       {r === 1 && (
         <div aria-hidden="true">
-          <svg class="mx-auto my-3 block text-accent md:my-4" width="16" height="20" viewBox="0 0 16 20" fill="none">
-            <path d="M8 2v15M3 12l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          <svg class="mx-auto my-3 block text-accent md:my-4" width="24" height="32" viewBox="0 0 24 32" fill="none">
+            <path d="M12 3v25M5 21l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
       )}
 
       <!-- Label on one line, note on the next (same as the Home Movers before/after) -->
-      <div class:list={['mb-3 flex flex-col text-sm', r === 1 && 'items-center text-center', ]} aria-hidden="true">
+      <div class="mb-3 flex flex-col text-sm" aria-hidden="true">
         <span class="font-bold text-ink">{row.label}</span>
         <span class="text-xs text-muted">{row.note}</span>
       </div>
