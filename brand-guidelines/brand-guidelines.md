@@ -22,7 +22,7 @@ The site tokens live in the `@theme` block of `src/styles/global.css`. Dark mode
 | Page background | `#FFFFFF` | `#0F0E27` | Main canvas |
 | Main text (`ink`) | `#1F1D36` | `#D8D6EA` | Headings, body copy, icons |
 | Accent | `#4542D1` | `#B4B1FF` | Highlights, numbers, labels and interactive accents |
-| Muted text | `#6B6B6B` | `#C4C3D0` | Supporting copy, card descriptions, dates |
+| Muted text | `#646464` | `#C4C3D0` | Supporting copy, card descriptions, dates |
 | Divider (`line`) | `#DEDDDC` | `#4B4A67` | Section rules and borders |
 | Placeholder | `#DEDDDC` | `#282741` | Unfilled media areas |
 | Chip | `#E8E7E5` | `#282741` | Tags, subtle controls and diagram backgrounds |

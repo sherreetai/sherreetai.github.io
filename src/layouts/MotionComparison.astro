@@ -23,9 +23,9 @@ const screens = [
             <span class="text-xs whitespace-nowrap text-muted">{s.note}</span>
           </div>
           {s.label === 'Before' ? (
-            <img src="/images/vm-home-movers/static-motion.png" alt="Previous move steps: three numbered steps stacked down the page as plain text." width="866" height="1059" loading="lazy" class="block h-auto w-full rounded-lg bg-background shadow-sm" />
+            <img src="/images/vm-home-movers/static-motion.png" alt="Previous move steps: three numbered steps stacked down the page as plain text." width="866" height="1059" loading="lazy" class="block h-auto w-full rounded-lg border border-line bg-background" />
           ) : (
-            <VideoPlayer src="/images/vm-home-movers/motion.mp4" label="New move steps: a carousel card with an animated icon for each step." controls={false} class="block h-auto w-full rounded-lg bg-background shadow-sm" />
+            <VideoPlayer src="/images/vm-home-movers/motion.mp4" label="New move steps: a carousel card with an animated icon for each step." controls={false} class="block h-auto w-full rounded-lg border border-line bg-background" />
           )}
         </div>
       ))}

@@ -9,7 +9,7 @@
   --font-accent: "Space Grotesk", "Inter Variable", ui-sans-serif, system-ui, sans-serif; /* secondary font for complementary content: use font-accent */
   --color-ink: #1F1D36;
   --color-accent: #4542D1;
-  --color-muted: #6b6b6b;
+  --color-muted: #646464;
   --color-line: #dedddc;
   --color-placeholder: #dedddc;
   --color-chip: #e8e7e5;
@@ -249,7 +249,7 @@ a:focus-visible {
 .media-panel {
   --color-ink: #1F1D36;
   --color-accent: #4542D1;
-  --color-muted: #6b6b6b;
+  --color-muted: #646464;
   --color-line: #dedddc;
   --color-chip: #e8e7e5;
   --color-background: #ffffff;

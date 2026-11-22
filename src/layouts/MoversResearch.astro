@@ -1,7 +1,7 @@
 ---
 // "Analysing where and why customers were dropping out": a simple summary of the research, instead of the
 // six original research boards. Reads top to bottom: the four sources, the three findings they agreed on
-// (each tagged with the sources behind it), then what the findings led to.
+// (each tagged with the sources behind it), then the three priorities for the redesign they led to.
 // The original boards are kept outside the repo in Desktop/Work/Portfolio archive/03 Home Movers/research/.
 
 const sources = [
@@ -32,13 +32,15 @@ const findings = [
   },
 ];
 
+const priorities = ['A shorter mobile layout', 'Clearer serviceability results', 'Logged-in personalisation'];
+
 const heading = 'm-0 text-[13px] leading-snug font-semibold tracking-[0.08em] text-muted uppercase';
 const tag = 'inline-flex items-center rounded-full border border-line bg-background px-2 py-0.5 text-xs leading-tight text-muted';
 const arrow = 'mx-auto my-3 block text-muted';
 ---
 
 <!-- Phones: tighter padding and slightly smaller numbers; everything wraps rather than squeezing -->
-<figure class="m-0 rounded-lg border border-line bg-chip p-4 sm:p-6" aria-label="Research summary: four sources, three shared findings and what they led to">
+<figure class="m-0 rounded-lg border border-line bg-chip p-4 sm:p-6" aria-label="Research summary: four sources, three shared findings and the three priorities for the redesign they led to">
   <!-- 1. Sources -->
   <p class={heading}>4 sources</p>
   <!-- Phones: one tile per row, stacked. From 640px up: two even columns -->
@@ -75,7 +77,11 @@ const arrow = 'mx-auto my-3 block text-muted';
     <path d="M12 3v25M5 21l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 
-  <!-- 3. What it led to -->
-  <p class={heading}>Led to</p>
-  <p class="m-0 mt-3 rounded-lg bg-background p-3 text-sm leading-relaxed text-ink sm:p-4">Three priorities for the redesign: a shorter mobile layout, clearer serviceability results and logged-in personalisation.</p>
+  <!-- 3. What it led to: one white box per priority, stacked like the findings -->
+  <p class={heading}>Priorities for the redesign</p>
+  <ol class="m-0 mt-3 flex list-none flex-col gap-3 p-0">
+    {priorities.map((p) => (
+      <li class="m-0 rounded-lg bg-background p-3 text-sm leading-snug font-semibold text-ink sm:p-4">{p}</li>
+    ))}
+  </ol>
 </figure>

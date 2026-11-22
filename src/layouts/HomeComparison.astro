@@ -14,14 +14,15 @@ const screens = [
 
 <figure data-hc class="group relative m-0">
   <!-- No fixed frame shape: each screen fills its column and the panel wraps around them, so there is no empty
-       space above or below on any screen size. Screens share one shape (cropped from the top) so the labels line up. -->
-  <div class="grid w-full grid-cols-3 gap-[4%] rounded-lg border border-line media-panel p-[5%]">
+       space above or below on any screen size. Screens share one shape (cropped from the top) so they line up.
+       Labels sit above each screen, left-aligned, and the padding and gaps match the other before/after panels. -->
+  <div class="grid w-full grid-cols-3 gap-5 rounded-lg border border-line media-panel p-4 md:gap-8 md:p-8">
     {screens.map((s) => (
       <div class="flex min-w-0 flex-col gap-2">
+        <span class="text-sm font-bold text-ink">{s.label}</span>
         <div class="aspect-[786/2061] overflow-hidden rounded-lg border border-line">
           <img src={s.src} alt={s.alt} width={s.width} height={s.height} loading="lazy" class="block h-full w-full object-cover object-top" />
         </div>
-        <span class="text-center text-xs font-bold text-ink sm:text-sm">{s.label}</span>
       </div>
     ))}
   </div>
@@ -42,9 +43,9 @@ const screens = [
       </div>
       <div class="flex justify-center gap-6 rounded-lg media-panel p-4">
         {screens.map((s) => (
-          <div class="flex min-w-0 flex-col items-center gap-2">
-            <img src={s.src} alt="" loading="lazy" class="block h-auto max-h-[calc(95vh-9rem)] w-auto max-w-full rounded-lg border border-line" />
+          <div class="flex min-w-0 flex-col gap-2">
             <span class="text-sm font-bold text-ink">{s.label}</span>
+            <img src={s.src} alt="" loading="lazy" class="block h-auto max-h-[calc(95vh-9rem)] w-auto max-w-full rounded-lg border border-line" />
           </div>
         ))}
       </div>

@@ -59,7 +59,7 @@ const badge = 'inline-flex size-5 shrink-0 items-center justify-center rounded-f
             <span class="text-xs whitespace-nowrap text-muted">{p.note}</span>
           </div>
           <div class="relative">
-            <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading="lazy" class="block h-auto w-full rounded-lg bg-background shadow-sm" />
+            <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading="lazy" class="block h-auto w-full rounded-lg border border-line bg-background" />
             {p.bands.map((b) => (
               <div aria-hidden="true" class="absolute inset-x-0 rounded-sm border-2 border-accent bg-accent/15" style={`top:${b.top}%;height:${b.bottom - b.top}%`}>
                 <span class={`${badge} absolute -top-2.5 -left-2.5`}>{b.n}</span>
@@ -94,7 +94,7 @@ const badge = 'inline-flex size-5 shrink-0 items-center justify-center rounded-f
               <div class="flex flex-col gap-2">
                 <span class="text-sm font-bold text-ink">{p.label} <span class="font-normal text-muted">· {p.note}</span></span>
                 <div class="relative">
-                  <img src={p.src} alt="" loading="lazy" class="block h-auto w-full rounded-lg bg-background shadow-sm" />
+                  <img src={p.src} alt="" loading="lazy" class="block h-auto w-full rounded-lg border border-line bg-background" />
                   {p.bands.map((b) => (
                     <div aria-hidden="true" class="absolute inset-x-0 rounded-sm border-2 border-accent bg-accent/15" style={`top:${b.top}%;height:${b.bottom - b.top}%`}>
                       <span class={`${badge} absolute -top-2.5 -left-2.5 size-6 text-xs`}>{b.n}</span>

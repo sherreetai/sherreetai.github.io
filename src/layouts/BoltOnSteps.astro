@@ -8,6 +8,8 @@
 //
 // Marker positions are percentages of each screen (409 × 841). If a screen changes, re-measure them.
 // Images: /public/images/o2/steps/ (screenshots 1–6 and V1–V3, cropped to the screen edge).
+// The screenshots have 12px rounded corners baked in (24px at their 2x size, filled white). The CSS corner is set as
+// a share of the screen size (24 ÷ 409 wide, 24 ÷ 841 tall) so the border follows that curve at any size, with no white gap.
 
 type Step = { n: number; kind: 'tap' | 'scroll' | 'swipe'; x: number; y: number; w?: number; h?: number };
 type Screen = { src: string; step?: Step; end?: boolean };
@@ -71,7 +73,7 @@ const arrowLeft = 'M12 7H2M5 4 2 7l3 3';
       <ol class:list={['m-0 flex list-none flex-wrap gap-3 p-0 md:gap-4', r === 1 && 'justify-center']} aria-hidden="true">
         {row.screens.map((s) => (
           <li class={`relative m-0 shrink-0 p-0 ${screenWidth}`}>
-            <img src={`/images/o2/steps/${s.src}.webp`} alt="" width="409" height="841" loading="lazy" class="block h-auto w-full rounded-lg border border-line bg-background" />
+            <img src={`/images/o2/steps/${s.src}.webp`} alt="" width="409" height="841" loading="lazy" class="block h-auto w-full rounded-[5.9%/2.85%] border border-line bg-background" />
             {s.step && s.step.kind === 'tap' && (
               <div class="absolute rounded-md border-2 border-accent bg-accent/15" style={`left:${s.step.x}%;top:${s.step.y}%;width:${s.step.w}%;height:${s.step.h}%`}>
                 <span class={`${badge} absolute -top-3 -left-3`}>{s.step.n}</span>
