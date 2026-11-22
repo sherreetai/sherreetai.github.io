@@ -26,7 +26,7 @@ The site tokens live in the `@theme` block of `src/styles/global.css`. Dark mode
 | Divider (`line`) | `#DEDDDC` | `#4B4A67` | Section rules and borders |
 | Placeholder | `#DEDDDC` | `#282741` | Unfilled media areas |
 | Chip | `#E8E7E5` | `#282741` | Tags, subtle controls and diagram backgrounds |
-| Media panel | `#F7F7F7` | `#F7F7F7` | Grey box behind case study visuals (stays light in both modes) |
+| Media panel | `#F0F0F0` | `#F0F0F0` | Grey box behind case study visuals (stays light in both modes) |
 | Dark panel | `#0F0E27` | `#282741` | Behind dark-only images, such as the Priority theme |
 | Footer band | `#1F1D36` | `#1F1D36` | Contact footer (stays dark in both modes) |
 
@@ -38,15 +38,16 @@ WCAG contrast ratios against the background each colour sits on:
 |---|---|
 | Light main text on white | **16.31:1** |
 | Light accent on white | **7.11:1** |
-| Light muted text on white | **5.33:1** |
+| Light muted text on white | **5.92:1** |
 | Dark main text on dark background | **13.24:1** |
 | Dark accent on dark background | **9.59:1** |
 | Dark muted text on dark background | **10.84:1** |
 | White text on the footer band | **16.31:1** |
-| Accent on the media panel | **6.64:1** |
-| Muted text on the media panel | **4.97:1** |
+| Accent on the media panel | **6.24:1** |
+| Muted text on the media panel | **5.19:1** |
+| Muted text on a chip box | **4.79:1** |
 
-All of these pass WCAG AA's 4.5:1 for normal-sized text. Muted text on the media panel is the closest to the limit, so don't lighten either colour. Recheck contrast whenever a token or its background changes. Dividers are decorative. If a line ever shows a meaningful boundary or state, check it against the 3:1 non-text contrast requirement too.
+All of these pass WCAG AA's 4.5:1 for normal-sized text. Muted text on a chip box (`#E8E7E5`) is the closest to the limit, so don't lighten either colour. The media panel grey is also painted into some case study images, so if it changes, recolour their backgrounds to match. Recheck contrast whenever a token or its background changes. Dividers are decorative. If a line ever shows a meaningful boundary or state, check it against the 3:1 non-text contrast requirement too.
 
 ### Colour guidance
 
