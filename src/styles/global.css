@@ -257,6 +257,16 @@ a:focus-visible {
   color: var(--color-ink);
 }
 
+/* Hairline outline for images with transparent rounded corners (e.g. the product card images).
+   A normal border is square, so this traces the image's own shape with a 1px line in the line colour. */
+.hairline-outline {
+  filter:
+    drop-shadow(1px 0 0 var(--color-line))
+    drop-shadow(-1px 0 0 var(--color-line))
+    drop-shadow(0 1px 0 var(--color-line))
+    drop-shadow(0 -1px 0 var(--color-line));
+}
+
 .action-primary {
   border-color: var(--color-ink);
   background-color: var(--color-ink);

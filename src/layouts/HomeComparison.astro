@@ -2,7 +2,7 @@
 // Previous vs new app homepage, plus the O2 web view it now matches, side by side in one frame.
 // The panel sizes to the screens (no fixed frame), so it stays tight on phones and desktop.
 // Expand (desktop) opens the three screens larger.
-// Screens have rounded corners (rounded-lg, the same 8px used across the case studies).
+// Screens have rounded corners (rounded-lg, the same 8px used across the case studies) and a 1px hairline border (border-line).
 // Real text labels (not baked into the images) so they follow the site's colours and dark mode.
 // Screens live in /public/images/o2/ (cropped to the top of each page at a section break).
 const screens = [
@@ -18,7 +18,7 @@ const screens = [
   <div class="grid w-full grid-cols-3 gap-[4%] rounded-lg border border-line media-panel p-[5%]">
     {screens.map((s) => (
       <div class="flex min-w-0 flex-col gap-2">
-        <div class="aspect-[786/2061] overflow-hidden rounded-lg">
+        <div class="aspect-[786/2061] overflow-hidden rounded-lg border border-line">
           <img src={s.src} alt={s.alt} width={s.width} height={s.height} loading="lazy" class="block h-full w-full object-cover object-top" />
         </div>
         <span class="text-center text-xs font-bold text-ink sm:text-sm">{s.label}</span>
@@ -43,7 +43,7 @@ const screens = [
       <div class="flex justify-center gap-6 rounded-lg media-panel p-4">
         {screens.map((s) => (
           <div class="flex min-w-0 flex-col items-center gap-2">
-            <img src={s.src} alt="" loading="lazy" class="block h-auto max-h-[calc(95vh-9rem)] w-auto max-w-full rounded-lg" />
+            <img src={s.src} alt="" loading="lazy" class="block h-auto max-h-[calc(95vh-9rem)] w-auto max-w-full rounded-lg border border-line" />
             <span class="text-sm font-bold text-ink">{s.label}</span>
           </div>
         ))}

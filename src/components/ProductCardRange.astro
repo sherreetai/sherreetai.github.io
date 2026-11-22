@@ -1,6 +1,6 @@
 ---
 // A grey panel showing the product card pattern across different products, side by side.
-// Each card has a small label above it. The panel wraps tightly around the cards (no fixed shape), so the cards stay as large as possible.
+// Each card has a small label above it and a 1px hairline outline (hairline-outline in global.css), no drop shadow. The panel wraps tightly around the cards (no fixed shape), so the cards stay as large as possible.
 // On phones one card shows at a time, with arrow buttons to step through them. From 640px up all cards show side by side,
 // with the same Expand button as the other case study images (opens the cards larger in a pop-up).
 // Usage in MDX: <ProductCardRange cards={[{ label: 'Broadband', src: '/images/...', alt: '...' }, ...]} caption="..." />
@@ -26,7 +26,7 @@ const { cards, caption } = Astro.props;
       {cards.map((card, i) => (
         <li class="pcr-card m-0 p-0" data-active={i === 0 ? 'true' : 'false'} aria-label={`${i + 1} of ${cards.length}: ${card.label}`}>
           <p class="m-0 mb-2 text-sm font-bold text-ink">{card.label}</p>
-          <img src={card.src} alt={card.alt} loading="lazy" class="block h-auto w-full drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)]" />
+          <img src={card.src} alt={card.alt} loading="lazy" class="block h-auto w-full hairline-outline" />
         </li>
       ))}
     </ul>
@@ -64,7 +64,7 @@ const { cards, caption } = Astro.props;
         {cards.map((card) => (
           <div class="shrink-0">
             <p class="m-0 mb-2 text-sm font-bold text-ink">{card.label}</p>
-            <img src={card.src} alt="" class="block h-auto max-h-[calc(95vh-10rem)] w-auto max-w-[30vw] drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)]" />
+            <img src={card.src} alt="" class="block h-auto max-h-[calc(95vh-10rem)] w-auto max-w-[30vw] hairline-outline" />
           </div>
         ))}
       </div>

@@ -14,7 +14,7 @@ For the look and voice of the site, see `brand-guidelines/brand-guidelines.md`. 
 - `src/components/Footer.astro`: dark contact band (View CV, Email, LinkedIn) and copyright.
 - Bespoke interactive diagrams live in `src/layouts/`, one per case study use: `BoltOnSteps`, `HomeComparison` (O2), `MoversHierarchy`, `MoversResearch`, `MotionComparison`, `ScrollableShot` (Home Movers), `ThemeSwitcher` (App Library).
 - `src/site.ts`: CV, email and LinkedIn URLs.
-- `src/styles/global.css`: Tailwind import, `@theme` design tokens, dark mode values (`html.dark`), `type-*` text styles, `.post-body`, `link-underline`, `media-panel`, text-wrap rules and the pop-in CSS.
+- `src/styles/global.css`: Tailwind import, `@theme` design tokens, dark mode values (`html.dark`), `type-*` text styles, `.post-body`, `link-underline`, `media-panel`, `hairline-outline`, text-wrap rules and the pop-in CSS.
 - `public/`: `images/<project>/`, `favicon.svg`, `apple-touch-icon.png` and `sherreetai-cv.pdf` (the CV the site links to).
 
 ## Conventions
@@ -22,6 +22,7 @@ For the look and voice of the site, see `brand-guidelines/brand-guidelines.md`. 
 - Fonts: Inter is the default. Space Grotesk (`font-accent`) is only for complementary content: numbered case study section titles, dash headings, callouts and big research figures.
 - Use the existing `type-*` classes (`type-page-title`, `type-section-title`, `type-label`, `type-case-body`…) instead of one-off text sizes.
 - Put `media-panel` on the grey box behind a case study visual (not a `bg-` class). It keeps light-mode colours inside, even in dark mode.
+- Screens and cards inside a panel get a 1px hairline in `border-line` instead of a drop shadow: `border border-line` on square images, `hairline-outline` on images with transparent rounded corners.
 - Text links use `link-underline`. Buttons use `action-primary` / `action-secondary`.
 - Headings get `text-wrap: balance` and case study / post paragraphs get `text-wrap: pretty` from `global.css`. Don't add these per element.
 - Case study Markdown stays class-free. Its look comes from the case study components and `.case-body` / `.post-body`.
