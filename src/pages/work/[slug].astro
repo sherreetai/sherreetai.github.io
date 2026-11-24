@@ -19,11 +19,16 @@ import CaseCallout from '../../components/CaseCallout.astro';
 import BillingIADiagram from '../../components/BillingIADiagram.astro';
 
 export async function getStaticPaths() {
-  const projects = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
-  return projects.map((entry, i) => ({
-    params: { slug: entry.id },
-    props: { entry, next: projects[(i + 1) % projects.length] },
-  }));
+  const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  // Hidden case studies get a page but stay out of the "Next project" loop. They don't show a "Next project" link themselves.
+  const projects = all.filter((entry) => !entry.data.hidden);
+  return all.map((entry) => {
+    const i = projects.indexOf(entry);
+    return {
+      params: { slug: entry.id },
+      props: { entry, next: i === -1 ? projects[0] : projects[(i + 1) % projects.length] },
+    };
+  });
 }
 
 const { entry, next } = Astro.props;

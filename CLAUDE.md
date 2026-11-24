@@ -5,7 +5,7 @@ A static portfolio site: Astro 7 + Tailwind CSS v4 + MDX, deployed to GitHub Pag
 For the look and voice of the site, see `brand-guidelines/brand-guidelines.md`. For a plain-language tour of the folders, see `docs/project-structure.md`. Keep both in step with the code when you change something they describe.
 
 ## Structure
-- `src/content/work/*.mdx`: one file per case study. Frontmatter is validated by `src/content.config.ts`. These files are the single source of truth for both the project cards and the case study pages. `summary` is the card teaser, `outcome` is the Outcome line on the case study page.
+- `src/content/work/*.mdx`: one file per case study. Frontmatter is validated by `src/content.config.ts`. These files are the single source of truth for both the project cards and the case study pages. `summary` is the card teaser, `outcome` is the Outcome line on the case study page. `hidden: true` (e.g. `dmcca.mdx`) keeps a case study out of the grid and "Next project", drops its own "Next project" link and adds `noindex`. It's only reached by typing `/work/<file name>/`.
 - `src/components/ProjectGrid.astro` + `ProjectCard.astro`: the card grid, shown in the Work section of Home (`src/pages/index.astro`). There is no separate Work page: the Work link goes to `/#work`. Never duplicate card markup in a page; change the component.
 - `src/pages/work/[slug].astro` → `src/layouts/CaseStudyLayout.astro`: the case study template. "Next project" follows `order` and wraps around.
 - `src/pages/writing/*.mdx` → `src/layouts/PostLayout.astro`: research write-ups linked from the case studies.

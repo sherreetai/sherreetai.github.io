@@ -1,0 +1,119 @@
+---
+title: DMCCA and Basket Redesign
+order: 99
+# Hidden: this page lives at /work/dmcca/ but isn't in the card grid or "Next project". Reach it by typing the link.
+hidden: true
+summary: New consumer law meant more legal content on 3 already busy pages. How I used it to give product selection, basket and review one clear job each.
+# Not shown while the page is hidden. Add a real cover if it ever goes in the grid.
+coverImage: /images/dmcca/cover.webp
+# Add a hero image here when ready (e.g. /images/dmcca/hero.webp). Until then a grey placeholder shows.
+role: "Product design, partnering with Legal, Product, CRO, engineering and the Acquisition design team"
+timeline: TBC
+platform:
+  - Existing customer purchase journey
+outcome: One shared design reference for product selection, basket and review. Compliance changes were split from the redesign that still needs CRO testing.
+brief: "The Digital Markets, Competition and Consumers Act (DMCCA) set new rules for how contract and cancellation details appear before purchase. Our product selection, basket and review pages had grown up separately, with repeated information and no clear job for each page. I needed to add the new legal content to the existing customer journey without making 3 busy pages busier."
+---
+
+<CaseSection number="02" title="Finding the friction" layout="two-column">
+  <div class="space-y-8">
+    <CaseItem title="Three pages, built apart">
+      <p>Product selection, basket and review had evolved on their own. Information repeated across them and the hierarchy changed from page to page.</p>
+    </CaseItem>
+    <CaseItem title="New legal content">
+      <p>DMCCA added mandatory contract and cancellation information. The easy answer was to add it everywhere.</p>
+    </CaseItem>
+    <CaseItem title="Key question">
+      <p>Not “where can we fit this legal content?” but “when does the customer need it and what is this page for?”</p>
+    </CaseItem>
+  </div>
+  <div slot="aside">
+    {/* Visual to add: /images/dmcca/before-journey.webp */}
+    <CasePlaceholder />
+    <p class="mt-3 text-sm text-muted"><strong>Visual to add:</strong> the existing product selection, basket and review pages side by side. Mark up the repeated information and where the new legal content would land.</p>
+  </div>
+</CaseSection>
+
+<CaseSection number="03" title="One journey, three jobs" layout="three-column" narrowTitle>
+  {/* Visuals to add: one crop per page, e.g. /images/dmcca/choose.webp, understand.webp, confirm.webp. Add src="..." to each CaseItem's placeholder. */}
+  <CaseItem title="Choose" placeholder>
+    <p><strong>Product selection</strong> helps customers make a choice. Product details and comparison come first.</p>
+  </CaseItem>
+  <CaseItem title="Understand" placeholder>
+    <p><strong>Basket</strong> shows what they’ve chosen. A clear summary of the selection, price and key contract details.</p>
+  </CaseItem>
+  <CaseItem title="Confirm" placeholder>
+    <p><strong>Review</strong> lets them check and commit. The legal and contract information needed before purchase.</p>
+  </CaseItem>
+  <div class="md:col-span-full">
+    {/* Visual to add: /images/dmcca/information-map.webp */}
+    <CasePlaceholder wide />
+    <p class="mt-3 text-sm text-muted"><strong>Visual to add:</strong> an information map across the 3 stages. Rows for product, price, contract and cancellation details. Columns for Choose, Understand and Confirm, showing where each piece now lives.</p>
+  </div>
+</CaseSection>
+
+<CaseSection number="04" title="Exploring options" layout="two-column">
+  <div class="space-y-8">
+    <CaseItem title="Evidence from Acquisition">
+      <p>Acquisition was solving the same DMCCA rules, so I worked with their designers. A comparable basket treatment tested neutral on conversion and went to 100% of traffic while the native build was made.</p>
+      <p>I treated that as supporting evidence, not proof. Our journey still needed its own testing.</p>
+    </CaseItem>
+    <CaseItem title="More content isn’t simpler">
+      <p>I looked at adding cancellation rights to product cards and condensing legal content at review. Some mandatory information couldn’t be hidden. Earlier tests also showed combined legal checkboxes performed worse.</p>
+      <p>So I focused on hierarchy, timing and placement instead of cutting content.</p>
+    </CaseItem>
+  </div>
+  <div slot="aside" class="space-y-8">
+    <div>
+      {/* Visual to add: /images/dmcca/acquisition-basket.webp (only if it's OK to show) */}
+      <CasePlaceholder />
+      <p class="mt-3 text-sm text-muted"><strong>Visual to add:</strong> the Acquisition persistent basket with its DMCCA treatment, labelled with the neutral CRO result.</p>
+    </div>
+    <div>
+      {/* Visual to add: /images/dmcca/explored-options.webp */}
+      <CasePlaceholder />
+      <p class="mt-3 text-sm text-muted"><strong>Visual to add:</strong> 2 or 3 options I explored, such as cancellation rights on a product card and condensed legal content at review, with a note on why each was ruled out.</p>
+    </div>
+  </div>
+</CaseSection>
+
+<CaseSection number="05" title="The design">
+  <CaseItem title="The basket as the bridge">
+    <p>The basket sits between choosing and committing. I redesigned it with a clearer order of product, price and contract details. Supporting legal information sits one tap away and anything only needed at commitment moves to review.</p>
+  </CaseItem>
+  <div class="mt-6">
+    {/* Visual to add: /images/dmcca/basket-before-after.webp */}
+    <CasePlaceholder wide spacing />
+    <p class="mt-3 text-sm text-muted"><strong>Visual to add:</strong> the basket before and after. Call out the new hierarchy, where the DMCCA content sits and how supporting legal information opens.</p>
+  </div>
+  <div class="mt-12">
+    <CaseItem title="One source of truth">
+      <p>I brought every affected existing customer journey into one Figma file. Compliance requirements sit next to basket research and product card CRO results as they come in. Design, Product and engineering can see how each piece fits the whole journey.</p>
+    </CaseItem>
+  </div>
+  <div class="mt-6">
+    {/* Visual to add: /images/dmcca/figma-reference.webp */}
+    <CasePlaceholder wide spacing />
+    <p class="mt-3 text-sm text-muted"><strong>Visual to add:</strong> a zoomed-out view of the Figma reference file with its journeys and scenarios. Blur anything internal.</p>
+  </div>
+</CaseSection>
+
+<CaseSection number="06" title="What ships and what gets tested">
+  <p>DMCCA was mandatory. That didn’t make the redesign proven. Keeping them apart meant a legal deadline couldn’t pass off an untested design as a tested one.</p>
+  <div class="mt-8 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3">
+    <CaseItem title="Compliance">
+      <p>What had to ship to meet DMCCA.</p>
+    </CaseItem>
+    <CaseItem title="Hypothesis">
+      <p>How we believe the 3 pages work better together.</p>
+    </CaseItem>
+    <CaseItem title="Validation">
+      <p>What still needs research or CRO testing.</p>
+    </CaseItem>
+  </div>
+</CaseSection>
+
+<CaseSection number="07" title="Outcome and next steps">
+  <p>DMCCA became more than a legal update. It gave us a reason to rethink how 3 key purchase pages work together.</p>
+  <p>The basket now bridges choosing and committing. The shared Figma file gives a base for build, research and CRO testing. I won’t claim the redesign lifted conversion. That still needs testing.</p>
+</CaseSection>

@@ -16,11 +16,11 @@ interface Props {
   next: CollectionEntry<'work'>;
 }
 const { entry, next } = Astro.props;
-const { title, summary, outcome, role, timeline, timelineNote, platform, platformNote, brief, heroImage } = entry.data;
+const { title, summary, outcome, role, timeline, timelineNote, platform, platformNote, brief, heroImage, hidden } = entry.data;
 const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
 ---
 
-<BaseLayout title={title}>
+<BaseLayout title={title} noindex={hidden}>
   <section class="mx-auto max-w-[1088px] px-6 pt-14 pb-8 md:pt-16 md:pb-10" data-reveal>
     <h1 class="type-page-title max-w-[700px]">{title}</h1>
   </section>
@@ -60,8 +60,11 @@ const heroIsVideo = heroImage ? /\.(mp4|webm|mov)$/i.test(heroImage) : false;
     <slot />
   </article>
 
-  <NextProject
-    href={`/work/${next.id}/`}
-    title={next.data.cardTitle ?? next.data.title}
-  />
+  <!-- Hidden case studies (hidden: true) end without a "Next project" link -->
+  {!hidden && (
+    <NextProject
+      href={`/work/${next.id}/`}
+      title={next.data.cardTitle ?? next.data.title}
+    />
+  )}
 </BaseLayout>

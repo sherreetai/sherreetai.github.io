@@ -21,6 +21,7 @@ const work = defineCollection({
     platform: z.array(z.string()),
     platformNote: z.string().optional(), // muted detail after the platform, e.g. "iOS and Android"
     outcome: z.string().optional(), // the result, shown as "Outcome" under Platform on the case study page (falls back to summary)
+    hidden: z.boolean().optional(), // true = page exists at /work/<file name>/ but isn't in the card grid or "Next project" (reached only by typing the link)
     brief: z.string(), // "The brief" at the top of the case study: the situation and my task, in one first-person paragraph
   }),
 });

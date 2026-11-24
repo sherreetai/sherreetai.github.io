@@ -11,11 +11,13 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean; // true = ask search engines not to list this page
 }
 
 const {
   title,
   description = 'Sher Ree Tai, product designer.',
+  noindex = false,
 } = Astro.props;
 const pageTitle = title ? `${title} | Sher Ree Tai` : 'Sher Ree Tai, Product Designer';
 ---
@@ -27,6 +29,7 @@ const pageTitle = title ? `${title} | Sher Ree Tai` : 'Sher Ree Tai, Product Des
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <!-- Favicon: the SR logo (public/favicon.svg switches to the lighter purple in dark mode). The PNG is for iPhone home screens. -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
